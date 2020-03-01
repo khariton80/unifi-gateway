@@ -1,48 +1,82 @@
 # -*- coding: utf-8 -*-
 import ConfigParser
 import argparse
+import re
 import logging.handlers
 import socket
 import time
 import urllib2
-
+import json
 from daemon import Daemon
+import stun
 from unifi_protocol import create_broadcast_message, create_inform, encode_inform, decode_inform
 
-handler = logging.handlers.SysLogHandler(address='/dev/log')
-handler.setFormatter(logging.Formatter('[unifi-gateway] : %(levelname)s : %(message)s'))
+#handler = logging.handlers.SysLogHandler(address='/var/log/test.log')
+#handler.setFormatter(logging.Formatter('[unifi-gateway] : %(levelname)s : %(message)s'))
+
+#handler = logging.handlers.. (address='/var/log/test.log')
+#handler.setFormatter(logging.Formatter('[unifi-gateway] : %(levelname)s : %(message)s'))
 logger = logging.getLogger('unifi-gateway')
 logger.setLevel(logging.DEBUG)
-logger.addHandler(handler)
+#logger.addHandler(handler)
 
 CONFIG_FILE = 'conf/unifi-gateway.conf'
 
 
-class UnifiGateway(Daemon):
+class UnifiGateway():
 
     def __init__(self, **kwargs):
         self.interval = 10
         self.config = ConfigParser.RawConfigParser()
         self.config.read(CONFIG_FILE)
 
-        Daemon.__init__(self, pidfile=self.config.get('global', 'pid_file'), **kwargs)
+        #Daemon.__init__(self, pidfile=self.config.get('global', 'pid_file'), **kwargs)
 
     def run(self):
         broadcast_index = 1
-        while not self.config.getboolean('gateway', 'is_adopted'):
+        while self.config.get('gateway', 'key')=="":
             self._send_broadcast(broadcast_index)
             time.sleep(self.interval)
             broadcast_index += 1
 
         while True:
+            #self._send_broadcast(broadcast_index)
             response = self._send_inform(create_inform(self.config))
             logger.debug('Receive {} from controller'.format(response))
+            logger.debug('Receive {} from controller'.format(response))
+            result = json.loads(response)
+            if result['_type'] == 'setparam':
+               for key, value in result.items():
+                  if key not in ['_type', 'server_time_in_utc', 'mgmt_cfg']:
+                    self.config.set('gateway', key, value)
+                  if key == 'mgmt_cfg':
+                      if not self.config.has_section('mgmt_cfg'):
+                          self.config.add_section('mgmt_cfg')
+                      lines = re.split('\n',value) 
+                      for line in lines:
+                          if not line =='':
+                                data = re.split('=',line) 
+                                self.config.set('mgmt_cfg', data[0], data[1]) 
+            self.config.set('gateway', 'is_adopted', 'yes')
+            self._save_config()
+            # client = stun.StunClient()
+            # client.send_request('192.168.1.4',3478)
+            # print client.receive_response()
+            # client.close()
+            
+            #nat_type, external_ip, external_port = stun.StunClient.get_ip_info(stun_host='stun.ekiga.net')
+
+            #192.168.1.4:3478
             time.sleep(self.interval)
 
     def _send_broadcast(self, broadcast_index):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20)
-        sock.sendto(create_broadcast_message(self.config, broadcast_index), ('233.89.188.1', 10001))
+        addrinfo = socket.getaddrinfo('233.89.188.1', None)[0]
+
+        sock = socket.socket(addrinfo[0], socket.SOCK_DGRAM)
+
+        #sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20,)
+        sock.sendto(create_broadcast_message(self.config, broadcast_index), (addrinfo[4][0], 10001))
 
         logger.debug('Send broadcast message #{} from gateway {}'.format(broadcast_index, self.config.get('gateway', 'lan_ip')))
 
@@ -64,13 +98,14 @@ class UnifiGateway(Daemon):
             self._save_config()
 
     def _send_inform(self, data):
+        print (data)
         headers = {
             'Content-Type': 'application/x-binary',
             'User-Agent': 'AirControl Agent v1.0'
         }
         url = self.config.get('gateway', 'url')
 
-        request = urllib2.Request(url, encode_inform(data), headers)
+        request = urllib2.Request(url, encode_inform(self.config,data), headers)
         response = urllib2.urlopen(request)
         logger.debug('Send inform request to {} : {}'.format(url, data))
         return decode_inform(self.config, response.read())
@@ -115,5 +150,7 @@ if __name__ == '__main__':
     parser_adopt.add_argument('-k', type=str, help='key', required=True)
     parser_adopt.set_defaults(func=set_adopt)
 
-    args = parser.parse_args(['set-adopt', '-s', 'http://toto', '-k', 'oeruchoreuch'])
-    args.func(args)
+    #args = parser.parse_args(['set-adopt', '-s', 'http://toto', '-k', 'oeruchoreuch'])
+    args = parser.parse_args(['start'])
+    #args.func(args)
+    UnifiGateway().run()

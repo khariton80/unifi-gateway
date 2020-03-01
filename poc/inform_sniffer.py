@@ -16,7 +16,7 @@ app = Flask(__name__)
 def inform():
     data = request.get_data()
 
-    payload = json.loads(packet_decode(a2b_hex("a09e428c482eb53c7731c224295cd9d3"), data))
+    payload = json.loads(packet_decode(a2b_hex("9d6d6e8a16f4bb00f65f65857666c318"), data))
     print(payload)
 
 
@@ -24,11 +24,11 @@ def inform():
 
 
 
-#mca-ctrl -t connect -s "http://10.0.8.2:8080/inform" -k "A09E428C482EB53C7731C224295CD9D3"
+#mca-ctrl -t connect -s "http://192.168.1.156:8080/inform" -k "9d6d6e8a16f4bb00f65f65857666c318"
 
 
 
 def print_bytearray(value):
     print([b for b in value])
 
-app.run(debug=True, port=8080, host='10.0.8.2')
+app.run(debug=True, port=8080, host='192.168.1.156')
