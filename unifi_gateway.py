@@ -8,7 +8,7 @@ import time
 import urllib2
 import json
 from daemon import Daemon
-import stun
+from unifi.stun import *
 from unifi_protocol import create_broadcast_message, create_inform, encode_inform, decode_inform
 
 #handler = logging.handlers.SysLogHandler(address='/var/log/test.log')
@@ -59,23 +59,31 @@ class UnifiGateway():
                                 self.config.set('mgmt_cfg', data[0], data[1]) 
             self.config.set('gateway', 'is_adopted', 'yes')
             self._save_config()
-            # client = stun.StunClient()
-            # client.send_request('192.168.1.4',3478)
-            # print client.receive_response()
-            # client.close()
+            self._send_stun()
             
             #nat_type, external_ip, external_port = stun.StunClient.get_ip_info(stun_host='stun.ekiga.net')
 
             #192.168.1.4:3478
             time.sleep(self.interval)
+    def _send_stun(self):
+        client = StunClient()
+        client.send_request(self.config.get('mgmt_cfg','stun_url'))
+        result = client.receive_response()
+        print result
+        client.close()
+
+        for item in result: 
+            if 'MAPPED-ADDRESS' == item['name']:
+                print item
+                self.config.set('gateway', 'lan_ip', item['ip'])
+                self.config.set('gateway', 'lan_port', item['port'])
+                self._save_config()
 
     def _send_broadcast(self, broadcast_index):
         addrinfo = socket.getaddrinfo('233.89.188.1', None)[0]
-
         sock = socket.socket(addrinfo[0], socket.SOCK_DGRAM)
-
-        #sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20,)
+        sock.bind(('0.0.0.0', 0))
         sock.sendto(create_broadcast_message(self.config, broadcast_index), (addrinfo[4][0], 10001))
 
         logger.debug('Send broadcast message #{} from gateway {}'.format(broadcast_index, self.config.get('gateway', 'lan_ip')))

@@ -4,7 +4,7 @@ import socket
 import binascii
 import struct
 import argparse
-
+import urlparse
 STUN_PORT = 3478
 
 FAMILY_IPv4 = '\x01'
@@ -16,7 +16,6 @@ BINDING_REQUEST_SIGN = '\x00\x01' # 16bit (2bytes)
 
 BINDING_RESPONSE_ERROR = '\x01\x11'
 BINDING_RESPONSE_SUCCESS = '\x01\x01'
-MAGIC_COOKIE = '' #'\x21\x12\xA4\x42' # 固定値 32bit (4bytes)
 
 # STUN Attribute Registry
 MAPPED_ADDRESS = '\x00\x01'
@@ -58,17 +57,17 @@ socket.setdefaulttimeout(10)
 
 def generate_transaction_id():
     tid = []
-    for i in xrange(24): # 96bits (12bytes)
+    for i in xrange(32): # (16bytes)
         tid.append(random.choice('0123456789ABCDEF'))
     return binascii.a2b_hex(''.join(tid))
 
 
 def build_binding_request(transaction_id):
-    if len(transaction_id) != 12:
+    if len(transaction_id) != 16:
         raise RuntimeError('Invalid transaction id')
 
-    body_length = '\x00\x00' # 属性無しなので0。 16bit (2bytes)
-    return ''.join([BINDING_REQUEST_SIGN, body_length, MAGIC_COOKIE, transaction_id])
+    body_length = '\x00\x08' 
+    return ''.join([BINDING_REQUEST_SIGN, body_length, transaction_id,CHANGE_REQUEST,'\x00\x04','\x00\x00\x00\x00'])
 
 
 def validate_response(buf, transaction_id):
@@ -81,11 +80,7 @@ def validate_response(buf, transaction_id):
             raise RuntimeError('BINDING_RESPONSE_ERROR')
         raise RuntimeError('Invalid Response')
 
-    response_magic_cookie = buf[4:8]
-    if MAGIC_COOKIE != response_magic_cookie:
-        raise RuntimeError('Invalid magic cookie')
-
-    response_transaction_id = buf[8:20]
+    response_transaction_id = buf[4:20]
     if transaction_id != response_transaction_id:
         raise RuntimeError('invalid transaction id')
 
@@ -112,7 +107,7 @@ def port_to_bytes(port, xor):
 
 
 def read_mapped_address(attr_type, attr_body, attr_len):
-    assert attr_type in (MAPPED_ADDRESS, XOR_MAPPED_ADDRESS, '\x00\x20')
+    assert attr_type in (MAPPED_ADDRESS, XOR_MAPPED_ADDRESS,SOURCE_ADDRESS,CHANGED_ADDRESS, '\x00\x20')
     assert attr_body[:1] == '\x00' # 最初の 8bit (1bytes) は 0 に設定しなければならない
 
     family_bytes = attr_body[1:2]
@@ -153,7 +148,7 @@ def read_attributes(attributes, body_length):
         attr_len = int(binascii.b2a_hex(attributes[pos + 2:pos + 4]), 16) # 16bit (2bytes)
         attr_body = attributes[pos + 4:pos + 4 + attr_len]
 
-        if attr_type in (MAPPED_ADDRESS, XOR_MAPPED_ADDRESS, '\x00\x20'):
+        if attr_type in (MAPPED_ADDRESS, XOR_MAPPED_ADDRESS,SOURCE_ADDRESS,CHANGED_ADDRESS, '\x00\x20'):
             parsed_attributes.append(read_mapped_address(attr_type, attr_body, attr_len))
         else:
             parsed_attributes.append(dict(
@@ -181,7 +176,19 @@ class StunClient(object):
     def send_request(self, host, port=STUN_PORT):
         self.transaction_id = generate_transaction_id()
         self.req = build_binding_request(self.transaction_id)
+        print(":".join("{:02x}".format(ord(c)) for c in self.req))
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.sock.bind(('0.0.0.0', 0))
 
+        self.sock.sendto(self.req, (host, port))
+    def send_request(self, url):
+        o = urlparse.urlparse(url)
+        host = o.hostname
+        port = o.port
+        self.transaction_id = generate_transaction_id()
+        self.req = build_binding_request(self.transaction_id)
+        print(":".join("{:02x}".format(ord(c)) for c in self.req))
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind(('0.0.0.0', 0))

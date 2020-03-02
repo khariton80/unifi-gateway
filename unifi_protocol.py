@@ -105,7 +105,7 @@ def _create_complete_inform(config):
         "adopted": True,
         "site_id": "5aec9b71fc92ac1eb4d8a13f",
         'connect_request_ip': config.get('gateway', 'lan_ip'),
-        'connect_request_port': '36424',
+        'connect_request_port': config.get('gateway', 'lan_port'),
         'default': False,
         'discovery_response': False,
         'fw_caps': 21683749,

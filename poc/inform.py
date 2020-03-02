@@ -22,7 +22,7 @@ from binascii import a2b_hex
 from random import randint
 
 from uptime import uptime
-
+from aes_gcm import AES_GCM
 
 def packet_encode(key, json):
     iv = Random.new().read(16)
@@ -84,15 +84,20 @@ def packet_decode(key, data, iv=None):
     #     raise Exception('Mac address changed in response: %s -> %s'%(mac2a((0x00, 0x0d, 0xb9, 0x47, 0x65, 0xf9)), mac2a(mac)))
 
     flags = unpack('>H', data[14:16])[0]
-    iv = data[16:32] if not iv else iv
+    iv = data[16:32]
     version = unpack('>I', data[32:36])[0]
     payload_len = unpack('>I', data[36:40])[0]
     payload = data[40:(40+payload_len)]
-
+    pad_len = AES.block_size - (len(payload) % AES.block_size)
     print(binascii.hexlify(iv))
 
     # decrypt if required
     if flags & 0x01:
+        test_gcm = AES_GCM(0xDF44776659A10624A8084BAE30C7D2E0)
+        decrypted = test_gcm.decrypt(
+             iv,
+             payload
+         )
         payload = AES.new(key, AES.MODE_CBC, iv).decrypt(payload)
         # unpad - https://gist.github.com/marcoslin/8026990#file-server-py-L43
         pad_size = ord(payload[-1])
