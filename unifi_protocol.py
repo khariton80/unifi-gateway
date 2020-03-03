@@ -29,7 +29,7 @@ def encode_inform(config, data):
     encoded_data = 'TNBU'                     # magic
     encoded_data += pack('>I', 1)             # packet version
     encoded_data += pack('BBBBBB', *(bytearray(mac_string_2_array(config.get('gateway', 'lan_mac')) ) ) )  # mac address 00:26:4a:08:d6:0c //bytearray(mac_string_2_array(lan_mac))
-    encoded_data += pack('>H', 3)             # flags
+    encoded_data += pack('>H', 9) #3             # flags
     encoded_data += iv                        # encryption iv
     encoded_data += pack('>I', 1)             # payload version
     encoded_data += pack('>I', len(payload))  # payload length
@@ -72,7 +72,7 @@ def _create_partial_inform(config):
         'mac': config.get('gateway', 'lan_mac'),
         'ip': config.get('gateway', 'lan_ip'),
         'model': 'UGW3',
-        "inform_ip": "192.168.1.4",
+        "inform_ip": config.get('gateway', 'lan_ip'),
         'model-display': 'UniFi-Gateway-3',
         'version': config.get('gateway', 'firmware')
     })
@@ -969,7 +969,7 @@ def _create_complete_inform(config):
         'has_ssh_disable': True,
         'has_vti': True,
         'hostname': 'pfSense',
-        'inform_url': 'http://192.168.1.4:8080/inform',
+        'inform_url': config.get('gateway', 'url'),
         'ip': config.get('gateway', 'lan_ip'),
         'isolated': False,
         'locating': True,
@@ -1007,11 +1007,11 @@ def _create_complete_inform(config):
         'system-stats': {
             'cpu': '%s' % psutil.cpu_percent(),
             'mem': '%s' % (100 - psutil.virtual_memory()[2]),
-            'uptime':  '%s' % int(uptime())
+            'uptime':  '%s' % int(1000)
         },
         'time': int(time.time()),
         'uplink': 'eth0',
-        'uptime': int(uptime()),
+        'uptime': int(1000),
         # 'routes': [
         #     {
         #         'nh': [
@@ -1234,7 +1234,7 @@ def _create_complete_inform(config):
         #         'tx_errors': 0,
         #         'tx_packets': 863173990 + randint(0, 200000),
         #         'up': True,
-        #         'uptime': uptime(),
+        #         'uptime': 111,
         #         'xput_down': randint(0, 100),
         #         'xput_up': randint(0, 30)
         #     },
@@ -1317,7 +1317,7 @@ def create_broadcast_message(config, index, version=2, command=6):
     tlv.add(1, bytearray(mac_string_2_array(lan_mac)))
     tlv.add(2, bytearray(mac_string_2_array(lan_mac) + ip_string_2_array(lan_ip)))
     tlv.add(3, bytearray('{}.v{}'.format(device, firmware)))
-    tlv.add(10, bytearray([ord(c) for c in pack('!I', uptime())]))
+    tlv.add(10, bytearray([ord(c) for c in pack('!I', 111)]))
     tlv.add(11, bytearray('PFSENSE'))
     tlv.add(12, bytearray(device))
     tlv.add(19, bytearray(mac_string_2_array(lan_mac)))

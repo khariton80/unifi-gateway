@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import ConfigParser
 import argparse
 import re
@@ -9,6 +10,7 @@ import urllib2
 import json
 from daemon import Daemon
 from unifi.stun import *
+import unifi.cryptoutils 
 from unifi_protocol import create_broadcast_message, create_inform, encode_inform, decode_inform
 
 #handler = logging.handlers.SysLogHandler(address='/var/log/test.log')
@@ -40,31 +42,37 @@ class UnifiGateway():
             broadcast_index += 1
 
         while True:
-            #self._send_broadcast(broadcast_index)
-            response = self._send_inform(create_inform(self.config))
-            logger.debug('Receive {} from controller'.format(response))
-            logger.debug('Receive {} from controller'.format(response))
-            result = json.loads(response)
-            if result['_type'] == 'setparam':
-               for key, value in result.items():
-                  if key not in ['_type', 'server_time_in_utc', 'mgmt_cfg']:
-                    self.config.set('gateway', key, value)
-                  if key == 'mgmt_cfg':
-                      if not self.config.has_section('mgmt_cfg'):
-                          self.config.add_section('mgmt_cfg')
-                      lines = re.split('\n',value) 
-                      for line in lines:
-                          if not line =='':
-                                data = re.split('=',line) 
-                                self.config.set('mgmt_cfg', data[0], data[1]) 
-            self.config.set('gateway', 'is_adopted', 'yes')
-            self._save_config()
-            self._send_stun()
-            
-            #nat_type, external_ip, external_port = stun.StunClient.get_ip_info(stun_host='stun.ekiga.net')
+            try:
+                print("==========\r\n")
+                #self._send_broadcast(broadcast_index)
+                response = self._send_inform(create_inform(self.config))
+                logger.debug('Receive {} from controller'.format(response))
+                logger.debug('Receive {} from controller'.format(response))
+                result = json.loads(response)
+                if result['_type'] == 'setparam':
+                    for key, value in result.items():
+                        if key not in ['_type', 'server_time_in_utc', 'mgmt_cfg']:
+                            self.config.set('gateway', key, value)
+                        if key == 'mgmt_cfg':
+                            if not self.config.has_section('mgmt_cfg'):
+                                self.config.add_section('mgmt_cfg')
+                                lines = re.split('\n',value) 
+                                for line in lines:
+                                    if not line =='':
+                                        data = re.split('=',line) 
+                                        self.config.set('mgmt_cfg', data[0], data[1]) 
+                    self.config.set('gateway', 'is_adopted', 'yes')
+                    self._save_config()
+                    self._send_stun()
+                    #nat_type, external_ip, external_port = stun.StunClient.get_ip_info(stun_host='stun.ekiga.net')
 
-            #192.168.1.4:3478
+            except urllib2.HTTPError, e:        
+                print( "Error: %s" % e.getcode() )
+            except: 
+                e = sys.exc_info()[0]
+                print( "Error: %s" % e )
             time.sleep(self.interval)
+     
     def _send_stun(self):
         client = StunClient()
         client.send_request(self.config.get('mgmt_cfg','stun_url'))
@@ -113,10 +121,10 @@ class UnifiGateway():
         }
         url = self.config.get('gateway', 'url')
 
-        request = urllib2.Request(url, encode_inform(self.config,data), headers)
+        request = urllib2.Request(url, unifi.cryptoutils.encode_inform(self.config,data), headers)
         response = urllib2.urlopen(request)
         logger.debug('Send inform request to {} : {}'.format(url, data))
-        return decode_inform(self.config, response.read())
+        return unifi.cryptoutils.decode_inform(self.config, response.read())
 
     def _save_config(self):
         with open(CONFIG_FILE, 'w') as config_file:

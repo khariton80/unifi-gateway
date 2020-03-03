@@ -1,0 +1,11 @@
+mgmt.is_default=false
+mgmt.led_enabled=true
+mgmt.cfgversion=1292cf91de3ac243
+mgmt.authkey=EE44CCE96733A3F8207F19EEB0813C57
+mgmt.selfrun_guest_mode=pass
+mgmt.capability=notif,notif-assoc-stat
+mgmt.use_aes_gcm=true
+mgmt.report_crash=true
+mgmt.servers.1.url=http://ubuntu-utils.digiteum.com:8080/inform
+stun_url=stun://ubuntu-utils.digiteum.com/
+mgmt_url=https://ubuntu-utils.digiteum.com:8443/manage/site/default

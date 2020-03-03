@@ -24,22 +24,28 @@ from random import randint
 from uptime import uptime
 from aes_gcm import AES_GCM
 
-def packet_encode(key, json):
-    iv = Random.new().read(16)
+#from Crypto.Cipher import AES
+import binascii
 
-    # zlib compression
+def packet_encode(key, json,iv):
+    #iv = Random.new().read(16)
+
     payload = zlib.compress(json)
+    payload,tag = AES.new(key, AES.MODE_GCM, nonce=iv).encrypt_and_digest(payload)
+    payload = ''.join([payload,tag])
+    # zlib compression
+    #payload = zlib.compress(json)
     # padding - http://stackoverflow.com/a/14205319
-    pad_len = AES.block_size - (len(payload) % AES.block_size)
-    payload += chr(pad_len) * pad_len
+    #pad_len = AES.block_size - (len(payload) % AES.block_size)
+    #payload += chr(pad_len) * pad_len
     # encryption
-    payload = AES.new(key, AES.MODE_CBC, iv).encrypt(payload)
+    #payload = AES.new(key, AES.MODE_CBC, iv).encrypt(payload)
 
     # encode packet
     data = 'TNBU'                     # magic
     data += pack('>I', 1)             # packet version
-    data += pack('BBBBBB', *(0x00, 0x0d, 0xb9, 0x47, 0x65, 0xf9))   # mac address
-    data += pack('>H', 3)             # flags
+    data += pack('BBBBBB', *(0x74, 0x83, 0xc2, 0x2c, 0x88, 0xa5))   # mac address
+    data += pack('>H', 0x0b)             # flags
     data += iv                        # encryption iv
     data += pack('>I', 1)             # payload version
     data += pack('>I', len(payload))  # payload length
@@ -93,22 +99,33 @@ def packet_decode(key, data, iv=None):
 
     # decrypt if required
     if flags & 0x01:
-        test_gcm = AES_GCM(0xDF44776659A10624A8084BAE30C7D2E0)
-        decrypted = test_gcm.decrypt(
-             iv,
-             payload
-         )
-        payload = AES.new(key, AES.MODE_CBC, iv).decrypt(payload)
-        # unpad - https://gist.github.com/marcoslin/8026990#file-server-py-L43
-        pad_size = ord(payload[-1])
-        if pad_size > AES.block_size:
-            raise Exception('Response not padded or padding is corrupt')
-        payload = payload[:(len(payload) - pad_size)]
+        if flags<4 :
+             payload = AES.new(key, AES.MODE_CBC, iv).decrypt(payload)
+         # unpad - https://gist.github.com/marcoslin/8026990#file-server-py-L43
+             pad_size = ord(payload[-1])
+             if pad_size > AES.block_size:
+                 raise Exception('Response not padded or padding is corrupt')
+             payload = payload[:(len(payload) - pad_size)]
+        else:    
+            nonce, tag = payload[:12], payload[-16:]
+            payload = AES.new(key, AES.MODE_GCM, nonce=iv).decrypt(payload[:-16])
+        #key1 = binascii.unhexlify(key)
+        # print tmp
+        # cipher = AES.new(key, AES.MODE_GCM,iv, nonce)
+        # temp = cipher.decrypt_and_verify(payload[12:-16], tag)
+        # print temp
+
+        # payload = AES.new(key, AES.MODE_CBC, iv).decrypt(payload)
+        # # unpad - https://gist.github.com/marcoslin/8026990#file-server-py-L43
+        # pad_size = ord(payload[-1])
+        # if pad_size > AES.block_size:
+        #     raise Exception('Response not padded or padding is corrupt')
+        # payload = payload[:(len(payload) - pad_size)]
     # uncompress if required
     if flags & 0x02:
         payload = zlib.decompress(payload)
 
-    return payload
+    return payload, iv
 
 
 def cfg_replace(fn, contents):

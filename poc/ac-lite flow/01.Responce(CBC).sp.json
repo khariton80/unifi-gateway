@@ -1,0 +1,5 @@
+{
+  "_type": "setparam",
+  "mgmt_cfg": "capability=notif,notif-assoc-stat\\nselfrun_guest_mode=pass\\ncfgversion=773e98c81e267e99\\nled_enabled=true\\nstun_url=stun://ubuntu-utils.digiteum.com:3478/\\nmgmt_url=https://ubuntu-utils.digiteum.com:8443/manage/site/default\\ninform_url=http://ubuntu-utils.digiteum.com:8080/inform\\nuse_aes_gcm=true\\nreport_crash=true\\n",
+  "server_time_in_utc": "1583250497846"
+}
