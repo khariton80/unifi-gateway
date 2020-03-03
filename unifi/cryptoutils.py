@@ -1,16 +1,16 @@
 # coding: utf-8
-import ConfigParser
-from Crypto.Cipher import AES
-from Crypto import Random
-import zlib
-import time
-import psutil
-from random import randint
-from struct import pack, unpack
-from binascii import a2b_hex
-from uptime import uptime
-from tlv import UnifiTLV
-from tools import mac_string_2_array, ip_string_2_array
+# import ConfigParser
+# from Crypto.Cipher import AES
+# from Crypto import Random
+# import zlib
+# import time
+# import psutil
+# from random import randint
+# from struct import pack, unpack
+# from binascii import a2b_hex
+# from uptime import uptime
+# from tlv import UnifiTLV
+# from tools import mac_string_2_array, ip_string_2_array
 
 def encode_inform(config, data):
     iv = Random.new().read(16)
@@ -69,4 +69,33 @@ def decode_inform(config, encoded_data):
         payload = zlib.decompress(payload)
     print (payload)
     return payload
+
+
+def encode_cbc(key, data,iv):
+    pad_len = AES.block_size - (len(data) % AES.block_size)
+    data += chr(pad_len) * pad_len
+    data = AES.new(a2b_hex(key), AES.MODE_CBC, iv).encrypt(payload)
+    return data
+
+def decode_cbc(key, data,iv):
+    data = AES.new(a2b_hex(key), AES.MODE_CBC, iv).decrypt(data)
+    pad_size = ord(payload[-1])
+    if pad_size > AES.block_size:
+        raise Exception('Response not padded or padding is corrupt')
+    data = data[:(len(payload) - pad_size)]
+    return data
+  
+
+def encode_gcm(key, data,iv):
+    
+    data,tag = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).encrypt_and_digest(data)
+    data = ''.join([data,tag])
+    return data
+
+
+
+def decode_gcm(key, data,iv):
+    data = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).decrypt(data[:-16])
+    return data
+       
 
