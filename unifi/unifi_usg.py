@@ -2,11 +2,11 @@
 from basedevice import BaseDevice
 class UnifiUSG(BaseDevice):
     def __init__(self,config):
-        super().__init__(config.get('gateway', 'lan_mac'),config.get('gateway', 'lan_ip'),config.get('gateway', 'firmware'),'UGW3','')
+        BaseDevice.__init__(self,config.get('gateway', 'lan_mac'),config.get('gateway', 'lan_ip'),config.get('gateway', 'firmware'),'UGW3','')
         self.modelDisplay='UniFi-Gateway-3'
         
         
-    def create_broadcast_message(self,index, version=2, command=6):
+    def create_broadcast_message1(self,index, version=2, command=6):
         tlv = UnifiTLV()
         tlv.add(1, bytearray(mac_string_2_array(self.mac)))
         tlv.add(2, bytearray(mac_string_2_array(self.mac) + ip_string_2_array(self.ip)))

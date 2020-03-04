@@ -1,7 +1,11 @@
 # coding: utf-8
+import logging
 from utils import UnifiTLV
 from utils import mac_string_2_array, ip_string_2_array,getuptime
 from struct import pack, unpack
+import socket
+import binascii
+
 DS_UNKNOWN=1
 DS_ADOPTING=0
 DS_READY=2
@@ -14,12 +18,30 @@ class BaseDevice:
         self.device = device
         self.type = type
         self.state=DS_UNKNOWN
+        self.broadcast_index = 0
 
 
     def append_last_error(self,message):
         if self.lastError is not None:
             message['last_error']=self.lastError
             self.lastError = None
+    
+    def sendinfo(self):
+        logging.debug("sendinfo")
+        logging.debug(self.run())
+        self.send_broadcast()
+
+    def send_broadcast(self):
+        logging.debug('Send broadcast message #{} from gateway {}'.format(self.broadcast_index, self.ip))
+        self.broadcast_index+=1
+        addrinfo = socket.getaddrinfo('233.89.188.1', None)[0]
+        sock = socket.socket(addrinfo[0], socket.SOCK_DGRAM)
+        sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20,)
+        sock.bind(('0.0.0.0', 0))
+        message = self.create_broadcast_message(self.broadcast_index);
+        logging.debug('Message "{}"'.format(binascii.hexlify(message)))
+        sock.sendto(message, (addrinfo[4][0], 10001))
+        logging.debug('Send broadcast message #{} from gateway {}'.format(self.broadcast_index, self.ip))
     
     def run(self):
         return {
@@ -57,7 +79,7 @@ class BaseDevice:
         "uptime": 66,
         "version": "4.0.80.10875"
         }
-    def create_broadcast_message(self,index, version=2, command=6):
+    def create_broadcast_message(self, version=2, command=6):
         tlv = UnifiTLV()
         tlv.add(1, bytearray(mac_string_2_array(self.mac)))
         tlv.add(2, bytearray(mac_string_2_array(self.mac) + ip_string_2_array(self.ip)))
@@ -65,9 +87,9 @@ class BaseDevice:
         tlv.add(10, bytearray([ord(c) for c in pack('!I', getuptime())]))
         tlv.add(11, bytearray('UBNT'))
         tlv.add(12, bytearray(self.device))
-        tlv.add(19, bytearray(mac_string_2_array(lan_mac)))
-        tlv.add(18, bytearray([ord(c) for c in pack('!I', index)]))
-        tlv.add(21, bytearray(self.type)) ##perhab
+        tlv.add(19, bytearray(mac_string_2_array(self.mac)))
+        tlv.add(18, bytearray([ord(c) for c in pack('!I', self.broadcast_index)]))
+        tlv.add(21, bytearray(self.device)) ##perhab
         tlv.add(27, bytearray(self.firmware))
         tlv.add(22, bytearray(self.firmware))
         return tlv.get(version=version, command=command)   
