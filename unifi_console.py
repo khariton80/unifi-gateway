@@ -17,7 +17,7 @@ import logging.handlers
 import time
 import unifi.unifi_usg
 delayStart =0;
-CONFIG_FILE = 'conf/unifi-gateway.conf'
+CONFIG_FILE = 'conf/unifi-gateway.home.conf'
 initialize_logger('./logs')
 class UnifiConsole():
 
@@ -42,11 +42,12 @@ class UnifiConsole():
     def run(self):
         global delayStart
         while True:
-            if (int(round(time.time()*1000))-delayStart)>=self.interval :
+            if (int(time.time()*1000)-delayStart)>=self.interval :
+                self.config.read(CONFIG_FILE)
                 logging.debug("tick")
                 self.device.sendinfo()
                 delayStart = int(round(time.time()*1000))
-                time.sleep(0.1)
+            time.sleep(0.1)
     
     def set_adopt(self, url, key):
         pass
@@ -84,6 +85,7 @@ def set_adopt(args):
 
 
 if __name__ == '__main__':
+    
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, help='key',default='usg' )
     parser.set_defaults(func=processargs)

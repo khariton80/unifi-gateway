@@ -8,5 +8,5 @@ class BaseCommand:
     def __init__(self, type=CMD_DISCOVER, data=dict()):
         self.type = type
         self.data = data
-    def print(self):
-        print(self.data)    
+    
+  

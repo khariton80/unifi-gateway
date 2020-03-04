@@ -35,7 +35,7 @@ def getuptime():
             return -1
 
         tmp = struct.unpack_from('@l', buf.raw)[0]
-    return 0 if tmp is None else tmp
+    return 0 if tmp is None else int(tmp)
 
 def mac_string_2_array(mac):
     return [int(i, 16) for i in mac.split(':')]
