@@ -30,8 +30,9 @@ import binascii
 def packet_encode(key, json,iv):
     #iv = Random.new().read(16)
 
-    payload = zlib.compress(json)
+    payload = json # zlib.compress(json)
     payload,tag = AES.new(key, AES.MODE_GCM, nonce=iv).encrypt_and_digest(payload)
+    test = AES.new(key, AES.MODE_GCM, nonce=iv).decrypt_and_verify(payload,tag)
     payload = ''.join([payload,tag])
     # zlib compression
     #payload = zlib.compress(json)
@@ -43,9 +44,9 @@ def packet_encode(key, json,iv):
 
     # encode packet
     data = 'TNBU'                     # magic
-    data += pack('>I', 1)             # packet version
-    data += pack('BBBBBB', *(0x74, 0x83, 0xc2, 0x2c, 0x88, 0xa5))   # mac address
-    data += pack('>H', 0x0b)             # flags
+    data += pack('>I', 0)             # packet version
+    data += pack('BBBBBB', *(0x78,0x8a,0x20,0xdc,0x43,0x89))   # mac address
+    data += pack('>H', 0x09)             # flags
     data += iv                        # encryption iv
     data += pack('>I', 1)             # payload version
     data += pack('>I', len(payload))  # payload length
@@ -107,8 +108,12 @@ def packet_decode(key, data, iv=None):
                  raise Exception('Response not padded or padding is corrupt')
              payload = payload[:(len(payload) - pad_size)]
         else:    
-            nonce, tag = payload[:12], payload[-16:]
-            payload = AES.new(key, AES.MODE_GCM, nonce=iv).decrypt(payload[:-16])
+            tag = payload[-16:]
+            print(binascii.hexlify(tag))
+            print(binascii.hexlify(bytearray(tag)))
+            bytearray(tag)
+
+            payload = AES.new(key, AES.MODE_GCM, nonce=iv,mac_len=16).decrypt_and_verify(payload[:-16],bytearray(tag))
         #key1 = binascii.unhexlify(key)
         # print tmp
         # cipher = AES.new(key, AES.MODE_GCM,iv, nonce)

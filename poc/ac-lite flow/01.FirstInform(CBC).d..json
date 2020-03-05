@@ -54,7 +54,7 @@
   "inform_url": "http://ubuntu-utils.digiteum.com:8080/inform",
   "ip": "192.168.98.121",
   "isolated": false,
-  "kernel_version": "4.4.153",
+  "kernel_version": "4.4.153", 
   "last_error": "Unable to resolve (http://unifi:8080/inform)",
   "locating": false,
   "mac": "78:8a:20:dc:43:89",

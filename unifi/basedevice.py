@@ -1,4 +1,5 @@
 # coding: utf-8
+import ConfigParser
 import logging
 from utils import UnifiTLV
 from utils import mac_string_2_array, ip_string_2_array,getuptime
@@ -17,11 +18,15 @@ DS_UNKNOWN=1
 DS_ADOPTING=0
 DS_READY=2
 class BaseDevice:
-    def __init__(self,mac="",ip="",firmware="",device="",type=""):
+    def __init__(self,device="",type="",configfile=""):
+        self.configfile=configfile
+        self.config = ConfigParser.RawConfigParser()
+        self.config.read(self.configfile)
+
         self.lastError = "None"
-        self.mac = mac
-        self.ip = ip
-        self.firmware = firmware
+        self.mac = self.config.get('gateway', 'lan_mac')
+        self.ip = self.config.get('gateway', 'lan_ip')
+        self.firmware = self.config.get('gateway', 'firmware')
         self.device = device
         self.type = type
         self.state=DS_READY
@@ -29,6 +34,7 @@ class BaseDevice:
         self.delayStart = int(round(time.time()  * 1000)) 
         self.interval = 10 * 1000
         self.nextCommand =None
+        
 
     def getCurrentMessageType(self):
         return -1 
@@ -91,6 +97,7 @@ class BaseDevice:
     def send_discover(self):
         base = self.createBaseInform()
         base['discovery_response']= True
+        base['state']= 0
         self.parseResponse(self._send_inform(base,True))
     def send_inform(self):
         base = self.createBaseInform()

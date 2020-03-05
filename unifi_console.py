@@ -16,7 +16,8 @@ import logging.handlers
 
 import time
 import unifi.unifi_usg
-CONFIG_FILE = 'conf/unifi-gateway.conf'
+import unifi.unifi_ap_lite
+CONFIG_FILE = 'conf/unifi-gateway.home.conf'
 initialize_logger('logs')
 class UnifiConsole():
 
@@ -25,13 +26,13 @@ class UnifiConsole():
         self.config.read(CONFIG_FILE)
         if(kwargs.has_key('mode')):
             if kwargs['mode']=='usg':
-                self.device = unifi.unifi_usg.UnifiUSG(self.config,CONFIG_FILE)
+                self.device = unifi.unifi_usg.UnifiUSG(CONFIG_FILE)
             elif kwargs['mode']=='ap':
-                self.device = unifi.unifi_usg.BaseDevice()
+                self.device = unifi.unifi_ap_lite.UnifiAPLite('conf/unifi-gateway.home.ap.conf')
             else: 
-                self.device = unifi.unifi_usg.UnifiUSG(self.config,CONFIG_FILE)  
+                self.device = unifi.unifi_usg.UnifiUSG(CONFIG_FILE)  
         else:
-            self.device = unifi.unifi_usg.UnifiUSG(self.config,CONFIG_FILE);    
+            self.device = unifi.unifi_usg.UnifiUSG(CONFIG_FILE);    
 
         #Daemon.__init__(self, pidfile=self.config.get('global', 'pid_file'), **kwargs)
 

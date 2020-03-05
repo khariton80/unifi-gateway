@@ -15,11 +15,11 @@ from struct import pack, unpack
 def encode_inform(key, data,usecbc,mac):
     iv = Random.new().read(16)
     print (data)
-    flag = 0x0b
+    flag = 0x0f
     if not usecbc:
        payload = zlib.compress(data)
        payload,tag = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).encrypt_and_digest(payload)
-       payload = ''.join([payload]) #,tag
+       payload = ''.join([payload,tag]) #,tag
     else:    
         payload = zlib.compress(data)
         pad_len = AES.block_size - (len(payload) % AES.block_size)

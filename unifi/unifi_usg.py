@@ -4,11 +4,9 @@ import basecommand
 import json
 import re
 class UnifiUSG(BaseDevice):
-    def __init__(self,config,configfile):
-        BaseDevice.__init__(self,config.get('gateway', 'lan_mac'),config.get('gateway', 'lan_ip'),config.get('gateway', 'firmware'),'UGW3','UniFi-Gateway-3')
-        self.config = config
-        self.configfile = configfile
-        
+    def __init__(self,configfile):
+        BaseDevice.__init__(self,'UGW3','UniFi-Gateway-3',configfile)
+                
     def cfgversion(self):
         if self.config.has_section('mgmt_cfg') and self.config.has_option('mgmt_cfg','cfgversion'):
             print(self.config.get('mgmt_cfg', 'cfgversion')) 
