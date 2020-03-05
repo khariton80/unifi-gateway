@@ -1,39 +1,35 @@
 # coding: utf-8
 # import ConfigParser
-# from Crypto.Cipher import AES
-# from Crypto import Random
-# import zlib
+from Crypto.Cipher import AES
+from Crypto import Random
+import zlib
+from utils import mac_string_2_array, ip_string_2_array
+from binascii import a2b_hex
+from struct import pack, unpack
 # import time
 # import psutil
 # from random import randint
-# from struct import pack, unpack
-# from binascii import a2b_hex
 # from uptime import uptime
 # from tlv import UnifiTLV
-# from tools import mac_string_2_array, ip_string_2_array
 
-def encode_inform(config, data):
+def encode_inform(key, data,usecbc,mac):
     iv = Random.new().read(16)
     print (data)
     flag = 0x0b
-    if config.has_section('mgmt_cfg') and config.has_option('mgmt_cfg','use_aes_gcm') and config.getboolean('mgmt_cfg','use_aes_gcm'):
+    if not usecbc:
        payload = zlib.compress(data)
-       payload,tag = AES.new(a2b_hex(config.get('gateway', 'key')), AES.MODE_GCM, nonce=iv).encrypt_and_digest(payload)
-       payload = ''.join([payload,tag])
-
-       #payload = ''.join([payload,tag])
+       payload,tag = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).encrypt_and_digest(payload)
+       payload = ''.join([payload]) #,tag
     else:    
         payload = zlib.compress(data)
         pad_len = AES.block_size - (len(payload) % AES.block_size)
         payload += chr(pad_len) * pad_len
-        payload = AES.new(a2b_hex(config.get('gateway', 'key')), AES.MODE_CBC, iv).encrypt(payload)
+        payload = AES.new(a2b_hex(key), AES.MODE_CBC, iv).encrypt(payload)
         flag = 0x03
-
-
 
     encoded_data = 'TNBU'                     # magic
     encoded_data += pack('>I', 0)             # packet version
-    encoded_data += pack('BBBBBB', *(bytearray(mac_string_2_array(config.get('gateway', 'lan_mac')) ) ) )  # mac address 00:26:4a:08:d6:0c //bytearray(mac_string_2_array(lan_mac))
+    encoded_data += pack('BBBBBB', *(bytearray(mac_string_2_array(mac) ) ) )  #mac
     encoded_data += pack('>H', flag)    #3         # flags
     encoded_data += iv                        # encryption iv
     encoded_data += pack('>I', 1)             # payload version
@@ -43,7 +39,7 @@ def encode_inform(config, data):
     return encoded_data
 
 
-def decode_inform(config, encoded_data):
+def decode_inform(key, encoded_data):
     magic = encoded_data[0:4]
     if magic != 'TNBU':
         raise Exception("Missing magic in response: '{}' instead of 'TNBU'".format(magic))
@@ -56,10 +52,10 @@ def decode_inform(config, encoded_data):
 
     # decrypt if required
     if flags & 0x01:
-        if flags>3 and  config.has_section('mgmt_cfg') and config.has_option('mgmt_cfg','use_aes_gcm') and config.getboolean('mgmt_cfg','use_aes_gcm'):
-            payload = AES.new(a2b_hex(config.get('gateway', 'key')), AES.MODE_GCM, nonce=iv).decrypt(payload[:-16])
+        if flags>3 :
+            payload = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).decrypt(payload[:-16])
         else:    
-            payload = AES.new(a2b_hex(config.get('gateway', 'key')), AES.MODE_CBC, iv).decrypt(payload)
+            payload = AES.new(a2b_hex(key), AES.MODE_CBC, iv).decrypt(payload)
             pad_size = ord(payload[-1])
             if pad_size > AES.block_size:
                 raise Exception('Response not padded or padding is corrupt')

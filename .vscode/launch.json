@@ -26,5 +26,14 @@
             "console": "integratedTerminal",
             "args" : ["run"]
         }
+        ,
+        {
+            "name": "Python: unifi_console.py [set-adopt]",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args" : ["set-adopt","-s","http://192.168.106.172:8080/inform","-k","2e98f16d3fb22739be92437644e2b81c"]
+        }
     ]
 }

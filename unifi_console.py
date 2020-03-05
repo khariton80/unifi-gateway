@@ -16,41 +16,47 @@ import logging.handlers
 
 import time
 import unifi.unifi_usg
-delayStart =0;
-CONFIG_FILE = 'conf/unifi-gateway.home.conf'
-initialize_logger('./logs')
+CONFIG_FILE = 'conf/unifi-gateway.conf'
+initialize_logger('logs')
 class UnifiConsole():
 
     def __init__(self, **kwargs):
-        self.interval = 10 * 1000
         self.config = ConfigParser.RawConfigParser()
         self.config.read(CONFIG_FILE)
-        global delayStart
-        delayStart = int(round(time.time()  * 1000)) - self.interval
         if(kwargs.has_key('mode')):
             if kwargs['mode']=='usg':
-                self.device = unifi.unifi_usg.UnifiUSG(self.config)
+                self.device = unifi.unifi_usg.UnifiUSG(self.config,CONFIG_FILE)
             elif kwargs['mode']=='ap':
                 self.device = unifi.unifi_usg.BaseDevice()
             else: 
-                self.device = unifi.unifi_usg.UnifiUSG(self.config)  
+                self.device = unifi.unifi_usg.UnifiUSG(self.config,CONFIG_FILE)  
         else:
-            self.device = unifi.unifi_usg.UnifiUSG(self.config);    
+            self.device = unifi.unifi_usg.UnifiUSG(self.config,CONFIG_FILE);    
 
         #Daemon.__init__(self, pidfile=self.config.get('global', 'pid_file'), **kwargs)
 
     def run(self):
-        global delayStart
         while True:
-            if (int(time.time()*1000)-delayStart)>=self.interval :
+            if (int(time.time()*1000)-self.device.delayStart)>=self.device.interval :
+                self.device.delayStart = int(round(time.time()*1000))
                 self.config.read(CONFIG_FILE)
                 logging.debug("tick")
                 self.device.sendinfo()
-                delayStart = int(round(time.time()*1000))
             time.sleep(0.1)
     
     def set_adopt(self, url, key):
-        pass
+        self.config = ConfigParser.RawConfigParser()
+        self.config.read(CONFIG_FILE)
+        if self.config.has_section('mgmt_cfg'):
+            self.config.remove_section("mgmt_cfg")
+        if self.config.has_section('system_cfg'):
+            self.config.remove_section("system_cfg")
+        if not self.config.has_section('gateway'):
+            self.config.add_section("gateway")
+        self.config.set('gateway', "url", url) 
+        self.config.set('gateway', 'key', key) 
+        self.config.set('gateway', 'is_adopted', 'no')
+        self._save_config() 
 
     def _save_config(self):
         with open(CONFIG_FILE, 'w') as config_file:

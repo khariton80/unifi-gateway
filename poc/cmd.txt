@@ -1,0 +1,12 @@
+
+python2.7 -m ensurepip --default-pip
+python2.7 -m pip install --upgrade pip
+pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-pycryptodome-3.9.0.txz
+pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-enum34-1.1.6.txz
+pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-psutil-5.7.0.txz
+
+
+commands
+"adopt", "adv-adopt", "replace", "restart", "upgrade", "upgrade-external", "upgrade-all", "set-rollupgrade", "unset-rollupgrade", "locate", 
+            "set-locate", "unset-locate", "show-lcm-tracker", "hide-lcm-tracker", "build-ssh-session", "get-sdp-offer", "ssh-sdp-answer", "close-ssh-session", "clone-config", "migrate", 
+            "cancel-migrate", "force-provision"
