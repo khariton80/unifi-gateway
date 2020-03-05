@@ -67,7 +67,7 @@ class BaseDevice:
         url = self.getInformUrl()
 
         logging.debug('Send inform request to {} : {}'.format(url, data))
-        request = urllib2.Request(url, cryptoutils.encode_inform(self.getKey(),data,True,self.mac), headers)
+        request = urllib2.Request(url, cryptoutils.encode_inform(self.getKey(),data,usecbc,self.mac), headers)
         response = urllib2.urlopen(request)
         result = cryptoutils.decode_inform(self.getKey(), response.read())
         logging.debug(result)
