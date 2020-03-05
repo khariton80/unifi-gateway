@@ -110,7 +110,7 @@ class AES_GCM:
         return tag
 
     def encrypt(self, init_value, plaintext, auth_data=b''):
-        if init_value >= (1 << 96):
+        if init_value >= (1 << 128):
             raise InvalidInputException('IV should be 96-bit')
         # a naive checking for IV reuse
         if init_value == self.prev_init_value:

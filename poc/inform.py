@@ -81,7 +81,30 @@ def mac2serial(mac):
 def ip2a(ip):
     return '.'.join(map(str, ip))
 
+def __ghash(self, aad, txt):
+        len_aad = len(aad)
+        len_txt = len(txt)
 
+        # padding
+        if 0 == len_aad % 16:
+            data = aad
+        else:
+            data = aad + b'\x00' * (16 - len_aad % 16)
+        if 0 == len_txt % 16:
+            data += txt
+        else:
+            data += txt + b'\x00' * (16 - len_txt % 16)
+
+        tag = 0
+        assert len(data) % 16 == 0
+        for i in range(len(data) // 16):
+            tag ^= bytes_to_long(data[i * 16: (i + 1) * 16])
+            tag = self.__times_auth_key(tag)
+            # print 'X\t', hex(tag)
+        tag ^= ((8 * len_aad) << 64) | (8 * len_txt)
+        tag = self.__times_auth_key(tag)
+
+        return tag
 def packet_decode(key, data, iv=None):
     magic = data[0:4]
     if magic != 'TNBU':
@@ -113,7 +136,9 @@ def packet_decode(key, data, iv=None):
             print(binascii.hexlify(bytearray(tag)))
             bytearray(tag)
 
-            payload = AES.new(key, AES.MODE_GCM, nonce=iv,mac_len=16).decrypt_and_verify(payload[:-16],bytearray(tag))
+            #  payload = AES.new(key, AES.MODE_GCM, nonce=iv,mac_len=16).decrypt_and_verify(payload[:-16],bytearray(tag))
+            payload = AES.new(key, AES.MODE_GCM, nonce=iv,mac_len=16).decrypt(payload[:-16])
+            print(__ghash('',payload[:-16]))
         #key1 = binascii.unhexlify(key)
         # print tmp
         # cipher = AES.new(key, AES.MODE_GCM,iv, nonce)

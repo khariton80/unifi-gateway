@@ -12,6 +12,7 @@ from inform import packet_decode,packet_encode
 
 from Crypto.Cipher import AES
 import binascii
+from aes_gcm import AES_GCM
 
 data="\x54\x4e\x42\x55\x00\x00\x00\x00\x78\x8a\x20\xdc\x43\x89\x00\x09" 
 data=data+"\x54\x23\xcc\x64\xb1\xb7\x7a\x45\xfb\x41\x4c\xd2\xd9\x47\xd6\x5c" 
@@ -28,4 +29,12 @@ j = json.loads(payload)
 print(j)
 dataa=  packet_encode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), payload,iv)
 print(binascii.hexlify(dataa))
+
+
+test_gcm = AES_GCM(0xEE44CCE96733A3F8207F19EEB0813C57)
+encrypted, tag = test_gcm.encrypt(
+            0x5423cc64b1b77a45fb414cd2d947d65c,
+            '{"_type":"noop","interval":5,"immediate":1,"server_time_in_utc":"1583250501857"}',
+            ''
+        )
 
