@@ -87,7 +87,7 @@ class BaseDevice:
         addrinfo = socket.getaddrinfo('233.89.188.1', None)[0]   #233.89.188.1  wireshark show normal broadcast
         sock = socket.socket(addrinfo[0], socket.SOCK_DGRAM)
         sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20,)
-        sock.bind((self.ip, 0))
+        #sock.bind((self.ip, 0))
         message = self.create_broadcast_message(self.broadcast_index)
         logging.debug('Message "{}"'.format(binascii.hexlify(message)))
         sock.sendto(message, (addrinfo[4][0], 10001))

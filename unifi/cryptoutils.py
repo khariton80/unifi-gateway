@@ -14,28 +14,29 @@ from struct import pack, unpack
 
 def encode_inform(key, data,usecbc,mac):
     iv = Random.new().read(16)
-    print (data)
-    flag = 0x0f
-    if not usecbc:
-       payload = zlib.compress(data)
-       payload,tag = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).encrypt_and_digest(payload)
-       payload = ''.join([payload,tag]) #,tag
-    else:    
-        payload = zlib.compress(data)
-        pad_len = AES.block_size - (len(payload) % AES.block_size)
-        payload += chr(pad_len) * pad_len
-        payload = AES.new(a2b_hex(key), AES.MODE_CBC, iv).encrypt(payload)
-        flag = 0x03
+    payload = zlib.compress(data)
 
+    flag = 0x0B if not usecbc else 0x03
     encoded_data = 'TNBU'                     # magic
     encoded_data += pack('>I', 0)             # packet version
     encoded_data += pack('BBBBBB', *(bytearray(mac_string_2_array(mac) ) ) )  #mac
     encoded_data += pack('>H', flag)    #3         # flags
     encoded_data += iv                        # encryption iv
     encoded_data += pack('>I', 1)             # payload version
-    encoded_data += pack('>I', len(payload))  # payload length
-    encoded_data += payload
 
+    if not usecbc:
+        encoded_data += pack('>I', len(payload)+16)  # payload length
+        cipher = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv)
+        cipher.update(encoded_data) #aad logic
+        payload,tag = cipher.encrypt_and_digest(payload)
+        payload = ''.join([payload,tag]) 
+    else:    
+        pad_len = AES.block_size - (len(payload) % AES.block_size)
+        payload += chr(pad_len) * pad_len
+        payload = AES.new(a2b_hex(key), AES.MODE_CBC, iv).encrypt(payload)
+        encoded_data += pack('>I', len(payload))  # payload length
+
+    encoded_data += payload
     return encoded_data
 
 
@@ -52,8 +53,10 @@ def decode_inform(key, encoded_data):
 
     # decrypt if required
     if flags & 0x01:
-        if flags>3 :
-            payload = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).decrypt(payload[:-16])
+        if flags & 0x08 :
+            cipher = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv)
+            cipher.update(encoded_data[0:40]) #aad logic
+            payload = cipher.decrypt_and_verify(payload[:-16],payload[-16:])
         else:    
             payload = AES.new(a2b_hex(key), AES.MODE_CBC, iv).decrypt(payload)
             pad_size = ord(payload[-1])
@@ -66,32 +69,4 @@ def decode_inform(key, encoded_data):
     print (payload)
     return payload
 
-
-def encode_cbc(key, data,iv):
-    pad_len = AES.block_size - (len(data) % AES.block_size)
-    data += chr(pad_len) * pad_len
-    data = AES.new(a2b_hex(key), AES.MODE_CBC, iv).encrypt(payload)
-    return data
-
-def decode_cbc(key, data,iv):
-    data = AES.new(a2b_hex(key), AES.MODE_CBC, iv).decrypt(data)
-    pad_size = ord(payload[-1])
-    if pad_size > AES.block_size:
-        raise Exception('Response not padded or padding is corrupt')
-    data = data[:(len(payload) - pad_size)]
-    return data
-  
-
-def encode_gcm(key, data,iv):
-    
-    data,tag = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).encrypt_and_digest(data)
-    data = ''.join([data,tag])
-    return data
-
-
-
-def decode_gcm(key, data,iv):
-    data = AES.new(a2b_hex(key), AES.MODE_GCM, nonce=iv).decrypt(data[:-16])
-    return data
-       
 

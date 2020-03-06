@@ -17,7 +17,7 @@ import logging.handlers
 import time
 import unifi.unifi_usg
 import unifi.unifi_ap_lite
-CONFIG_FILE = 'conf/unifi-gateway.home.conf'
+CONFIG_FILE = 'conf/unifi-gateway.conf'
 initialize_logger('logs')
 class UnifiConsole():
 

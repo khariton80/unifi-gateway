@@ -27,12 +27,15 @@ from aes_gcm import AES_GCM
 #from Crypto.Cipher import AES
 import binascii
 
-def packet_encode(key, json,iv):
+def packet_encode(key, json,iv,aad):
     #iv = Random.new().read(16)
 
-    payload = json # zlib.compress(json)
-    payload,tag = AES.new(key, AES.MODE_GCM, nonce=iv).encrypt_and_digest(payload)
-    test = AES.new(key, AES.MODE_GCM, nonce=iv).decrypt_and_verify(payload,tag)
+    payload = zlib.compress(json)
+    print("length {}".format(len(payload)))
+    cp = AES.new(key, AES.MODE_GCM, nonce=iv)
+    cp.update(aad)
+    payload,tag = cp.encrypt_and_digest(payload)
+    #test = AES.new(key, AES.MODE_GCM, nonce=iv).decrypt_and_verify(payload,tag)
     payload = ''.join([payload,tag])
     # zlib compression
     #payload = zlib.compress(json)
@@ -120,6 +123,7 @@ def packet_decode(key, data, iv=None):
     payload = data[40:(40+payload_len)]
     pad_len = AES.block_size - (len(payload) % AES.block_size)
     print(binascii.hexlify(iv))
+    dd = data[0:40]
 
     # decrypt if required
     if flags & 0x01:
@@ -137,8 +141,13 @@ def packet_decode(key, data, iv=None):
             bytearray(tag)
 
             #  payload = AES.new(key, AES.MODE_GCM, nonce=iv,mac_len=16).decrypt_and_verify(payload[:-16],bytearray(tag))
-            payload = AES.new(key, AES.MODE_GCM, nonce=iv,mac_len=16).decrypt(payload[:-16])
-            print(__ghash('',payload[:-16]))
+            cipher = AES.new(key, AES.MODE_GCM, nonce=iv,mac_len=16)
+            cipher.update(dd)
+            payload = cipher.decrypt_and_verify(payload[:-16],tag)
+            
+
+
+            #payload = AES.new(key, AES.MODE_GCM, nonce=dd,mac_len=16,iv=iv).decrypt(payload[:-16])
         #key1 = binascii.unhexlify(key)
         # print tmp
         # cipher = AES.new(key, AES.MODE_GCM,iv, nonce)

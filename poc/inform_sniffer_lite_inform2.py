@@ -8,7 +8,7 @@ from Crypto.Cipher import AES
 from binascii import a2b_hex
 #from flask import Flask, request
 
-from inform import packet_decode
+from inform import packet_decode,packet_encode
 
 from Crypto.Cipher import AES
 import binascii
@@ -50,8 +50,24 @@ data=data+"\x3a\x31\xbe\x05\x29\x84\xec\xcc\xa9\x07\x1c\xaf\xc4\xcb\x23\x5d"
 data=data+"\xc4\xe8\xaf\x16\x85\x41"
 
 
+#payload,iv = packet_decode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), data)
+#j = json.loads(payload)
+#print(j)
+#dataa=  packet_encode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), payload,iv,data[0:40])
+#print(binascii.hexlify(dataa))
+
+#print(binascii.hexlify(data))
 payload,iv = packet_decode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), data)
-payload = json.loads(payload)
-print(payload)
+j = json.loads(payload)
+print(len(payload))
+print(binascii.hexlify(data[0:40]))
+print(j)
+print("--------------")
+dataa=  packet_encode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), payload,iv,data[0:40])
+print(binascii.hexlify(dataa))
+print("--------------")
+print(binascii.hexlify(data))
+print("--------------")
+print(binascii.hexlify(dataa)==binascii.hexlify(data))
 
 

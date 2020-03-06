@@ -12,7 +12,6 @@ from inform import packet_decode,packet_encode
 
 from Crypto.Cipher import AES
 import binascii
-from aes_gcm import AES_GCM
 
 data="\x54\x4e\x42\x55\x00\x00\x00\x00\x78\x8a\x20\xdc\x43\x89\x00\x09" 
 data=data+"\x54\x23\xcc\x64\xb1\xb7\x7a\x45\xfb\x41\x4c\xd2\xd9\x47\xd6\x5c" 
@@ -23,18 +22,15 @@ data=data+"\xec\x6f\xe2\xa7\x75\x18\xf1\xa0\x63\x0c\xa8\x13\xd6\xb5\x90\xd9"
 data=data+"\x2c\x18\x8a\x30\x2e\x3c\xcf\x9d\xe0\x26\xfb\x4d\x6c\x57\x3a\x7f" 
 data=data+"\xe7\x2f\x78\x39\x40\x30\x56\x4d\x87\x12\x7b\xd4\xa7\x35\xc1\x45" 
 data=data+"\xeb\xf3\x68\x72\x91\xd0\xcd\xe7"
-
+print(binascii.hexlify(data))
 payload,iv = packet_decode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), data)
 j = json.loads(payload)
 print(j)
-dataa=  packet_encode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), payload,iv)
+dataa=  packet_encode(a2b_hex("EE44CCE96733A3F8207F19EEB0813C57"), payload,iv,data[0:40])
 print(binascii.hexlify(dataa))
+print(binascii.hexlify(data))
+print(binascii.hexlify(dataa)==binascii.hexlify(data))
 
 
-test_gcm = AES_GCM(0xEE44CCE96733A3F8207F19EEB0813C57)
-encrypted, tag = test_gcm.encrypt(
-            0x5423cc64b1b77a45fb414cd2d947d65c,
-            '{"_type":"noop","interval":5,"immediate":1,"server_time_in_utc":"1583250501857"}',
-            ''
-        )
+
 
