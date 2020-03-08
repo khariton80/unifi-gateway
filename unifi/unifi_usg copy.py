@@ -106,7 +106,7 @@ class UnifiUSG(BaseDevice):
                 "rx_errors": counter.errin,
                 "rx_multicast": 65629,
                 "rx_packets": counter.packets_recv,
-                "speed":100,# stat.speed,
+                "speed":1000,# stat.speed,
                 "speedtest_lastrun": 1583600088374,
                 "speedtest_ping": 68,
                 "speedtest_status": "Idle",
@@ -123,15 +123,10 @@ class UnifiUSG(BaseDevice):
 
     def append_if_table(self,data,if_stats,io_counters,if_addrs):
         data['if_table']=[ 
-            self.create_if_element("Wi-Fi",if_stats,io_counters,if_addrs,"eth3","20.1.2.41","80:2a:a8:cd:a9:52",0),
-            self.create_if_element("Wi-Fi",if_stats,io_counters,if_addrs,"eth0","192.168.1.1","80:2a:a8:cd:a9:53",1),
+            self.create_if_element("Wi-Fi",if_stats,io_counters,if_addrs,"eth0","20.1.2.41","80:2a:a8:cd:a9:52",0),
+            self.create_if_element("Wi-Fi",if_stats,io_counters,if_addrs,"eth1","192.168.1.1","80:2a:a8:cd:a9:53",1),
             self.create_if_element("Wi-Fi",if_stats,io_counters,if_addrs,"eth2","20.1.2.10","80:2a:a8:cd:a9:54",2)
         ]   
-        data['if_table'].append({
-                "drops": 333,
-                "enable": False,
-                "name": "eth1"
-                })
     
     
     def append_network_table(self,data,if_stats,io_counters,if_addrs):
@@ -220,7 +215,7 @@ class UnifiUSG(BaseDevice):
                 "l1up": "True",
                 "mac": "80:2a:a8:cd:a9:53",
                 "mtu": "1500",
-                "name": "eth0",
+                "name": "eth1",
                 "speed": "1000",
                 "stats": {
                     "multicast": "412294",
@@ -251,7 +246,7 @@ class UnifiUSG(BaseDevice):
                 "l1up": "True",
                 "mac": "80:2a:a8:cd:a9:52",
                 "mtu": "1500",
-                "name": "eth3",
+                "name": "eth0",
                 "nameservers": [
                     "20.1.2.1",
                     "20.1.2.11"
@@ -277,11 +272,11 @@ class UnifiUSG(BaseDevice):
     def append_port_table(self,data,if_stats,io_counters,if_addrs):
         data["config_port_table"]= [
             {
-            "ifname": "eth3",
+            "ifname": "eth0",
             "name": "wan"
             },
             {
-            "ifname": "eth0",
+            "ifname": "eth1",
             "name": "lan"
             },
             {
@@ -292,8 +287,8 @@ class UnifiUSG(BaseDevice):
           
     def appendExtraInformMessage(self,data):
         data["has_dpi"]=True
-        #data["has_eth1"]=True
-        #data["has_porta"]=True
+        data["has_eth1"]=True
+        data["has_porta"]=True
         data["has_ssh_disable"]=True
         data["has_vti"]=True
         data["fw_caps"]=3

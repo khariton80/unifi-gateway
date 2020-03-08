@@ -17,7 +17,7 @@ import logging.handlers
 import time
 import unifi.unifi_usg
 import unifi.unifi_ap_lite
-CONFIG_FILE = 'conf/unifi-gateway.conf'
+CONFIG_FILE = 'conf/unifi-gateway.home.conf'
 initialize_logger('logs')
 class UnifiConsole():
 
@@ -92,6 +92,10 @@ def set_adopt(args):
 
 
 if __name__ == '__main__':
+    
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+    os.chdir(dname)
     
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, help='key',default='usg' )

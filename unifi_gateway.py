@@ -49,6 +49,7 @@ class UnifiGateway():
                 logger.debug('Receive {} from controller'.format(response))
                 logger.debug('Receive {} from controller'.format(response))
                 result = json.loads(response)
+                #setdefault  reset
                 if result['_type'] == 'setparam':
                     for key, value in result.items():
                         if key not in ['_type', 'server_time_in_utc', 'mgmt_cfg']:

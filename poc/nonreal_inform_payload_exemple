@@ -1,0 +1,420 @@
+{
+  "ip": "127.0.0.1",
+  "fingerprint": "b2:5b:e2:98:c3:b1:2e:2e:38:fd:f9:34:b7:72:9e:67",
+  "if_table": [
+    {
+      "speedtest_lastrun": 1583600088374,
+      "ip": "20.1.2.41",
+      "up": true,
+      "num_port": 1,
+      "speedtest_ping": 68,
+      "speed": 360,
+      "latency": 11,
+      "uptime": 37193,
+      "speedtest_status": "Idle",
+      "nameservers": [
+        "20.1.2.19",
+        "20.1.3.19"
+      ],
+      "full_duplex": true,
+      "gateways": [
+        "20.1.2.3"
+      ],
+      "xput_up": 12.485,
+      "tx_packets": 61100,
+      "tx_dropped": 0,
+      "rx_packets": 149220,
+      "enable": true,
+      "xput_down": 38.161,
+      "rx_multicast": 65629,
+      "netmask": "255.255.255.0",
+      "tx_bytes": 11391765,
+      "rx_dropped": 0,
+      "name": "eth0",
+      "rx_bytes": 134636717,
+      "tx_errors": 0,
+      "mac": "80:2a:a8:cd:a9:54",
+      "rx_errors": 0,
+      "drops": 333
+    },
+    {
+      "speedtest_lastrun": 1583600088374,
+      "ip": "192.168.1.1",
+      "up": true,
+      "num_port": 1,
+      "speedtest_ping": 68,
+      "speed": 360,
+      "latency": 11,
+      "uptime": 37193,
+      "speedtest_status": "Idle",
+      "nameservers": [
+        "20.1.2.19",
+        "20.1.3.19"
+      ],
+      "full_duplex": true,
+      "gateways": [
+        "20.1.2.3"
+      ],
+      "xput_up": 12.485,
+      "tx_packets": 61100,
+      "tx_dropped": 0,
+      "rx_packets": 149220,
+      "enable": true,
+      "xput_down": 38.161,
+      "rx_multicast": 65629,
+      "netmask": "255.255.255.0",
+      "tx_bytes": 11391765,
+      "rx_dropped": 0,
+      "name": "eth1",
+      "rx_bytes": 134636717,
+      "tx_errors": 0,
+      "mac": "80:2a:a8:cd:a9:53",
+      "rx_errors": 0,
+      "drops": 333
+    },
+    {
+      "speedtest_lastrun": 1583600088374,
+      "ip": "192.168.10.1",
+      "up": true,
+      "num_port": 1,
+      "speedtest_ping": 68,
+      "speed": 360,
+      "latency": 11,
+      "uptime": 37193,
+      "speedtest_status": "Idle",
+      "nameservers": [
+        "20.1.2.19",
+        "20.1.3.19"
+      ],
+      "full_duplex": true,
+      "gateways": [
+        "20.1.2.3"
+      ],
+      "xput_up": 12.485,
+      "tx_packets": 61100,
+      "tx_dropped": 0,
+      "rx_packets": 149220,
+      "enable": true,
+      "xput_down": 38.161,
+      "rx_multicast": 65629,
+      "netmask": "255.255.255.0",
+      "tx_bytes": 11391765,
+      "rx_dropped": 0,
+      "name": "eth1.10",
+      "rx_bytes": 134636717,
+      "tx_errors": 0,
+      "mac": "80:2a:a8:cd:a9:53",
+      "rx_errors": 0,
+      "drops": 333
+    },
+    {
+      "speedtest_lastrun": 1583600088374,
+      "ip": "20.1.2.10",
+      "up": true,
+      "num_port": 1,
+      "speedtest_ping": 68,
+      "speed": 360,
+      "latency": 11,
+      "uptime": 37193,
+      "speedtest_status": "Idle",
+      "nameservers": [
+        "20.1.2.19",
+        "20.1.3.19"
+      ],
+      "full_duplex": true,
+      "gateways": [
+        "20.1.2.3"
+      ],
+      "xput_up": 12.485,
+      "tx_packets": 61100,
+      "tx_dropped": 0,
+      "rx_packets": 149220,
+      "enable": true,
+      "xput_down": 38.161,
+      "rx_multicast": 65629,
+      "netmask": "255.255.255.0",
+      "tx_bytes": 11391765,
+      "rx_dropped": 0,
+      "name": "eth1",
+      "rx_bytes": 134636717,
+      "tx_errors": 0,
+      "mac": "80:2a:a8:cd:a9:52",
+      "rx_errors": 0,
+      "drops": 333
+    }
+  ],
+  "inform_url": "http://127.0.0.1:8080/inform",
+  "bootid": 1,
+  "connect_request_port": 57201,
+  "serial": "CC3D8248DBC2",
+  "config_network_wan": {
+    "type": "dhcp"
+  },
+  "selfrun_beacon": true,
+  "uptime": 509087,
+  "hostname": "UBNT",
+  "inform_ip": "192.168.106.172",
+  "isolated": false,
+  "has_vti": true,
+  "state": 2,
+  "version": "4.4.44.5213844",
+  "bootrom_version": "unifi-enlarge-buf.-1-g63fe9b5d-dirty",
+  "time_ms": 963,
+  "manufacturer_id": 4,
+  "dualboot": true,
+  "hash_id": "CC3D8248DBC2",
+  "sys_stats": {
+    "mem_used": 9136332800,
+    "loadavg_1": 0.0,
+    "mem_total": 17052618752,
+    "mem_buffer": 0,
+    "loadavg_15": 0.0,
+    "loadavg_5": 0.0
+  },
+  "config_network_wan2": {
+    "ip": "10.1.1.10",
+    "dns1": "10.1.1.1",
+    "netmask": "255.255.255.0",
+    "gateway": "10.1.1.1",
+    "type": "static"
+  },
+  "has_ssh_disable": true,
+  "has_dpi": true,
+  "system_stats": {
+    "mem": 53.6,
+    "uptime": 509087,
+    "cpu": 13.0
+  },
+  "model_display": "UniFi-Gateway-3",
+  "mac": "CC:3D:82:48:DB:C2",
+  "board_rev": 33,
+  "required_version": "3.4.1",
+  "vpn": {
+    "ipsec": {
+      "sa": [
+        {
+          "active_time": 0,
+          "in_bytes": "n/a",
+          "connect_id": "peer-1.2.3.4-tunnel-0",
+          "lifetime": 0,
+          "out_bytes": "n/a",
+          "local_ip": "n/a",
+          "remote_id": "n/a",
+          "nat_t": false,
+          "state": "down",
+          "local_id": "n/a",
+          "peer_id": "1.2.3.4",
+          "remote_ip": "n/a"
+        },
+        {
+          "active_time": 0,
+          "in_bytes": "n/a",
+          "connect_id": "peer-1.2.3.4-tunnel-1",
+          "lifetime": 0,
+          "out_bytes": "n/a",
+          "local_ip": "n/a",
+          "remote_id": "n/a",
+          "nat_t": false,
+          "state": "down",
+          "local_id": "n/a",
+          "peer_id": "1.2.3.4",
+          "remote_ip": "n/a"
+        }
+      ]
+    }
+  },
+  "connect_request_ip": "127.0.0.1",
+  "network_table": [
+    {
+      "addresses": [
+        "10.1.1.10/24"
+      ],
+      "l1up": "true",
+      "mac": "80:2a:a8:cd:a9:54",
+      "address": "10.1.1.10/24",
+      "autoneg": "true",
+      "speed": "1000",
+      "stats": {
+        "rx_bps": "0",
+        "tx_dropped": 0,
+        "rx_packets": 1126891,
+        "tx_bytes": 77684158,
+        "rx_dropped": 1,
+        "rx_multicast": 65629,
+        "rx_bytes": 118162997,
+        "tx_errors": 0,
+        "multicast": "65627",
+        "rx_errors": 0,
+        "tx_bps": "0",
+        "tx_packets": 1025525
+      },
+      "name": "eth2",
+      "nameservers": [
+        "20.1.2.191",
+        "20.1.3.191"
+      ],
+      "up": "true",
+      "mtu": "1500",
+      "duplex": "full",
+      "gateways": [
+        "20.1.2.1"
+      ]
+    },
+    {
+      "addresses": [
+        "192.168.1.1/24"
+      ],
+      "l1up": "true",
+      "mac": "80:2a:a8:cd:a9:53",
+      "address": "192.168.1.1/24",
+      "autoneg": "true",
+      "speed": "1000",
+      "stats": {
+        "rx_bps": "34",
+        "tx_dropped": 0,
+        "rx_packets": 3412329,
+        "tx_bytes": 7922054171,
+        "rx_dropped": 2800,
+        "rx_multicast": 412314,
+        "rx_bytes": 529472247,
+        "tx_errors": 0,
+        "multicast": "412294",
+        "rx_errors": 0,
+        "tx_bps": "250",
+        "tx_packets": 5909307
+      },
+      "name": "eth1",
+      "duplex": "full",
+      "host_table": [
+        {
+          "dev_id": 239,
+          "rx_packets": 805925675,
+          "os_name": 19,
+          "tx_bytes": 35371476651,
+          "tx_packets": 104136843,
+          "rx_bytes": 802239963372,
+          "bc_packets": 104642338,
+          "ip": "192.168.1.8",
+          "age": 10,
+          "mac": "81:2a:a8:f0:ef:78",
+          "uptime": 5822032,
+          "dev_vendor": 47,
+          "bc_bytes": 4814073447,
+          "dev_family": 4,
+          "dev_cat": 1,
+          "authorized": "true",
+          "mc_bytes": 4814073447,
+          "mc_packets": 104642338,
+          "os_class": 15
+        },
+        {
+          "rx_packets": 610310,
+          "ip": "192.168.1.10",
+          "tx_bytes": 13628015,
+          "mac": "f0:9f:c2:09:2b:f2",
+          "mc_bytes": 21366640,
+          "uptime": 5821979,
+          "rx_bytes": 30862046,
+          "bc_packets": 200043,
+          "tx_packets": 204110,
+          "age": 41,
+          "hostname": "switch",
+          "bc_bytes": 9202676,
+          "authorized": "true",
+          "mc_packets": 406211
+        }
+      ],
+      "up": "true",
+      "mtu": "1500"
+    },
+    {
+      "addresses": [
+        "192.168.10.1/24"
+      ],
+      "l1up": "true",
+      "mac": "80:2a:a8:cd:a9:53",
+      "address": "192.168.10.1/24",
+      "autoneg": "true",
+      "speed": "1000",
+      "stats": {
+        "rx_bps": "342",
+        "tx_dropped": 0,
+        "rx_packets": 341232922,
+        "tx_bytes": 792205417381,
+        "rx_dropped": 2800,
+        "rx_multicast": 412314,
+        "rx_bytes": 52947224765,
+        "tx_errors": 0,
+        "multicast": "412294",
+        "rx_errors": 0,
+        "tx_bps": "250",
+        "tx_packets": 590930778
+      },
+      "name": "eth1.10",
+      "duplex": "full",
+      "host_table": [],
+      "up": "true",
+      "mtu": "1500"
+    },
+    {
+      "addresses": [
+        "20.1.2.10/21"
+      ],
+      "l1up": "true",
+      "mac": "80:2a:a8:cd:a9:52",
+      "address": "20.1.2.10/21",
+      "autoneg": "true",
+      "speed": "1000",
+      "stats": {
+        "rx_bps": "262",
+        "tx_dropped": 0,
+        "rx_packets": 645343103,
+        "tx_bytes": 953646055362,
+        "rx_dropped": 19137,
+        "rx_multicast": 65629,
+        "rx_bytes": 353519562926,
+        "tx_errors": 0,
+        "multicast": "65627",
+        "rx_errors": 0,
+        "tx_bps": "328",
+        "tx_packets": 863173990
+      },
+      "name": "eth0",
+      "nameservers": [
+        "20.1.2.1",
+        "20.1.2.11"
+      ],
+      "up": "true",
+      "mtu": "1500",
+      "duplex": "full",
+      "gateways": [
+        "20.1.1.1"
+      ]
+    }
+  ],
+  "has_eth0": true,
+  "has_eth1": true,
+  "kernel_version": "4.4.153",
+  "cfgversion": "fcd911ed06d85bb4",
+  "netmask": "255.255.240.0",
+  "config_port_table": [
+    {
+      "ifname": "eth0",
+      "name": "wan"
+    },
+    {
+      "ifname": "eth1",
+      "name": "lan"
+    },
+    {
+      "ifname": "eth2",
+      "name": "wan2"
+    }
+  ],
+  "default": false,
+  "has_porta": true,
+  "time": 1583608832,
+  "model": "UGW3",
+  "discovery_response": false,
+  "locating": false
+}

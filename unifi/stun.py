@@ -176,7 +176,6 @@ class StunClient(object):
     def send_request(self, host, port=STUN_PORT):
         self.transaction_id = generate_transaction_id()
         self.req = build_binding_request(self.transaction_id)
-        print(":".join("{:02x}".format(ord(c)) for c in self.req))
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind(('0.0.0.0', 0))
@@ -188,7 +187,6 @@ class StunClient(object):
         port = o.port
         self.transaction_id = generate_transaction_id()
         self.req = build_binding_request(self.transaction_id)
-        print(":".join("{:02x}".format(ord(c)) for c in self.req))
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind(('0.0.0.0', 0))
