@@ -16,9 +16,10 @@ import logging.handlers
 
 import time
 import unifi.unifi_usg
+import unifi.unifi_usg_pro
 import unifi.unifi_ap_lite
-CONFIG_FILE = 'conf/unifi-gateway.home.conf'
-initialize_logger('logs')
+import unifi.utils
+CONFIG_FILE = 'conf/unifi-gateway.conf'
 class UnifiConsole():
 
     def __init__(self, **kwargs):
@@ -27,6 +28,9 @@ class UnifiConsole():
         if(kwargs.has_key('mode')):
             if kwargs['mode']=='usg':
                 self.device = unifi.unifi_usg.UnifiUSG(CONFIG_FILE)
+            elif kwargs['mode']=='usgp':
+                self.device = unifi.unifi_usg_pro.UnifiUSGPro(CONFIG_FILE)
+                
             elif kwargs['mode']=='ap':
                 self.device = unifi.unifi_ap_lite.UnifiAPLite('conf/unifi-gateway.home.ap.conf')
             else: 
@@ -40,7 +44,7 @@ class UnifiConsole():
         while True:
             if (int(time.time()*1000)-self.device.delayStart)>=self.device.interval :
                 self.device.delayStart = int(round(time.time()*1000))
-                self.config.read(CONFIG_FILE)
+                self.device.reloadconfig()
                 logging.debug("tick")
                 self.device.sendinfo()
             time.sleep(0.1)
@@ -96,6 +100,8 @@ if __name__ == '__main__':
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(dname)
+
+    initialize_logger('logs')
     
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, help='key',default='usg' )

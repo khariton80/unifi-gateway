@@ -2,9 +2,9 @@
 import ConfigParser
 import logging
 from utils import UnifiTLV
-from utils import mac_string_2_array, ip_string_2_array,getuptime
+from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr
 from struct import pack, unpack
-import socket
+import socket 
 import binascii
 import time
 import psutil
@@ -13,6 +13,7 @@ import urllib2
 import json
 import basecommand
 import stun
+import psutil
 
 import basecommand
 DS_UNKNOWN=1
@@ -25,8 +26,6 @@ class BaseDevice:
         self.config.read(self.configfile)
 
         self.lastError = "None"
-        self.mac = self.config.get('gateway', 'lan_mac')
-        self.ip = self.config.get('gateway', 'lan_ip')
         self.firmware = self.config.get('gateway', 'firmware')
         self.device = device
         self.type = type
@@ -35,7 +34,18 @@ class BaseDevice:
         self.delayStart = int(round(time.time()  * 1000)) 
         self.interval = 10 * 1000
         self.nextCommand =None
-        self.netmask=self.config.get('gateway', 'netmask')
+
+        if(self.config.has_option('gateway', 'lan_if')):
+            lan_if = self.config.get('gateway', 'lan_if')
+            if_addrs = psutil.net_if_addrs()
+            macaddr = get_macaddr(if_addrs,lan_if)
+            ipv4 = get_ipv4addr(if_addrs,lan_if)
+            if macaddr is not None:
+                self.mac=macaddr.address.replace('-',':').lower()
+            if ipv4 is not None:
+                self.ip=ipv4.address
+                self.netmask=ipv4.netmask    
+
         
 
     def getCurrentMessageType(self):
@@ -89,12 +99,13 @@ class BaseDevice:
         self.broadcast_index+=1
         if self.broadcast_index>20 :
             self.broadcast_index = 0
+
         addrinfo = socket.getaddrinfo('233.89.188.1', None)[0]   #233.89.188.1  wireshark show normal broadcast
         sock = socket.socket(addrinfo[0], socket.SOCK_DGRAM)
-        sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20,)
-        #sock.bind((self.ip, 0))
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, True)
+        sock.bind((self.ip, 0))
         message = self.create_broadcast_message(self.broadcast_index)
-        logging.debug('Message "{}"'.format(binascii.hexlify(message)))
+        #logging.debug('Message "{}"'.format(binascii.hexlify(message)))
         sock.sendto(message, (addrinfo[4][0], 10001))
         logging.debug('Send broadcast message #{} from gateway {}'.format(self.broadcast_index, self.ip))
     
@@ -247,4 +258,6 @@ class BaseDevice:
                  "cpu": psutil.cpu_percent(),
                  "mem": mem.percent,
                  "uptime": getuptime()
-            }  
+            }
+    def reloadconfig(self):
+        self.config.read(self.configfile)          

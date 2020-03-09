@@ -4,7 +4,7 @@ import basecommand
 import json
 import re
 import psutil
-class UnifiUSG(BaseDevice):
+class UnifiUSGPro(BaseDevice):
     def __init__(self,configfile):
         BaseDevice.__init__(self,'UGW4','UniFi-Gateway-3',configfile)
                 
@@ -28,6 +28,8 @@ class UnifiUSG(BaseDevice):
     def getInformIp(self):
         return "192.168.106.172"                      
     def getHostname(self):
+        if self.config.has_option('gateway', 'host') :
+            return self.config.get('gateway', 'host')
         return "UBNT"      
     def getKey(self):
         return self.config.get('gateway', 'key')
@@ -84,6 +86,8 @@ class UnifiUSG(BaseDevice):
         stat = if_stats[name]
         counter = io_counters[name]
         addr = if_addrs[name]
+        #macs = [mac for mac in addr if mac.family == -1]
+
         data = {
                 "drops": 333,
                 "enable": True,
@@ -106,7 +110,7 @@ class UnifiUSG(BaseDevice):
                 "rx_errors": counter.errin,
                 "rx_multicast": 65629,
                 "rx_packets": counter.packets_recv,
-                "speed":100,# stat.speed,
+                "speed": stat.speed,
                 "speedtest_lastrun": 1583600088374,
                 "speedtest_ping": 68,
                 "speedtest_status": "Idle",
@@ -114,7 +118,7 @@ class UnifiUSG(BaseDevice):
                 "tx_dropped": counter.dropout,
                 "tx_errors": counter.errout,
                 "tx_packets": counter.packets_sent,
-                "up": stat.isup or True,
+                "up": stat.isup ,
                 "uptime": 37193,
                 "xput_down": 38.161000000000001,
                 "xput_up": 12.484999999999999
@@ -122,17 +126,18 @@ class UnifiUSG(BaseDevice):
         return data
 
     def append_if_table(self,data,if_stats,io_counters,if_addrs):
-        data['if_table']=[ 
-            self.create_if_element("Ethernet 6",if_stats,io_counters,if_addrs,"eth3","20.1.2.41","80:2a:a8:cd:a9:52",0),
-            self.create_if_element("Ethernet 6",if_stats,io_counters,if_addrs,"eth0","192.168.1.1","80:2a:a8:cd:a9:53",1),
-            self.create_if_element("Ethernet 6",if_stats,io_counters,if_addrs,"eth2","20.1.2.10","80:2a:a8:cd:a9:54",2)
-        ]   
+        data['if_table']=[]
+        if  if_stats.has_key("Ethernet 6") and   io_counters.has_key("Ethernet 6") and if_addrs.has_key("Ethernet 6"):
+            data['if_table'].append(self.create_if_element("Ethernet 6",if_stats,io_counters,if_addrs,"eth3","20.1.2.41","80:2a:a8:cd:a9:52",0))
+        if  if_stats.has_key("Ethernet 1") and   io_counters.has_key("Ethernet 1") and if_addrs.has_key("Ethernet 1"):
+            data['if_table'].append(self.create_if_element("Ethernet 1",if_stats,io_counters,if_addrs,"eth0","192.168.1.1","80:2a:a8:cd:a9:53",1),)
+        if  if_stats.has_key("Ethernet 7") and   io_counters.has_key("Ethernet 7") and if_addrs.has_key("Ethernet 7"):
+            data['if_table'].append(self.create_if_element("Ethernet 7",if_stats,io_counters,if_addrs,"eth2","20.1.2.10","80:2a:a8:cd:a9:54",2))
         data['if_table'].append({
                 "drops": 333,
                 "enable": False,
                 "name": "eth1"
                 })
-    
     
     def append_network_table(self,data,if_stats,io_counters,if_addrs):
         data["network_table"]= [
@@ -340,6 +345,12 @@ class UnifiUSG(BaseDevice):
             self.config.set('gateway', 'url', '')
             self._save_config()
             self.config.read(self.configfile)
+        if result['_type'] == 'upgrade':
+            print ("upgrade version={} md5sum={} url={}".format(result['version'],result['md5sum'],result['url']))
+            self.config.set('gateway', 'firmware', result['version'])
+            self.firmware = result['version']
+            self._save_config()
+            self.reloadconfig()
         if result['_type'] == 'setparam':
             for key, value in result.items():
                 if key not in ['_type', 'server_time_in_utc', 'mgmt_cfg','system_cfg']:
@@ -354,13 +365,17 @@ class UnifiUSG(BaseDevice):
                             self.config.set(key, data[0], data[1]) 
                 elif key in ['system_cfg']:
                     system_cfg = json.loads(value)
+                    if system_cfg["system"] is not None and system_cfg["system"].has_key("host-name"):
+                        self.config.set('gateway', 'host', system_cfg["system"]["host-name"])
+                        self._save_config()
+                        self.reloadconfig()
                     with open(self.configfile.replace(".conf",".json"), 'w') as outfile:
                         json.dump(system_cfg, outfile,indent=True)
 
             wasAdopted = self.config.getboolean('gateway', 'is_adopted')
             self.config.set('gateway', 'is_adopted', 'yes')
             self._save_config()
-            self.config.read(self.configfile)
+            self.reloadconfig()
             cmd = self.createNotify('setparam','')
             if not wasAdopted:
                 cmd['discovery_response']= True
