@@ -1,8 +1,9 @@
 # coding: utf-8
+import os.path
 import ConfigParser
 import logging
 from utils import UnifiTLV
-from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr
+from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr,_byteify
 from struct import pack, unpack
 import socket 
 import binascii
@@ -22,21 +23,22 @@ DS_READY=2
 class BaseDevice:
     def __init__(self,device="",type="",configfile=""):
         self.configfile=configfile
-        self.config = ConfigParser.RawConfigParser()
-        self.config.read(self.configfile)
+        if (not os.path.exists(configfile)):
+            self.createEmmptyConfig()
+        self.reload_config()
 
         self.lastError = "None"
-        self.firmware = self.config.get('gateway', 'firmware')
+        self.firmware = self.config['gateway']['firmware']
         self.device = device
         self.type = type
         self.state=DS_READY
         self.broadcast_index = 0
-        self.delayStart = int(round(time.time()  * 1000)) 
         self.interval = 10 * 1000
         self.nextCommand =None
+        self.delayStart = int(round(time.time()  * 1000)) - self.interval
 
-        if(self.config.has_option('gateway', 'lan_if')):
-            lan_if = self.config.get('gateway', 'lan_if')
+        if(self.config.has_key('gateway') and self.config['gateway'].has_key('lan_if')):
+            lan_if = self.config['gateway']['lan_if']
             if_addrs = psutil.net_if_addrs()
             macaddr = get_macaddr(if_addrs,lan_if)
             ipv4 = get_ipv4addr(if_addrs,lan_if)
@@ -48,6 +50,20 @@ class BaseDevice:
 
         
 
+    def createEmmptyConfig(self):
+        self.config = { 
+            'global':{
+                'pid_file' : 'unifi-gateway.pid'
+                },
+                'gateway':{
+                    'is_adopted':False,
+                    'lan_if':'Wi-Fi',
+                    'firmware':'4.0.0'
+                }
+        }
+        self.save_config()
+                
+    
     def getCurrentMessageType(self):
         return -1 
     
@@ -240,17 +256,18 @@ class BaseDevice:
         } 
     
     def _send_stun(self):
-      if self.config.has_section('mgmt_cfg') and self.config.has_option('mgmt_cfg','stun_url'):
+        
+      if self.config.has_key('mgmt_cfg') and self.config['mgmt_cfg'].has_key('stun_url'):
         client = stun.StunClient()
-        client.send_request(self.config.get('mgmt_cfg','stun_url'))
+        client.send_request(self.config['mgmt_cfg']['stun_url'])
         result = client.receive_response()
         client.close()
 
       for item in result: 
           if 'MAPPED-ADDRESS' == item['name']:
-              self.config.set('gateway', 'lan_ip', item['ip'])
-              self.config.set('gateway', 'lan_port', item['port'])
-              self._save_config()
+              self.config['gateway']['lan_ip']=item['ip']
+              self.config['gateway']['lan_port']=item['port']
+              self.save_config()
 
     def get_system_stats(self):
         mem = psutil.virtual_memory()
@@ -259,5 +276,11 @@ class BaseDevice:
                  "mem": mem.percent,
                  "uptime": getuptime()
             }
-    def reloadconfig(self):
-        self.config.read(self.configfile)          
+    def reload_config(self):
+        with open(self.configfile) as config_file:
+            self.config = json.load(config_file,object_hook= _byteify)  
+    def save_config(self):
+        with open(self.configfile, 'w') as config_file:
+            json.dump(self.config, config_file,indent=True,sort_keys=True)
+            
+        

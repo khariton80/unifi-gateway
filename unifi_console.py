@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from loggerinitializer import *
 import sys
-import ConfigParser
 import argparse
 # import re
 import logging.handlers
@@ -19,57 +18,36 @@ import unifi.unifi_usg
 import unifi.unifi_usg_pro
 import unifi.unifi_ap_lite
 import unifi.utils
-CONFIG_FILE = 'conf/unifi-gateway.conf'
+CONFIG_FILE = 'conf/unifi-gateway.conf.json'
 class UnifiConsole():
 
     def __init__(self, **kwargs):
-        self.config = ConfigParser.RawConfigParser()
-        self.config.read(CONFIG_FILE)
+               
         if(kwargs.has_key('mode')):
             if kwargs['mode']=='usg':
-                self.device = unifi.unifi_usg.UnifiUSG(CONFIG_FILE)
+                self.device = unifi.unifi_usg.UnifiUSG(kwargs['config'])
             elif kwargs['mode']=='usgp':
-                self.device = unifi.unifi_usg_pro.UnifiUSGPro(CONFIG_FILE)
-                
+                self.device = unifi.unifi_usg_pro.UnifiUSGPro(kwargs['config'])
             elif kwargs['mode']=='ap':
-                self.device = unifi.unifi_ap_lite.UnifiAPLite('conf/unifi-gateway.home.ap.conf')
+                self.device = unifi.unifi_ap_lite.UnifiAPLite(kwargs['config'])
             else: 
-                self.device = unifi.unifi_usg.UnifiUSG(CONFIG_FILE)  
+                self.device = unifi.unifi_usg.UnifiUSG(kwargs['config'])  
         else:
-            self.device = unifi.unifi_usg.UnifiUSG(CONFIG_FILE);    
-
-        #Daemon.__init__(self, pidfile=self.config.get('global', 'pid_file'), **kwargs)
+            self.device = unifi.unifi_usg.UnifiUSG(kwargs['config']);    
 
     def run(self):
         while True:
             if (int(time.time()*1000)-self.device.delayStart)>=self.device.interval :
                 self.device.delayStart = int(round(time.time()*1000))
-                self.device.reloadconfig()
+                self.device.reload_config()
                 logging.debug("tick")
                 self.device.sendinfo()
             time.sleep(0.1)
-    
-    def set_adopt(self, url, key):
-        self.config = ConfigParser.RawConfigParser()
-        self.config.read(CONFIG_FILE)
-        if self.config.has_section('mgmt_cfg'):
-            self.config.remove_section("mgmt_cfg")
-        if self.config.has_section('system_cfg'):
-            self.config.remove_section("system_cfg")
-        if not self.config.has_section('gateway'):
-            self.config.add_section("gateway")
-        self.config.set('gateway', "url", url) 
-        self.config.set('gateway', 'key', key) 
-        self.config.set('gateway', 'is_adopted', 'no')
-        self._save_config() 
-
-    def _save_config(self):
-        with open(CONFIG_FILE, 'w') as config_file:
-            self.config.write(config_file)
+  
 
 def processargs(args):
     global console
-    console = UnifiConsole(mode=args.mode)
+    console = UnifiConsole(mode=args.mode, config=args.config)
 
 def restart(args):
     processargs(args)
@@ -105,6 +83,7 @@ if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, help='key',default='usg' )
+    parser.add_argument('--config', type=str, help='key',default=CONFIG_FILE )
     parser.set_defaults(func=processargs)
     subparsers = parser.add_subparsers()
 

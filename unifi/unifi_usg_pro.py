@@ -9,30 +9,33 @@ class UnifiUSGPro(BaseDevice):
         BaseDevice.__init__(self,'UGW4','UniFi-Gateway-3',configfile)
                 
     def cfgversion(self):
-        if self.config.has_section('mgmt_cfg') and self.config.has_option('mgmt_cfg','cfgversion'):
-            print(self.config.get('mgmt_cfg', 'cfgversion')) 
-            return self.config.get('mgmt_cfg', 'cfgversion')     
+        if self.config.has_key('mgmt_cfg') and self.config['mgmt_cfg'].has_key('cfgversion'):
+             return self.config['mgmt_cfg']['cfgversion']     
         else:
             return "?"    
-    def version(self):
-        return self.config.get('mgmt_cfg', 'cfgversion')       
+          
     def getCurrentMessageType(self):
-        if self.config.has_section('gateway') and not self.config.getboolean('gateway', 'is_adopted') and self.config.get('gateway', 'key')=="" :
+        if (self.config.has_key('gateway') 
+            and not self.config['gateway']['is_adopted'] 
+            and (not self.config['gateway'].has_key('key') or self.config['gateway']['key']=="" )):
             return -1     
-        if self.config.has_section('gateway') and not self.config.getboolean('gateway', 'is_adopted') and not self.config.get('gateway', 'key')=="" : #discover
+        if (self.config.has_key('gateway') 
+            and not self.config['gateway']['is_adopted'] 
+            and self.config['gateway'].has_key('key') 
+            and not self.config['gateway']['key']=="") : #discover
             return 1     
-        if self.config.has_section('gateway') and self.config.getboolean('gateway', 'is_adopted') : #info
+        if self.config.has_key('gateway') and self.config['gateway']['is_adopted'] : #info
             return 2     
     def getInformUrl(self):
-        return self.config.get('gateway', 'url')
+        return self.config['gateway']['url']
     def getInformIp(self):
-        return "192.168.106.172"                      
+        return "127.0.0.1"                      
     def getHostname(self):
-        if self.config.has_option('gateway', 'host') :
-            return self.config.get('gateway', 'host')
+        if self.config['gateway'].has_key('host') :
+            return self.config['gateway']['host']
         return "UBNT"      
     def getKey(self):
-        return self.config.get('gateway', 'key')
+        return self.config['gateway']['key']
 
     def appendVPN(self,data,if_stats,io_counters,if_addrs):
         data['vpn'] = {
@@ -330,10 +333,7 @@ class UnifiUSGPro(BaseDevice):
                
         
       
-    def _save_config(self):
-        with open(self.configfile, 'w') as config_file:
-            self.config.write(config_file)
-    
+     
     def parseResponse(self,data):
         result = json.loads(data)
         print("Got message {}".format(result['_type']))
@@ -347,35 +347,36 @@ class UnifiUSGPro(BaseDevice):
             self.config.read(self.configfile)
         if result['_type'] == 'upgrade':
             print ("upgrade version={} md5sum={} url={}".format(result['version'],result['md5sum'],result['url']))
-            self.config.set('gateway', 'firmware', result['version'])
+            self.config['gateway']['firmware']= result['version']
             self.firmware = result['version']
-            self._save_config()
-            self.reloadconfig()
+            self.save_config()
+            self.reload_config()
         if result['_type'] == 'setparam':
             for key, value in result.items():
                 if key not in ['_type', 'server_time_in_utc', 'mgmt_cfg','system_cfg']:
-                    self.config.set('gateway', key, value)
+                    self.config['gateway'][key]= value
                 elif key in ['mgmt_cfg']:
-                    if not self.config.has_section(key):
-                        self.config.add_section(key)
+                    if not self.config.has_key(key):
+                        self.config[key]={}
                     lines = re.split('\n',value) 
                     for line in lines:
                         if not line =='':
-                            data = re.split('=',line) 
-                            self.config.set(key, data[0], data[1]) 
+                            data = re.split('=',line)
+                            self.config[key][data[0]]= data[1]
+
                 elif key in ['system_cfg']:
                     system_cfg = json.loads(value)
                     if system_cfg["system"] is not None and system_cfg["system"].has_key("host-name"):
-                        self.config.set('gateway', 'host', system_cfg["system"]["host-name"])
-                        self._save_config()
-                        self.reloadconfig()
+                        self.config['gateway']['host'] = system_cfg["system"]["host-name"]
+                        self.save_config()
+                        self.reload_config()
                     with open(self.configfile.replace(".conf",".json"), 'w') as outfile:
                         json.dump(system_cfg, outfile,indent=True)
 
-            wasAdopted = self.config.getboolean('gateway', 'is_adopted')
-            self.config.set('gateway', 'is_adopted', 'yes')
-            self._save_config()
-            self.reloadconfig()
+            wasAdopted = self.config['gateway']['is_adopted']
+            self.config['gateway']['is_adopted']=True
+            self.save_config()
+            self.reload_config()
             cmd = self.createNotify('setparam','')
             if not wasAdopted:
                 cmd['discovery_response']= True
