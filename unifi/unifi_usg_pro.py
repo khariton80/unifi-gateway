@@ -4,6 +4,7 @@ import basecommand
 import json
 import re
 import psutil
+import utils
 class UnifiUSGPro(BaseDevice):
     def __init__(self,configfile):
         BaseDevice.__init__(self,'UGW4','UniFi-Gateway-3',configfile)
@@ -13,7 +14,35 @@ class UnifiUSGPro(BaseDevice):
              return self.config['mgmt_cfg']['cfgversion']     
         else:
             return "?"    
-          
+    def getDefaultMap(self,lan,wan):
+        return { 
+            'ports':[
+                {
+                    'unifi':"eth0",
+                    'unifi-description':"LAN",
+                    'pfsense':lan,
+                    'enabled':True
+                },
+                {
+                    'unifi':"eth1",
+                    'unifi-description':"",
+                    'pfsense':"",
+                    'enabled':False
+                },
+                {
+                    'unifi':"eth2",
+                    'unifi-description':"WAN",
+                    'pfsense':wan,
+                    'enabled':True
+                },
+                {
+                    'unifi':"eth3",
+                    'unifi-description':"",
+                    'pfsense':"",
+                    'enabled':False
+                }
+            ]
+        }
     def getCurrentMessageType(self):
         if (self.config.has_key('gateway') 
             and not self.config['gateway']['is_adopted'] 
@@ -85,29 +114,30 @@ class UnifiUSGPro(BaseDevice):
             "type": "static"
         }
 
-    def create_if_element(self,name,if_stats,io_counters,if_addrs,ename,ip,mac,numport):
+    def create_if_element(self,interface,if_stats,io_counters,if_addrs):
+        name = interface["pfsense"]
+        ename = interface["unifi"]
         stat = if_stats[name]
         counter = io_counters[name]
-        addr = if_addrs[name]
-        #macs = [mac for mac in addr if mac.family == -1]
-
+        mac = utils.get_macaddr(if_addrs,name)
+        ipv4 = utils.get_ipv4addr(if_addrs,name)
         data = {
-                "drops": 333,
+                "drops": counter.dropout+counter.dropin,
                 "enable": True,
                 "full_duplex": stat.duplex==2,
                 "gateways": [
                     "20.1.2.3"
                 ],
-                "ip": ip,
-                "latency": 11,
-                "mac": mac,
+                "ip": ipv4.address,
+                "latency": 1 if interface["wan"] else 0,
+                "mac": mac.address,
                 "name": ename,
                 "nameservers": [
                     "20.1.2.19",
                     "20.1.3.19"
                 ],
-                "netmask": "255.255.255.0",
-                "num_port": numport,
+                "netmask": ipv4.netmask,
+                "num_port": 0,
                 "rx_bytes": counter.bytes_recv,
                 "rx_dropped": counter.dropin,
                 "rx_errors": counter.errin,
@@ -130,19 +160,75 @@ class UnifiUSGPro(BaseDevice):
 
     def append_if_table(self,data,if_stats,io_counters,if_addrs):
         data['if_table']=[]
-        if  if_stats.has_key("Ethernet 6") and   io_counters.has_key("Ethernet 6") and if_addrs.has_key("Ethernet 6"):
-            data['if_table'].append(self.create_if_element("Ethernet 6",if_stats,io_counters,if_addrs,"eth3","20.1.2.41","80:2a:a8:cd:a9:52",0))
-        if  if_stats.has_key("Ethernet 1") and   io_counters.has_key("Ethernet 1") and if_addrs.has_key("Ethernet 1"):
-            data['if_table'].append(self.create_if_element("Ethernet 1",if_stats,io_counters,if_addrs,"eth0","192.168.1.1","80:2a:a8:cd:a9:53",1),)
-        if  if_stats.has_key("Ethernet 7") and   io_counters.has_key("Ethernet 7") and if_addrs.has_key("Ethernet 7"):
-            data['if_table'].append(self.create_if_element("Ethernet 7",if_stats,io_counters,if_addrs,"eth2","20.1.2.10","80:2a:a8:cd:a9:54",2))
-        data['if_table'].append({
-                "drops": 333,
-                "enable": False,
-                "name": "eth1"
+        for interface in self.mapConfig["ports"]:
+            if interface["enabled"] and interface["pfsense"] is not "" :
+                data['if_table'].append(self.create_if_element(interface,if_stats,io_counters,if_addrs))
+            else:
+                data['if_table'].append({
+                "enable": interface["enabled"],
+                "name": interface["unifi"]
                 })
     
+    def create_network_table_element(self,interface,if_stats,io_counters,if_addrs, addr):
+        stat = if_stats[name]
+        counter = io_counters[name]
+        mac = utils.get_macaddr(if_addrs,name)
+        ipv4 = utils.get_ipv4addr(if_addrs,name)
+        name = interface["pfsense"]
+        ename = interface["unifi"]
+        data = {
+                "address": addr,
+                "addresses": [
+                    addr
+                ],
+                "autoneg": "True",
+                "duplex": "full" if stat.duplex==2 else "half",
+                "gateways": [
+                    "20.1.2.1"
+                ],
+                "l1up": "True",
+                "mac": mac.address,
+                "mtu": stat.mtu, 
+                "name": ename,
+                "nameservers": [
+                    "20.1.2.191",
+                    "20.1.3.191"
+                ],
+                "speed": stat.speed,
+                "stats": {
+                    "multicast": "65627",
+                    "rx_bps": "0",
+                    "rx_bytes": counter.bytes_recv,
+                    "rx_dropped": counter.dropin,
+                    "rx_errors": counter.errin,
+                    "rx_multicast": 65629,
+                    "rx_packets": counter.packets_recv,
+                    "tx_bps": "0",
+                    "tx_bytes": counter.bytes_sent,
+                    "tx_dropped": counter.dropout,
+                    "tx_errors": counter.errout,
+                    "tx_packets": counter.packets_sent
+                },
+                "up": stat.isup
+                }
+
+        if interface["wan"]:
+            data["gateways"]=[
+                    "20.1.1.1"
+                ]
+        
+        return data
     def append_network_table(self,data,if_stats,io_counters,if_addrs):
+        # data['network_table']=[]
+        # for interface in self.mapConfig["ports"]:
+        #     if interface["enabled"] and interface["pfsense"] is not "" :
+        #         data['network_table'].append(self.create_network_table_element(interface,if_stats,io_counters,if_addrs))
+        #     else:
+        #         data['network_table'].append({
+        #         "enable": interface["enabled"],
+        #         "name": interface["unifi"]
+        #         })
+
         data["network_table"]= [
                 {
                 "address": "10.1.1.10/24",
@@ -180,9 +266,9 @@ class UnifiUSGPro(BaseDevice):
                 "up": "True"
                 },
                 {
-                "address": "192.168.1.1/24",
+                "address": "192.168.98.255/20",
                 "addresses": [
-                    "192.168.1.1/24"
+                    "192.168.98.255/20"
                 ],
                 "autoneg": "True",
                 "duplex": "full",
@@ -283,6 +369,9 @@ class UnifiUSGPro(BaseDevice):
                 }
             ]
     def append_port_table(self,data,if_stats,io_counters,if_addrs):
+        data['if_table']=[]
+        for interface in self.mapConfig["ports"]:
+            
         data["config_port_table"]= [
             {
             "ifname": "eth3",

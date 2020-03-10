@@ -5,7 +5,7 @@ pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-pycryptodome-3
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-enum34-1.1.6.txz
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-psutil-5.7.0.txz
 
-route add 233.89.188.1 -interface em1
+route add 224.0.0.0/4 -interface em1
 
 commands
 "adopt", "adv-adopt", "replace", "restart", "upgrade", "upgrade-external", "upgrade-all", "set-rollupgrade", "unset-rollupgrade", "locate", 

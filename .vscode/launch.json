@@ -25,6 +25,14 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args" : ["--mode","usgp","run"]
+        },
+        {
+            "name": "Python: unifi_console.py [startw]",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args" : ["--mode","usgp","--config","conf/unifi-gateway.work.conf.json","run"]
         }
         ,
         {

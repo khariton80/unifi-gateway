@@ -16,6 +16,7 @@ import basecommand
 import stun
 import psutil
 
+import pfsense_config
 import basecommand
 DS_UNKNOWN=1
 DS_ADOPTING=0
@@ -23,9 +24,16 @@ DS_READY=2
 class BaseDevice:
     def __init__(self,device="",type="",configfile=""):
         self.configfile=configfile
+        self.mapfile=configfile.replace(".conf",".map")
+
+        self.pfsenseConfig = pfsense_config.PfsenseConfig('conf/config.xml')
+
         if (not os.path.exists(configfile)):
-            self.createEmmptyConfig()
+            self.createEmptyConfig()
+        if (not os.path.exists(self.mapfile)):
+            self.createEmptyMap()
         self.reload_config()
+        self.reload_map()
 
         self.lastError = "None"
         self.firmware = self.config['gateway']['firmware']
@@ -50,19 +58,23 @@ class BaseDevice:
 
         
 
-    def createEmmptyConfig(self):
+    def createEmptyConfig(self):
         self.config = { 
             'global':{
                 'pid_file' : 'unifi-gateway.pid'
                 },
                 'gateway':{
                     'is_adopted':False,
-                    'lan_if':'Wi-Fi',
-                    'firmware':'4.0.0'
+                    'lan_if':self.pfsenseConfig.getDefaultLan()["if"],
+                    'firmware':'4.4.44.5213871'
                 }
         }
         self.save_config()
-                
+    def getDefaultMap(self,lan,wan):
+        pass            
+    def createEmptyMap(self):
+        self.mapConfig = self.getDefaultMap(self.pfsenseConfig.getDefaultLan()["if"],self.pfsenseConfig.getDefaultWan()["if"])
+        self.save_map()
     
     def getCurrentMessageType(self):
         return -1 
@@ -282,5 +294,12 @@ class BaseDevice:
     def save_config(self):
         with open(self.configfile, 'w') as config_file:
             json.dump(self.config, config_file,indent=True,sort_keys=True)
-            
+
+    def reload_map(self):
+        with open(self.mapfile) as config_file:
+            self.mapConfig = json.load(config_file,object_hook= _byteify)  
+    def save_map(self):
+        with open(self.mapfile, 'w') as config_file:
+            json.dump(self.mapConfig, config_file,indent=True,sort_keys=True)
+
         
