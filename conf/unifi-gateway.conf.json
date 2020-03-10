@@ -7,7 +7,7 @@
   "key": "d0a0a9e628ac7f75f98c9e4bf2d767bf", 
   "lan_if": "Wi-Fi", 
   "lan_ip": "192.168.1.156", 
-  "lan_port": 50638, 
+  "lan_port": 52580, 
   "url": "http://192.168.1.156:8080/inform"
  }, 
  "global": {

@@ -3,7 +3,7 @@ import os.path
 import ConfigParser
 import logging
 from utils import UnifiTLV
-from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr,_byteify
+from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr,_byteify,pfsense_const
 from struct import pack, unpack
 import socket 
 import binascii
@@ -26,7 +26,7 @@ class BaseDevice:
         self.configfile=configfile
         self.mapfile=configfile.replace(".conf",".map")
 
-        self.pfsenseConfig = pfsense_config.PfsenseConfig('conf/config.xml')
+        self.pfsenseConfig = pfsense_config.PfsenseConfig(pfsense_const['cf_conf_path']+'/config.xml')
 
         if (not os.path.exists(configfile)):
             self.createEmptyConfig()

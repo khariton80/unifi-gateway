@@ -369,8 +369,8 @@ class UnifiUSGPro(BaseDevice):
                 }
             ]
     def append_port_table(self,data,if_stats,io_counters,if_addrs):
-        data['if_table']=[]
-        for interface in self.mapConfig["ports"]:
+        #data['if_table']=[]
+        #for interface in self.mapConfig["ports"]:
             
         data["config_port_table"]= [
             {

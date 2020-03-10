@@ -7,8 +7,8 @@ import ctypes
 import struct
 import os
 
-global g
-g = {
+global pfsense_const
+pfsense_const = {
 	"event_address" : "unix:///var/run/check_reload_status",
 	"factory_shipped_username" : "admin",
 	"factory_shipped_password" : "pfsense",
@@ -166,7 +166,7 @@ def _byteify(data, ignore_dicts = False):
     return data
 
 
-def get_dpinger_status(gwname, detailed = False) :
+def get_dpinger_status(gwname) :
     running_processes = running_dpinger_processes()
     if not running_processes.has_key(gwname) : 
         return None
@@ -184,102 +184,41 @@ def get_dpinger_status(gwname, detailed = False) :
         if (not conn) :
             log_error('dpinger: cannot connect to status socket %1$s - %2$s (%3$s)'.format(proc['socket'], errstr, errno))
             return None
-        
-
-        status = '';
+        status = ''
         while True:
             data = conn.recv(1024)
             if not data: break
             status+=data
         conn.close()
-        print status
-        break
-
         
+        r = {}
+        tmp =status.replace('\n', '').split(' ')
+        r['gwname']  = tmp[0] if len(tmp)>0 else ""
+        r['latency_avg']  = float(tmp[1]) if len(tmp)>1 else 0.0
+        r['latency_stddev']  = float(tmp[2]) if len(tmp)>2 else 0.0
+        r['loss']  = float(tmp[3]) if len(tmp)>3 else 0.0
 
-# 		r = {};
-# 		list(
-# 			$r['gwname'],
-# 			$r['latency_avg'],
-# 			$r['latency_stddev'],
-# 			$r['loss']
-# 		) = explode(' ', preg_replace('/\n/', '', $status));
+        ready = r['latency_stddev'] != 0 or r['loss'] != 0
 
-# 		// dpinger returns '<gwname> 0 0 0' when queried directly after it starts.
-# 		// while a latency of 0 and a loss of 0 would be perfect, in a real world it doesnt happen.
-# 		// or does it, anyone? if so we must 'detect' the initialization period differently..
-# 		$ready = $r['latency_stddev'] != '0' || $r['loss'] != '0';
+        if (ready): 
+            break
+        else :
+            timeoutcounter+=1
+            if (timeoutcounter > 300):
+                log_error('dpinger: timeout while retrieving status for gateway %s'.format(gwname))
+                return None
+            time.sleep(1000)
+    r['srcip'] = proc['srcip']
+    r['targetip'] = proc['targetip']
+    r['latency_avg'] = r['latency_avg']/1000
+    r['latency_stddev'] = r['latency_stddev']/1000
 
-# 		if ($ready) {
-# 			break;
-# 		} else {
-# 			$timeoutcounter++;
-# 			if ($timeoutcounter > 300) {
-# 				log_error(sprintf(gettext('dpinger: timeout while retrieving status for gateway %s'), $gwname));
-# 				return false;
-# 			}
-# 			usleep(10000);
-# 		}
-# 	}
-
-# 	$r['srcip'] = $proc['srcip'];
-# 	$r['targetip'] = $proc['targetip'];
-
-# 	$gateways_arr = return_gateways_array();
-# 	unset($gw);
-# 	if (isset($gateways_arr[$gwname])) {
-# 		$gw = $gateways_arr[$gwname];
-# 	}
-
-# 	$r['latency_avg'] = round($r['latency_avg']/1000, 3);
-# 	$r['latency_stddev'] = round($r['latency_stddev']/1000, 3);
-
-# 	$r['status'] = "none";
-# 	if (isset($gw) && isset($gw['force_down'])) {
-# 		$r['status'] = "force_down";
-# 	} else if (isset($gw)) {
-# 		$settings = return_dpinger_defaults();
-
-# 		$keys = array(
-# 		    'latencylow',
-# 		    'latencyhigh',
-# 		    'losslow',
-# 		    'losshigh'
-# 		);
-
-# 		/* Replace default values by user-defined */
-# 		foreach ($keys as $key) {
-# 			if (isset($gw[$key]) && is_numeric($gw[$key])) {
-# 				$settings[$key] = $gw[$key];
-# 			}
-# 		}
-
-# 		if ($r['latency_avg'] > $settings['latencyhigh']) {
-# 			if ($detailed) {
-# 				$r['status'] = "highdelay";
-# 			} else {
-# 				$r['status'] = "down";
-# 			}
-# 		} else if ($r['loss'] > $settings['losshigh']) {
-# 			if ($detailed) {
-# 				$r['status'] = "highloss";
-# 			} else {
-# 				$r['status'] = "down";
-# 			}
-# 		} else if ($r['latency_avg'] > $settings['latencylow']) {
-# 			$r['status'] = "delay";
-# 		} else if ($r['loss'] > $settings['losslow']) {
-# 			$r['status'] = "loss";
-# 		}
-# 	}
-
-# 	return $r;
-# }
+    return r
 
 def running_dpinger_processes():
     import glob
 
-    pidfiles = glob.glob("{}/dpinger_*.pid".format(g['varrun_path']))
+    pidfiles = glob.glob("{}/dpinger_*.pid".format(pfsense_const['varrun_path']))
     result = {}
     if len(pidfiles) == 0:
         return result
@@ -296,84 +235,6 @@ def running_dpinger_processes():
             }
     return result
 
-
-#  def return_gateways_status(byname = False) {
-
-#  	dpinger_gws = running_dpinger_processes()
-#  	status = {}
-
-# 	$gateways_arr = return_gateways_array();
-
-# 	foreach ($dpinger_gws as $gwname , $gwdata) {
-# 		// If action is disabled for this gateway, then we want a detailed status.
-# 		// That reports "highdelay" or "highloss" rather than just "down".
-# 		// Because reporting the gateway down would be misleading (gateway action is disabled)
-# 		$detailed = $gateways_arr[$gwname]['action_disable'];
-# 		$dpinger_status = get_dpinger_status($gwname, $detailed);
-# 		if ($dpinger_status === false) {
-# 			continue;
-# 		}
-
-# 		if ($byname == false) {
-# 			$target = $dpinger_status['targetip'];
-# 		} else {
-# 			$target = $gwname;
-# 		}
-
-# 		$status[$target] = array();
-# 		$status[$target]['monitorip'] = $dpinger_status['targetip'];
-# 		$status[$target]['srcip'] = $dpinger_status['srcip'];
-# 		$status[$target]['name'] = $gwname;
-# 		$status[$target]['delay'] = empty($dpinger_status['latency_avg']) ? "0ms" : $dpinger_status['latency_avg'] . "ms";
-# 		$status[$target]['stddev'] = empty($dpinger_status['latency_stddev']) ? "0ms" : $dpinger_status['latency_stddev'] . "ms";
-# 		$status[$target]['loss'] = empty($dpinger_status['loss']) ? "0.0%" : round($dpinger_status['loss'], 1) . "%";
-# 		$status[$target]['status'] = $dpinger_status['status'];
-# 	}
-
-# 	/* tack on any gateways that have monitoring disabled
-# 	 * or are down, which could cause gateway groups to fail */
-# 	$gateways_arr = return_gateways_array();
-# 	foreach ($gateways_arr as $gwitem) {
-# 		if (!isset($gwitem['monitor_disable'])) {
-# 			continue;
-# 		}
-# 		if (!is_ipaddr($gwitem['monitor'])) {
-# 			$realif = $gwitem['interface'];
-# 			$tgtip = get_interface_gateway($realif);
-# 			if (!is_ipaddr($tgtip)) {
-# 				$tgtip = "none";
-# 			}
-# 			$srcip = find_interface_ip($realif);
-# 		} else {
-# 			$tgtip = $gwitem['monitor'];
-# 			$srcip = find_interface_ip($realif);
-# 		}
-# 		if ($byname == true) {
-# 			$target = $gwitem['name'];
-# 		} else {
-# 			$target = $tgtip;
-# 		}
-
-# 		/* failsafe for down interfaces */
-# 		if ($target == "none") {
-# 			$target = $gwitem['name'];
-# 			$status[$target]['name'] = $gwitem['name'];
-# 			$status[$target]['delay'] = "0.0ms";
-# 			$status[$target]['loss'] = "100.0%";
-# 			$status[$target]['status'] = "down";
-# 		} else {
-# 			$status[$target]['monitorip'] = $tgtip;
-# 			$status[$target]['srcip'] = $srcip;
-# 			$status[$target]['name'] = $gwitem['name'];
-# 			$status[$target]['delay'] = "";
-# 			$status[$target]['loss'] = "";
-# 			$status[$target]['status'] = "none";
-# 		}
-
-# 		$status[$target]['monitor_disable'] = true;
-# 	}
-# 	return($status);
-# }
 def log_error(message):
     import logging
     logging.error(message)
