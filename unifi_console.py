@@ -18,6 +18,7 @@ import unifi.unifi_usg
 import unifi.unifi_usg_pro
 import unifi.unifi_ap_lite
 import unifi.utils
+import unifi.pfsense_utils
 CONFIG_FILE = 'conf/unifi-gateway.conf.json'
 class UnifiConsole():
 
@@ -77,7 +78,6 @@ if __name__ == '__main__':
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(dname)
-
     initialize_logger('logs')
     
     parser = argparse.ArgumentParser()

@@ -3,7 +3,8 @@ import os.path
 import ConfigParser
 import logging
 from utils import UnifiTLV
-from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr,_byteify,pfsense_const
+from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr,_byteify
+from pfsense_utils import pfsense_const
 from struct import pack, unpack
 import socket 
 import binascii
@@ -25,7 +26,7 @@ class BaseDevice:
     def __init__(self,device="",type="",configfile=""):
         self.configfile=configfile
         self.mapfile=configfile.replace(".conf",".map")
-
+        pfsense_const['cf_conf_path']='conf'
         self.pfsenseConfig = pfsense_config.PfsenseConfig(pfsense_const['cf_conf_path']+'/config.xml')
 
         if (not os.path.exists(configfile)):
@@ -66,7 +67,8 @@ class BaseDevice:
                 'gateway':{
                     'is_adopted':False,
                     'lan_if':self.pfsenseConfig.getDefaultLan()["if"],
-                    'firmware':'4.4.44.5213871'
+                    'firmware':'4.4.44.5213871',
+                    'showhosts':False
                 }
         }
         self.save_config()

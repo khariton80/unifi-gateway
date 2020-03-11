@@ -21,25 +21,29 @@ class UnifiUSGPro(BaseDevice):
                     'unifi':"eth0",
                     'unifi-description':"LAN",
                     'pfsense':lan,
-                    'enabled':True
+                    'enabled':True,
+                    'wan':False
                 },
                 {
                     'unifi':"eth1",
                     'unifi-description':"",
                     'pfsense':"",
-                    'enabled':False
+                    'enabled':False,
+                    'wan':False
                 },
                 {
                     'unifi':"eth2",
                     'unifi-description':"WAN",
                     'pfsense':wan,
-                    'enabled':True
+                    'enabled':True,
+                    'wan':True
                 },
                 {
                     'unifi':"eth3",
                     'unifi-description':"",
                     'pfsense':"",
-                    'enabled':False
+                    'enabled':False,
+                    'wan':True
                 }
             ]
         }
@@ -169,18 +173,19 @@ class UnifiUSGPro(BaseDevice):
                 "name": interface["unifi"]
                 })
     
-    def create_network_table_element(self,interface,if_stats,io_counters,if_addrs, addr):
+    def create_network_table_element(self,interface,if_stats,io_counters,if_addrs):
         stat = if_stats[name]
         counter = io_counters[name]
         mac = utils.get_macaddr(if_addrs,name)
         ipv4 = utils.get_ipv4addr(if_addrs,name)
         name = interface["pfsense"]
         ename = interface["unifi"]
+                # "address": addr,
+                # "addresses": [
+                #     addr
+                # ],
+
         data = {
-                "address": addr,
-                "addresses": [
-                    addr
-                ],
                 "autoneg": "True",
                 "duplex": "full" if stat.duplex==2 else "half",
                 "gateways": [
@@ -220,15 +225,14 @@ class UnifiUSGPro(BaseDevice):
         return data
     def append_network_table(self,data,if_stats,io_counters,if_addrs):
         # data['network_table']=[]
-        # for interface in self.mapConfig["ports"]:
-        #     if interface["enabled"] and interface["pfsense"] is not "" :
-        #         data['network_table'].append(self.create_network_table_element(interface,if_stats,io_counters,if_addrs))
-        #     else:
-        #         data['network_table'].append({
-        #         "enable": interface["enabled"],
-        #         "name": interface["unifi"]
-        #         })
-
+        #  for interface in self.mapConfig["ports"]:
+        #      if interface["enabled"] and interface["pfsense"] is not "" :
+        #          data['network_table'].append(self.create_network_table_element(interface,if_stats,io_counters,if_addrs))
+        #      else:
+        #          data['network_table'].append({
+        #          "enable": interface["enabled"],
+        #          "name": interface["unifi"]
+        #          })
         data["network_table"]= [
                 {
                 "address": "10.1.1.10/24",
@@ -421,8 +425,35 @@ class UnifiUSGPro(BaseDevice):
         
                
         
-      
-     
+    def process_or_create_if(self,key,data):
+        tmp = [port for port in self.mapConfig['ports'] if port['unifi'] == key]
+        local = None
+        if(len(tmp)>0):
+            local = tmp[0]
+        else:
+            local={
+                    'unifi':key,
+                    'unifi-description':data['description'] if data.has_key('description') else "LAN",
+                    'pfsense':'',
+                    'enabled':True,
+                    'wan':False
+                }
+            self.mapConfig['ports'].append(local)    
+
+        if(local is not None):
+            if(data.has_key('address')):
+                local['address']=data['address']
+            local['pppoe']=data.has_key('pppoe')
+            local['enabled']=not data.has_key('disable') 
+    def createInterfaces(self,data):
+        if(data['interfaces'] is not None and data['interfaces']['ethernet'] is not None):
+            for key in data['interfaces']['ethernet']:
+                current =  data['interfaces']['ethernet'][key]
+                self.process_or_create_if(key,current)
+                if(current.has_key('vif')):
+                    for vkey in current['vif']:
+                        self.process_or_create_if("{}.{}".format(key,vkey),current['vif'][vkey])
+        self.save_map()        
     def parseResponse(self,data):
         result = json.loads(data)
         print("Got message {}".format(result['_type']))
@@ -454,13 +485,14 @@ class UnifiUSGPro(BaseDevice):
                             self.config[key][data[0]]= data[1]
 
                 elif key in ['system_cfg']:
-                    system_cfg = json.loads(value)
+                    system_cfg = json.loads(value,object_hook= utils._byteify)
                     if system_cfg["system"] is not None and system_cfg["system"].has_key("host-name"):
                         self.config['gateway']['host'] = system_cfg["system"]["host-name"]
                         self.save_config()
                         self.reload_config()
                     with open(self.configfile.replace(".conf",".json"), 'w') as outfile:
                         json.dump(system_cfg, outfile,indent=True)
+                    self.createInterfaces(system_cfg)
 
             wasAdopted = self.config['gateway']['is_adopted']
             self.config['gateway']['is_adopted']=True

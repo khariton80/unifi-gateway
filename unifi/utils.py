@@ -6,33 +6,7 @@ import psutil
 import ctypes
 import struct
 import os
-
-global pfsense_const
-pfsense_const = {
-	"event_address" : "unix:///var/run/check_reload_status",
-	"factory_shipped_username" : "admin",
-	"factory_shipped_password" : "pfsense",
-	"upload_path" : "/root",
-	"dhcpd_chroot_path" : "/var/dhcpd",
-	"unbound_chroot_path" : "/var/unbound",
-	"var_path" : "/var",
-	"varrun_path" : "/var/run",
-	"varetc_path" : "/var/etc",
-	"vardb_path" : "/var/db",
-	"varlog_path" : "/var/log",
-	"etc_path" : "/etc",
-	"tmp_path" : "/tmp",
-	"tmp_path_user_code" : "/tmp/user_code",
-	"conf_path" : "/conf",
-	"conf_default_path" : "/conf.default",
-	"cf_path" : "/cf",
-	"cf_conf_path" : "/cf/conf",
-	"www_path" : "/usr/local/www",
-	"captiveportal_path" : "/usr/local/captiveportal",
-	"captiveportal_element_path" : "/var/db/cpelements"
-}
-
-
+from pfsense_utils import get_single_sysctl
 
 class TLV(object):
     def __init__(self):
@@ -72,37 +46,6 @@ def getuptime():
 
 def escapeshellarg(arg):
     return "\\'".join("'" + p + "'" for p in arg.split("'"))
-
-def get_sysctl(names) :
-    import subprocess
-
-    if (names is None):
-        return dict()
-    if isinstance(names, list) : 
-		name_list = [escapeshellarg(val) for val in names]
-    else: 
-	    name_list = [escapeshellarg(names)]
-	
-    output = subprocess.check_output("/sbin/sysctl -iq "+" ".join(name_list), shell=True)
-    values = dict()
-    for line in output.split("\n"):
-        print(line)
-        line = line.split(":",1)
-        if (len(line) == 2) :
-            print(line[0])
-            print(line[1])
-            values[line[0]] = line[1]
-            
-
-	return values
-
-def get_single_sysctl(name):
-	if (name is None or name ==''): 
-		return ""
-	value = get_sysctl(name)
-	if (value is None or value =='' or name not in value): 
-		return ""
-	return value[name]
 
 
 def mac_string_2_array(mac):
@@ -164,83 +107,3 @@ def _byteify(data, ignore_dicts = False):
         }
     # if it's anything else, return it in its original form
     return data
-
-
-def get_dpinger_status(gwname) :
-    running_processes = running_dpinger_processes()
-    if not running_processes.has_key(gwname) : 
-        return None
-
-    proc = running_processes[gwname]
-    del running_processes
-
-    timeoutcounter = 0
-    while True:
-        if (not os.path.exists(proc['socket'])) :
-            log_error("dpinger: status socket {} not found".format(proc['socket']))
-            return None
-        
-        conn = stream_socket_client(proc['socket'])
-        if (not conn) :
-            log_error('dpinger: cannot connect to status socket %1$s - %2$s (%3$s)'.format(proc['socket'], errstr, errno))
-            return None
-        status = ''
-        while True:
-            data = conn.recv(1024)
-            if not data: break
-            status+=data
-        conn.close()
-        
-        r = {}
-        tmp =status.replace('\n', '').split(' ')
-        r['gwname']  = tmp[0] if len(tmp)>0 else ""
-        r['latency_avg']  = float(tmp[1]) if len(tmp)>1 else 0.0
-        r['latency_stddev']  = float(tmp[2]) if len(tmp)>2 else 0.0
-        r['loss']  = float(tmp[3]) if len(tmp)>3 else 0.0
-
-        ready = r['latency_stddev'] != 0 or r['loss'] != 0
-
-        if (ready): 
-            break
-        else :
-            timeoutcounter+=1
-            if (timeoutcounter > 300):
-                log_error('dpinger: timeout while retrieving status for gateway %s'.format(gwname))
-                return None
-            time.sleep(1000)
-    r['srcip'] = proc['srcip']
-    r['targetip'] = proc['targetip']
-    r['latency_avg'] = r['latency_avg']/1000
-    r['latency_stddev'] = r['latency_stddev']/1000
-
-    return r
-
-def running_dpinger_processes():
-    import glob
-
-    pidfiles = glob.glob("{}/dpinger_*.pid".format(pfsense_const['varrun_path']))
-    result = {}
-    if len(pidfiles) == 0:
-        return result
-    for pidfile in pidfiles:
-        print (os.path.basename(pidfile))    
-        match = re.search("^dpinger_(.+)~([^~]+)~([^~]+)\.pid$", os.path.basename(pidfile))
-        if match :
-            socket_file = re.sub('\.pid$', '.sock',pidfile)
-            result[match.group(1)]={
-                'srcip'    : match.group(2),
-                'targetip' : match.group(3),
-                'pidfile'  : pidfile,
-                'socket'   : socket_file
-            }
-    return result
-
-def log_error(message):
-    import logging
-    logging.error(message)
-
-def stream_socket_client(path):
-    import socket,os
-    s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    s.connect(path)
-    return s
