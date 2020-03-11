@@ -138,11 +138,12 @@ def running_dpinger_processes():
             }
     return result
 def is_ipaddrv4(ipaddr): 
-	if (!is_string($ipaddr) || empty($ipaddr) || ip2long($ipaddr) === FALSE) {
-		return false;
-	}
-	return true;
-}
+    return True
+#     if (!is_string($ipaddr) || empty($ipaddr) || ip2long($ipaddr) === FALSE) {
+#     return false;
+#     }
+#     return true;
+# }
 
  def get_interface_gateway(interface) {
      dynamic = False
@@ -170,6 +171,14 @@ def is_ipaddrv4(ipaddr):
             dynamic = "default"
     return gw,dynamic
 }
+def pfSense_interface_listget():
+    pass
+def get_interface_arr(flush = False):
+    global interface_arr_cache
+    #/* If the cache doesn't exist, build it */
+    if (interface_arr_cache is None  or flush):
+        interface_arr_cache = pfSense_interface_listget()
+    return interface_arr_cache
 
 # def return_gateways_array(disabled = False, localhost = False, inactive = False, integer_index = False) {
 # 	global $config, $g;
