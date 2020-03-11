@@ -24,7 +24,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args" : ["--mode","usgp","run"]
+            "args" : ["--mode","usgp","start"]
         },
         {
             "name": "Python: unifi_console.py [startw]",

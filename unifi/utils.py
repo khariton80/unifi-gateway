@@ -44,8 +44,6 @@ def getuptime():
         tmp = time.time() - int(boottime)
     return 0 if tmp is None else int(tmp)
 
-def escapeshellarg(arg):
-    return "\\'".join("'" + p + "'" for p in arg.split("'"))
 
 
 def mac_string_2_array(mac):

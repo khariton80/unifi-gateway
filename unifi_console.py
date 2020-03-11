@@ -79,6 +79,7 @@ if __name__ == '__main__':
     dname = os.path.dirname(abspath)
     os.chdir(dname)
     initialize_logger('logs')
+    unifi.pfsense_utils.getGatewaysPingerStatus()
     
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, help='key',default='usg' )

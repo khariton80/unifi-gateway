@@ -33,11 +33,12 @@ pfsense_const = {
 }
 
 global _config
-pfsense_const['cf_conf_path']='conf'
+#pfsense_const['cf_conf_path']='conf'
 with open(pfsense_const['cf_conf_path']+'/config.xml') as fd:
         _config = xmltodict.parse(fd.read())["pfsense"]
 
-
+def escapeshellarg(arg):
+    return "\\'".join("'" + p + "'" for p in arg.split("'"))
 def get_sysctl(names) :
     import subprocess
 
@@ -137,6 +138,13 @@ def running_dpinger_processes():
                 'socket'   : socket_file
             }
     return result
+def getGatewaysPingerStatus():
+    result ={}
+    for gateway in _config["gateways"]["gateway_item"]:
+        tmp = get_dpinger_status(gateway['name']) 
+        if tmp is not None :
+            result[_config['interfaces'][gateway['interface']]["if"] ]=tmp
+    return result
 def is_ipaddrv4(ipaddr): 
     return True
 #     if (!is_string($ipaddr) || empty($ipaddr) || ip2long($ipaddr) === FALSE) {
@@ -145,32 +153,32 @@ def is_ipaddrv4(ipaddr):
 #     return true;
 # }
 
- def get_interface_gateway(interface) {
-     dynamic = False
+# def get_interface_gateway(interface) :
+#      dynamic = False
 
-    if (substr(interface, 0, 4) == '_vip') :
-        interface = get_configured_vip_interface(interface)
-        if (substr(interface, 0, 4) == '_vip') :
-            interface = get_configured_vip_interface(interface)
+#     if (substr(interface, 0, 4) == '_vip') :
+#         interface = get_configured_vip_interface(interface)
+#         if (substr(interface, 0, 4) == '_vip') :
+#             interface = get_configured_vip_interface(interface)
 
-    gw = None
-    gwcfg = _config['interfaces'][interface]
-    if (gwcfg['gateway'] is not None and len(_config['gateways']['gateway_item']>0)):
-        for gateway in _config['gateways']['gateway_item']:
-            if ((gateway['name'] == gwcfg['gateway']) and (is_ipaddrv4(gateway['gateway']))):
-                gw = gateway['gateway']
-                break
+#     gw = None
+#     gwcfg = _config['interfaces'][interface]
+#     if (gwcfg['gateway'] is not None and len(_config['gateways']['gateway_item']>0)):
+#         for gateway in _config['gateways']['gateway_item']:
+#             if ((gateway['name'] == gwcfg['gateway']) and (is_ipaddrv4(gateway['gateway']))):
+#                 gw = gateway['gateway']
+#                 break
 
-    # for dynamic interfaces we handle them through the $interface_router file.
-    if ((gw is None or not is_ipaddrv4(gw)) and not is_ipaddrv4(gwcfg['ipaddr'])): 
-        realif = get_real_interface(interface)
-        if (os.path.exists("{}/{}_router".format(pfsense_const['tmp_path'],realif))): 
-            gw = file_get_contents("{}/{}_router".format(pfsense_const['tmp_path'],realif)).strip(" \n")
-            dynamic = True
-        if (os.path.exists("{}/{}_defaultgw".format(pfsense_const['tmp_path'],realif))):
-            dynamic = "default"
-    return gw,dynamic
-}
+#     # for dynamic interfaces we handle them through the $interface_router file.
+#     if ((gw is None or not is_ipaddrv4(gw)) and not is_ipaddrv4(gwcfg['ipaddr'])): 
+#         realif = get_real_interface(interface)
+#         if (os.path.exists("{}/{}_router".format(pfsense_const['tmp_path'],realif))): 
+#             gw = file_get_contents("{}/{}_router".format(pfsense_const['tmp_path'],realif)).strip(" \n")
+#             dynamic = True
+#         if (os.path.exists("{}/{}_defaultgw".format(pfsense_const['tmp_path'],realif))):
+#             dynamic = "default"
+#     return gw,dynamic
+# }
 def pfSense_interface_listget():
     pass
 def get_interface_arr(flush = False):
@@ -582,5 +590,5 @@ def stream_socket_client(path):
     return s
 def file_get_contents(path):
     with open(path, 'r') as content_file:
-    content = content_file.read()
+        content = content_file.read()
     return content

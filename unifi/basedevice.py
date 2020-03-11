@@ -26,7 +26,7 @@ class BaseDevice:
     def __init__(self,device="",type="",configfile=""):
         self.configfile=configfile
         self.mapfile=configfile.replace(".conf",".map")
-        pfsense_const['cf_conf_path']='conf'
+        #pfsense_const['cf_conf_path']='conf'
         self.pfsenseConfig = pfsense_config.PfsenseConfig(pfsense_const['cf_conf_path']+'/config.xml')
 
         if (not os.path.exists(configfile)):

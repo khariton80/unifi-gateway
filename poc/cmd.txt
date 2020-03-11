@@ -7,6 +7,10 @@ pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-psutil-5.7.0.t
 
 route add 224.0.0.0/4 -interface em1
 
+
+route add 224.0.0.0/4 -interface nfe0
+route add 233.89.188.1 -interface nfe0
+
 commands
 "adopt", "adv-adopt", "replace", "restart", "upgrade", "upgrade-external", "upgrade-all", "set-rollupgrade", "unset-rollupgrade", "locate", 
             "set-locate", "unset-locate", "show-lcm-tracker", "hide-lcm-tracker", "build-ssh-session", "get-sdp-offer", "ssh-sdp-answer", "close-ssh-session", "clone-config", "migrate", 
