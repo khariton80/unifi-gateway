@@ -417,7 +417,7 @@ class UnifiUSGPro(BaseDevice):
         data["dpi-stats"]= [
     {
       "initialized": "94107792805",
-      "mac": "80:2a:a8:f0:ef:78",
+      "mac": "00:26:4a:08:d6:0c",
       "stats": [
         {
           "app": 5,
@@ -776,7 +776,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 3,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 82297468,
               "rx_packets": 57565,
               "tx_bytes": 1710174,
@@ -794,7 +794,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 19,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 1593846895,
               "rx_packets": 1738901,
               "tx_bytes": 348738675,
@@ -828,7 +828,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 3,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 531190,
               "rx_packets": 2465,
               "tx_bytes": 676859,
@@ -846,7 +846,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 3441437,
               "rx_packets": 3033,
               "tx_bytes": 203173,
@@ -864,7 +864,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -882,7 +882,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -900,7 +900,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 24417806554,
               "rx_packets": 18415873,
               "tx_bytes": 2817966897,
@@ -918,7 +918,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 20,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 28812050,
               "rx_packets": 208945,
               "tx_bytes": 160819147,
@@ -936,7 +936,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 255,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 182029551,
               "rx_packets": 1796815,
               "tx_bytes": 435732626,
@@ -962,7 +962,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 10,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 1522,
               "rx_packets": 20,
               "tx_bytes": 882,
@@ -980,7 +980,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 982710,
               "rx_packets": 10919,
               "tx_bytes": 1010970,
@@ -998,7 +998,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 7819852,
               "rx_packets": 20378,
               "tx_bytes": 1293104,
@@ -1016,7 +1016,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -1082,7 +1082,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 780358,
               "rx_packets": 3520,
               "tx_bytes": 545757,
@@ -1100,7 +1100,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 180691586,
               "rx_packets": 132204,
               "tx_bytes": 5970383,
@@ -1126,7 +1126,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 10,
           "clients": [
             {
-              "mac": "80:2a:a8:f0:ef:78",
+              "mac": "f4:1b:a1:d8:55:33",
               "rx_bytes": 5521547718,
               "rx_packets": 73080390,
               "tx_bytes": 179999309100,
@@ -1259,9 +1259,9 @@ class UnifiUSGPro(BaseDevice):
         }
       ],
       "initialized": "88121276686",
-      "is_ugw": true
+      "is_ugw": True
     }
-  ],
+  ]
   
 
         if_stats = psutil.net_if_stats()

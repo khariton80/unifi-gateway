@@ -4,7 +4,9 @@ python2.7 -m pip install --upgrade pip
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-pycryptodome-3.9.0.txz
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-enum34-1.1.6.txz
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-psutil-5.7.0.txz
-
+pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/protobuf-3.11.4,1.txz
+pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/mysql57-client-5.7.29_1.txz
+pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/ntopng-3.8.d20191111,1.txz
 route add 224.0.0.0/4 -interface em1
 
 
