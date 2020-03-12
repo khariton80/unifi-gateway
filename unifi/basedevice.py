@@ -118,11 +118,17 @@ class BaseDevice:
         url = self.getInformUrl()
 
         logging.debug('Send inform request to {} : {}'.format(url, data))
-        request = urllib2.Request(url, cryptoutils.encode_inform(self.getKey(),data,usecbc,self.mac), headers)
-        response = urllib2.urlopen(request)
-        result = cryptoutils.decode_inform(self.getKey(), response.read())
-        logging.debug(result)
-        return result
+        try:
+            request = urllib2.Request(url, cryptoutils.encode_inform(self.getKey(),data,usecbc,self.mac), headers)
+            response = urllib2.urlopen(request)
+            result = cryptoutils.decode_inform(self.getKey(), response.read())
+            #logging.debug(result)
+            return result
+        except Exception as ex:
+            logging.warn(ex)
+            self.lastError = ex.message
+            return None
+
 
     def send_broadcast(self):
         logging.debug('Send broadcast message #{} from gateway {}'.format(self.broadcast_index, self.ip))

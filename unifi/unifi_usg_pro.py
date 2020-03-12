@@ -477,6 +477,9 @@ class UnifiUSGPro(BaseDevice):
                         self.process_or_create_if("{}.{}".format(key,vkey),current['vif'][vkey])
         self.save_map()        
     def parseResponse(self,data):
+        if(data is None):
+            return
+        
         result = json.loads(data)
         print("Got message {}".format(result['_type']))
         if result['_type'] == 'setdefault':
