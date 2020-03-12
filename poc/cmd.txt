@@ -7,6 +7,7 @@ pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/py27-psutil-5.7.0.t
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/protobuf-3.11.4,1.txz
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/mysql57-client-5.7.29_1.txz
 pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/ntopng-3.8.d20191111,1.txz
+pkg add https://pkg.freebsd.org/freebsd:11:x86:64/latest/All/ndpi-3.0.d20191021,1.txz
 route add 224.0.0.0/4 -interface em1
 
 
