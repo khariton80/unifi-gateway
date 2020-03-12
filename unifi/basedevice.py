@@ -276,18 +276,23 @@ class BaseDevice:
         } 
     
     def _send_stun(self):
-        
-      if self.config.has_key('mgmt_cfg') and self.config['mgmt_cfg'].has_key('stun_url'):
-        client = stun.StunClient()
-        client.send_request(self.config['mgmt_cfg']['stun_url'])
-        result = client.receive_response()
-        client.close()
+        try:
+            if self.config.has_key('mgmt_cfg') and self.config['mgmt_cfg'].has_key('stun_url'):
+                client = stun.StunClient()
+                client.send_request(self.config['mgmt_cfg']['stun_url'])
+                result = client.receive_response()
+                client.close()
 
-      for item in result: 
-          if 'MAPPED-ADDRESS' == item['name']:
-              self.config['gateway']['lan_ip']=item['ip']
-              self.config['gateway']['lan_port']=item['port']
-              self.save_config()
+                for item in result: 
+                    if 'MAPPED-ADDRESS' == item['name']:
+                        self.config['gateway']['lan_ip']=item['ip']
+                        self.config['gateway']['lan_port']=item['port']
+                        self.save_config()
+        except Exception as ex:
+            logging.warn(ex)
+            self.lastError = ex.message
+            return None  
+     
 
     def get_system_stats(self):
         mem = psutil.virtual_memory()

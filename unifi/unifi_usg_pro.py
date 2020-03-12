@@ -406,7 +406,7 @@ class UnifiUSGPro(BaseDevice):
         data["has_ssh_disable"]=True
         data["has_vti"]=True
         data["fw_caps"]=3
-        data["usg_caps"]=9
+        data["usg_caps"]=0xFFFF
         data["has_default_route_distance"]=True
         data["has_dnsmasq_hostfile_update"]=True
         data["radius_caps"]=1
