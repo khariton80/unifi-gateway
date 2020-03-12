@@ -414,7 +414,854 @@ class UnifiUSGPro(BaseDevice):
         data["has_fan"]=True
         data["general_temperature"]=30
         data["fan_level"]=20
-        
+        data["dpi-stats"]= [
+    {
+      "initialized": "94107792805",
+      "mac": "80:2a:a8:f0:ef:78",
+      "stats": [
+        {
+          "app": 5,
+          "cat": 3,
+          "rx_bytes": 82297468,
+          "rx_packets": 57565,
+          "tx_bytes": 1710174,
+          "tx_packets": 25324
+        },
+        {
+          "app": 94,
+          "cat": 19,
+          "rx_bytes": 1593846895,
+          "rx_packets": 1738901,
+          "tx_bytes": 348738675,
+          "tx_packets": 2004045
+        },
+        {
+          "app": 133,
+          "cat": 3,
+          "rx_bytes": 531190,
+          "rx_packets": 2465,
+          "tx_bytes": 676859,
+          "tx_packets": 2760
+        },
+        {
+          "app": 222,
+          "cat": 13,
+          "rx_bytes": 3441437,
+          "rx_packets": 3033,
+          "tx_bytes": 203173,
+          "tx_packets": 1468
+        },
+        {
+          "app": 23,
+          "cat": 0,
+          "rx_bytes": 0,
+          "rx_packets": 0,
+          "tx_bytes": 145,
+          "tx_packets": 2
+        },
+        {
+          "app": 7,
+          "cat": 0,
+          "rx_bytes": 0,
+          "rx_packets": 0,
+          "tx_bytes": 145,
+          "tx_packets": 2
+        },
+        {
+          "app": 7,
+          "cat": 13,
+          "rx_bytes": 24417806554,
+          "rx_packets": 18415873,
+          "tx_bytes": 2817966897,
+          "tx_packets": 9910192
+        },
+        {
+          "app": 185,
+          "cat": 20,
+          "rx_bytes": 28812050,
+          "rx_packets": 208945,
+          "tx_bytes": 160819147,
+          "tx_packets": 1228992
+        },
+        {
+          "app": 65535,
+          "cat": 255,
+          "rx_bytes": 182029551,
+          "rx_packets": 1796815,
+          "tx_bytes": 435732626,
+          "tx_packets": 1933469
+        },
+        {
+          "app": 4,
+          "cat": 10,
+          "rx_bytes": 1522,
+          "rx_packets": 20,
+          "tx_bytes": 882,
+          "tx_packets": 12
+        },
+        {
+          "app": 106,
+          "cat": 18,
+          "rx_bytes": 982710,
+          "rx_packets": 10919,
+          "tx_bytes": 1010970,
+          "tx_packets": 11233
+        },
+        {
+          "app": 30,
+          "cat": 18,
+          "rx_bytes": 7819852,
+          "rx_packets": 20378,
+          "tx_bytes": 1293104,
+          "tx_packets": 18686
+        },
+        {
+          "app": 1,
+          "cat": 0,
+          "rx_bytes": 0,
+          "rx_packets": 0,
+          "tx_bytes": 145,
+          "tx_packets": 2
+        },
+        {
+          "app": 63,
+          "cat": 18,
+          "rx_bytes": 780358,
+          "rx_packets": 3520,
+          "tx_bytes": 545757,
+          "tx_packets": 6545
+        },
+        {
+          "app": 8,
+          "cat": 13,
+          "rx_bytes": 180691586,
+          "rx_packets": 132204,
+          "tx_bytes": 5970383,
+          "tx_packets": 74482
+        },
+        {
+          "app": 21,
+          "cat": 10,
+          "rx_bytes": 5521547718,
+          "rx_packets": 73080390,
+          "tx_bytes": 179999309100,
+          "tx_packets": 130627577
+        }
+      ]
+    }
+  ]
+        data["dpi-stats-table"]= [
+    {
+      "_id": "5875d9f9e4b02fd3851c55e4",
+      "_subid": "5875d9f5e4b02fd3851c55d8",
+      "by_app": [
+        {
+          "app": 5,
+          "cat": 3,
+          "rx_bytes": 2652,
+          "rx_packets": 4,
+          "tx_bytes": 1797,
+          "tx_packets": 7
+        },
+        {
+          "app": 94,
+          "cat": 19,
+          "rx_bytes": 9010458,
+          "rx_packets": 6977,
+          "tx_bytes": 518163,
+          "tx_packets": 3533
+        },
+        {
+          "app": 209,
+          "cat": 13,
+          "rx_bytes": 39303,
+          "rx_packets": 90,
+          "tx_bytes": 17744,
+          "tx_packets": 78
+        },
+        {
+          "app": 10,
+          "cat": 4,
+          "rx_bytes": 15273,
+          "rx_packets": 15,
+          "tx_bytes": 2728,
+          "tx_packets": 23
+        },
+        {
+          "app": 7,
+          "cat": 13,
+          "rx_bytes": 369394,
+          "rx_packets": 293,
+          "tx_bytes": 24904,
+          "tx_packets": 244
+        },
+        {
+          "app": 185,
+          "cat": 20,
+          "rx_bytes": 62070,
+          "rx_packets": 130,
+          "tx_bytes": 27219,
+          "tx_packets": 169
+        },
+        {
+          "app": 65535,
+          "cat": 255,
+          "rx_bytes": 976848,
+          "rx_packets": 1027,
+          "tx_bytes": 77317,
+          "tx_packets": 695
+        },
+        {
+          "app": 12,
+          "cat": 13,
+          "rx_bytes": 92924774,
+          "rx_packets": 70496,
+          "tx_bytes": 17360339,
+          "tx_packets": 69509
+        },
+        {
+          "app": 150,
+          "cat": 3,
+          "rx_bytes": 54609,
+          "rx_packets": 71,
+          "tx_bytes": 19749,
+          "tx_packets": 85
+        },
+        {
+          "app": 95,
+          "cat": 5,
+          "rx_bytes": 9835,
+          "rx_packets": 41,
+          "tx_bytes": 3956,
+          "tx_packets": 41
+        },
+        {
+          "app": 168,
+          "cat": 20,
+          "rx_bytes": 100049,
+          "rx_packets": 198,
+          "tx_bytes": 60396,
+          "tx_packets": 275
+        },
+        {
+          "app": 3,
+          "cat": 10,
+          "rx_bytes": 12538,
+          "rx_packets": 36,
+          "tx_bytes": 10607,
+          "tx_packets": 75
+        },
+        {
+          "app": 84,
+          "cat": 3,
+          "rx_bytes": 45115,
+          "rx_packets": 135,
+          "tx_bytes": 91866,
+          "tx_packets": 158
+        },
+        {
+          "app": 84,
+          "cat": 13,
+          "rx_bytes": 42563,
+          "rx_packets": 102,
+          "tx_bytes": 32676,
+          "tx_packets": 113
+        },
+        {
+          "app": 186,
+          "cat": 20,
+          "rx_bytes": 44618,
+          "rx_packets": 68,
+          "tx_bytes": 8826,
+          "tx_packets": 86
+        }
+      ],
+      "by_cat": [
+        {
+          "apps": [
+            5,
+            150,
+            84
+          ],
+          "cat": 3,
+          "rx_bytes": 102376,
+          "rx_packets": 210,
+          "tx_bytes": 113412,
+          "tx_packets": 250
+        },
+        {
+          "apps": [
+            10
+          ],
+          "cat": 4,
+          "rx_bytes": 15273,
+          "rx_packets": 15,
+          "tx_bytes": 2728,
+          "tx_packets": 23
+        },
+        {
+          "apps": [
+            95
+          ],
+          "cat": 5,
+          "rx_bytes": 9835,
+          "rx_packets": 41,
+          "tx_bytes": 3956,
+          "tx_packets": 41
+        },
+        {
+          "apps": [
+            3
+          ],
+          "cat": 10,
+          "rx_bytes": 12538,
+          "rx_packets": 36,
+          "tx_bytes": 10607,
+          "tx_packets": 75
+        },
+        {
+          "apps": [
+            209,
+            7,
+            12,
+            84
+          ],
+          "cat": 13,
+          "rx_bytes": 93376034,
+          "rx_packets": 70981,
+          "tx_bytes": 17435663,
+          "tx_packets": 69944
+        },
+        {
+          "apps": [
+            94
+          ],
+          "cat": 19,
+          "rx_bytes": 9010458,
+          "rx_packets": 6977,
+          "tx_bytes": 518163,
+          "tx_packets": 3533
+        },
+        {
+          "apps": [
+            185,
+            168,
+            186
+          ],
+          "cat": 20,
+          "rx_bytes": 206737,
+          "rx_packets": 396,
+          "tx_bytes": 96441,
+          "tx_packets": 530
+        },
+        {
+          "apps": [
+            65535
+          ],
+          "cat": 255,
+          "rx_bytes": 976848,
+          "rx_packets": 1027,
+          "tx_bytes": 77317,
+          "tx_packets": 695
+        }
+      ],
+      "initialized": "88122111307"
+    },
+    {
+      "_id": "5875d9f9e4b02fd3851c55e4",
+      "_subid": "5875e1f8e4b0ba28be0f8335",
+      "by_app": [
+        {
+          "app": 5,
+          "cat": 3,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 82297468,
+              "rx_packets": 57565,
+              "tx_bytes": 1710174,
+              "tx_packets": 25324
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 82300120,
+          "rx_packets": 57569,
+          "tx_bytes": 1711971,
+          "tx_packets": 25331
+        },
+        {
+          "app": 94,
+          "cat": 19,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 1593846895,
+              "rx_packets": 1738901,
+              "tx_bytes": 348738675,
+              "tx_packets": 2004045
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 1622602418,
+          "rx_packets": 1760201,
+          "tx_bytes": 349693010,
+          "tx_packets": 2012708
+        },
+        {
+          "app": 209,
+          "cat": 13,
+          "rx_bytes": 43670,
+          "rx_packets": 100,
+          "tx_bytes": 20728,
+          "tx_packets": 91
+        },
+        {
+          "app": 10,
+          "cat": 4,
+          "rx_bytes": 15273,
+          "rx_packets": 15,
+          "tx_bytes": 2728,
+          "tx_packets": 23
+        },
+        {
+          "app": 133,
+          "cat": 3,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 531190,
+              "rx_packets": 2465,
+              "tx_bytes": 676859,
+              "tx_packets": 2760
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 531190,
+          "rx_packets": 2465,
+          "tx_bytes": 676859,
+          "tx_packets": 2760
+        },
+        {
+          "app": 222,
+          "cat": 13,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 3441437,
+              "rx_packets": 3033,
+              "tx_bytes": 203173,
+              "tx_packets": 1468
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 3441437,
+          "rx_packets": 3033,
+          "tx_bytes": 203173,
+          "tx_packets": 1468
+        },
+        {
+          "app": 23,
+          "cat": 0,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 0,
+              "rx_packets": 0,
+              "tx_bytes": 145,
+              "tx_packets": 2
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 0,
+          "rx_packets": 0,
+          "tx_bytes": 145,
+          "tx_packets": 2
+        },
+        {
+          "app": 7,
+          "cat": 0,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 0,
+              "rx_packets": 0,
+              "tx_bytes": 145,
+              "tx_packets": 2
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 0,
+          "rx_packets": 0,
+          "tx_bytes": 145,
+          "tx_packets": 2
+        },
+        {
+          "app": 7,
+          "cat": 13,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 24417806554,
+              "rx_packets": 18415873,
+              "tx_bytes": 2817966897,
+              "tx_packets": 9910192
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 24418175948,
+          "rx_packets": 18416166,
+          "tx_bytes": 2817991801,
+          "tx_packets": 9910436
+        },
+        {
+          "app": 185,
+          "cat": 20,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 28812050,
+              "rx_packets": 208945,
+              "tx_bytes": 160819147,
+              "tx_packets": 1228992
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 28874120,
+          "rx_packets": 209075,
+          "tx_bytes": 160846366,
+          "tx_packets": 1229161
+        },
+        {
+          "app": 65535,
+          "cat": 255,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 182029551,
+              "rx_packets": 1796815,
+              "tx_bytes": 435732626,
+              "tx_packets": 1933469
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 183022079,
+          "rx_packets": 1798016,
+          "tx_bytes": 435832672,
+          "tx_packets": 1934359
+        },
+        {
+          "app": 12,
+          "cat": 13,
+          "rx_bytes": 92925290,
+          "rx_packets": 70498,
+          "tx_bytes": 17360839,
+          "tx_packets": 69512
+        },
+        {
+          "app": 4,
+          "cat": 10,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 1522,
+              "rx_packets": 20,
+              "tx_bytes": 882,
+              "tx_packets": 12
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 1522,
+          "rx_packets": 20,
+          "tx_bytes": 882,
+          "tx_packets": 12
+        },
+        {
+          "app": 106,
+          "cat": 18,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 982710,
+              "rx_packets": 10919,
+              "tx_bytes": 1010970,
+              "tx_packets": 11233
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 982710,
+          "rx_packets": 10919,
+          "tx_bytes": 1010970,
+          "tx_packets": 11233
+        },
+        {
+          "app": 30,
+          "cat": 18,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 7819852,
+              "rx_packets": 20378,
+              "tx_bytes": 1293104,
+              "tx_packets": 18686
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 7819852,
+          "rx_packets": 20378,
+          "tx_bytes": 1293104,
+          "tx_packets": 18686
+        },
+        {
+          "app": 1,
+          "cat": 0,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 0,
+              "rx_packets": 0,
+              "tx_bytes": 145,
+              "tx_packets": 2
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 0,
+          "rx_packets": 0,
+          "tx_bytes": 145,
+          "tx_packets": 2
+        },
+        {
+          "app": 150,
+          "cat": 3,
+          "rx_bytes": 54609,
+          "rx_packets": 71,
+          "tx_bytes": 19749,
+          "tx_packets": 85
+        },
+        {
+          "app": 95,
+          "cat": 5,
+          "rx_bytes": 9835,
+          "rx_packets": 41,
+          "tx_bytes": 3956,
+          "tx_packets": 41
+        },
+        {
+          "app": 168,
+          "cat": 20,
+          "rx_bytes": 100583,
+          "rx_packets": 204,
+          "tx_bytes": 62503,
+          "tx_packets": 296
+        },
+        {
+          "app": 3,
+          "cat": 10,
+          "rx_bytes": 12916,
+          "rx_packets": 41,
+          "tx_bytes": 11501,
+          "tx_packets": 86
+        },
+        {
+          "app": 84,
+          "cat": 13,
+          "rx_bytes": 42563,
+          "rx_packets": 102,
+          "tx_bytes": 32676,
+          "tx_packets": 113
+        },
+        {
+          "app": 84,
+          "cat": 3,
+          "rx_bytes": 62456,
+          "rx_packets": 166,
+          "tx_bytes": 101105,
+          "tx_packets": 183
+        },
+        {
+          "app": 63,
+          "cat": 18,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 780358,
+              "rx_packets": 3520,
+              "tx_bytes": 545757,
+              "tx_packets": 6545
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 780358,
+          "rx_packets": 3520,
+          "tx_bytes": 545757,
+          "tx_packets": 6545
+        },
+        {
+          "app": 8,
+          "cat": 13,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 180691586,
+              "rx_packets": 132204,
+              "tx_bytes": 5970383,
+              "tx_packets": 74482
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 180691586,
+          "rx_packets": 132204,
+          "tx_bytes": 5970383,
+          "tx_packets": 74482
+        },
+        {
+          "app": 186,
+          "cat": 20,
+          "rx_bytes": 44618,
+          "rx_packets": 68,
+          "tx_bytes": 8826,
+          "tx_packets": 86
+        },
+        {
+          "app": 21,
+          "cat": 10,
+          "clients": [
+            {
+              "mac": "80:2a:a8:f0:ef:78",
+              "rx_bytes": 5521547718,
+              "rx_packets": 73080390,
+              "tx_bytes": 179999309100,
+              "tx_packets": 130627577
+            }
+          ],
+          "known_clients": 1,
+          "rx_bytes": 5521547718,
+          "rx_packets": 73080390,
+          "tx_bytes": 179999309100,
+          "tx_packets": 130627577
+        }
+      ],
+      "by_cat": [
+        {
+          "apps": [
+            23,
+            7,
+            1
+          ],
+          "cat": 0,
+          "rx_bytes": 0,
+          "rx_packets": 0,
+          "tx_bytes": 435,
+          "tx_packets": 6
+        },
+        {
+          "apps": [
+            5,
+            133,
+            150,
+            84
+          ],
+          "cat": 3,
+          "rx_bytes": 82948375,
+          "rx_packets": 60271,
+          "tx_bytes": 2509684,
+          "tx_packets": 28359
+        },
+        {
+          "apps": [
+            10
+          ],
+          "cat": 4,
+          "rx_bytes": 15273,
+          "rx_packets": 15,
+          "tx_bytes": 2728,
+          "tx_packets": 23
+        },
+        {
+          "apps": [
+            95
+          ],
+          "cat": 5,
+          "rx_bytes": 9835,
+          "rx_packets": 41,
+          "tx_bytes": 3956,
+          "tx_packets": 41
+        },
+        {
+          "apps": [
+            4,
+            3,
+            21
+          ],
+          "cat": 10,
+          "rx_bytes": 5521562156,
+          "rx_packets": 73080451,
+          "tx_bytes": 179999321483,
+          "tx_packets": 130627675
+        },
+        {
+          "apps": [
+            209,
+            222,
+            7,
+            12,
+            84,
+            8
+          ],
+          "cat": 13,
+          "rx_bytes": 24695320494,
+          "rx_packets": 18622103,
+          "tx_bytes": 2841579600,
+          "tx_packets": 10056102
+        },
+        {
+          "apps": [
+            106,
+            30,
+            63
+          ],
+          "cat": 18,
+          "rx_bytes": 9582920,
+          "rx_packets": 34817,
+          "tx_bytes": 2849831,
+          "tx_packets": 36464
+        },
+        {
+          "apps": [
+            94
+          ],
+          "cat": 19,
+          "rx_bytes": 1622602418,
+          "rx_packets": 1760201,
+          "tx_bytes": 349693010,
+          "tx_packets": 2012708
+        },
+        {
+          "apps": [
+            185,
+            168,
+            186
+          ],
+          "cat": 20,
+          "rx_bytes": 29019321,
+          "rx_packets": 209347,
+          "tx_bytes": 160917695,
+          "tx_packets": 1229543
+        },
+        {
+          "apps": [
+            65535
+          ],
+          "cat": 255,
+          "rx_bytes": 183022079,
+          "rx_packets": 1798016,
+          "tx_bytes": 435832672,
+          "tx_packets": 1934359
+        }
+      ],
+      "initialized": "88121276686",
+      "is_ugw": true
+    }
+  ],
   
 
         if_stats = psutil.net_if_stats()
