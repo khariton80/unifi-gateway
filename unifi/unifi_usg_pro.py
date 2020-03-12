@@ -111,7 +111,7 @@ class UnifiUSGPro(BaseDevice):
         data["config_network_wan"]= {
                 "type": "dhcp"
             }
-        data["config_network_w2"]={
+        data["config_network_wan2"]= {
             "dns1": "10.1.1.1",
             "gateway": "10.1.1.1",
             "ip": "10.1.1.10",
@@ -137,23 +137,18 @@ class UnifiUSGPro(BaseDevice):
                 "drops": counter.dropout+counter.dropin,
                 "enable": True,
                 "full_duplex": stat.duplex==2,
-                "gateways": [
-                    "20.1.2.3"
-                ],
+                "gateways": [ dpinger['gateway'] if dpinger is not None else ""  ],
                 "ip": ipv4.address if ipv4 is not None else "0.0.0.0",
                 "latency": dpinger['latency_stddev'] if dpinger is not None else 0,
                 "mac": mac.address,
                 "name": ename,
-                "nameservers": [
-                    "20.1.2.19",
-                    "20.1.3.19"
-                ],
+                "nameservers": pfsense_utils.get_dns_servers() if  interface["wan"] else [],
                 "netmask": ipv4.netmask if ipv4 is not None else "",
                 "num_port": 0,
                 "rx_bytes": counter.bytes_recv,
                 "rx_dropped": counter.dropin,
                 "rx_errors": counter.errin,
-                "rx_multicast": 65629,
+                "rx_multicast": 0,
                 "rx_packets": counter.packets_recv,
                 "speed": stat.speed,
                 "speedtest_lastrun": 1583600088374,
@@ -203,25 +198,19 @@ class UnifiUSGPro(BaseDevice):
         data = {
                 "autoneg": "True",
                 "duplex": "full" if stat.duplex==2 else "half",
-                "gateways": [
-                    "20.1.2.1"
-                ],
                 "l1up": "True",
                 "mac": mac.address,
                 "mtu": stat.mtu, 
                 "name": ename,
-                "nameservers": [
-                    "20.1.2.191",
-                    "20.1.3.191"
-                ],
+                "nameservers": pfsense_utils.get_dns_servers() if  interface["wan"] else [],
                 "speed": stat.speed,
                 "stats": {
-                    "multicast": "65627",
+                    "multicast": "0",
                     "rx_bps": "0",
                     "rx_bytes": counter.bytes_recv,
                     "rx_dropped": counter.dropin,
                     "rx_errors": counter.errin,
-                    "rx_multicast": 65629,
+                    "rx_multicast": 0,
                     "rx_packets": counter.packets_recv,
                     "tx_bps": "0",
                     "tx_bytes": counter.bytes_sent,
@@ -239,9 +228,7 @@ class UnifiUSGPro(BaseDevice):
         if interface["wan"] or  ( interface.has_key('address') and 'dhcp' in interface['address']):
             data["address"]= ipv4.address+"/32"
             data["addresses"]= [ipv4.address+"/32"]
-            data["gateways"]=[
-                    "20.1.1.1"
-                ]
+            data["gateways"]=[ dpinger['gateway'] if dpinger is not None else ""  ]
         
         return data
     def append_network_table(self,data,if_stats,io_counters,if_addrs,dpingerStatuses):
@@ -419,9 +406,15 @@ class UnifiUSGPro(BaseDevice):
         data["has_ssh_disable"]=True
         data["has_vti"]=True
         data["fw_caps"]=3
+        data["usg_caps"]=9
         data["has_default_route_distance"]=True
         data["has_dnsmasq_hostfile_update"]=True
         data["radius_caps"]=1
+        data["has_temperature"]=True
+        data["has_fan"]=True
+        data["general_temperature"]=30
+        data["fan_level"]=20
+        
   
 
         if_stats = psutil.net_if_stats()
@@ -434,17 +427,7 @@ class UnifiUSGPro(BaseDevice):
         self.append_port_table(data,if_stats,io_counters,if_addrs)
         self.append_if_table(data,if_stats,io_counters,if_addrs,dpingerStatuses)
         self.append_network_table(data,if_stats,io_counters,if_addrs,dpingerStatuses)
-        data["config_network_wan"]= {
-                "type": "dhcp"
-            }
-        data["config_network_wan2"]= {
-            "dns1": "10.1.1.1",
-            "gateway": "10.1.1.1",
-            "ip": "10.1.1.10",
-            "netmask": "255.255.255.0",
-            "type": "static"
-        }
-        
+       
                
         
     def process_or_create_if(self,key,data):
@@ -491,11 +474,12 @@ class UnifiUSGPro(BaseDevice):
             self._save_config()
             self.config.read(self.configfile)
         if result['_type'] == 'upgrade':
-            print ("upgrade version={} md5sum={} url={}".format(result['version'],result['md5sum'],result['url']))
             self.config['gateway']['firmware']= result['version']
             self.firmware = result['version']
             self.save_config()
             self.reload_config()
+        if result['_type'] == 'noop' and result['interval']: 
+            self.interval = 1000*int(result['interval'])
         if result['_type'] == 'setparam':
             for key, value in result.items():
                 if key not in ['_type', 'server_time_in_utc', 'mgmt_cfg','system_cfg']:

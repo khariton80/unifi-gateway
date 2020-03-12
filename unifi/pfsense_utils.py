@@ -52,11 +52,8 @@ def get_sysctl(names) :
     output = subprocess.check_output("/sbin/sysctl -iq "+" ".join(name_list), shell=True)
     values = dict()
     for line in output.split("\n"):
-        print(line)
         line = line.split(":",1)
         if (len(line) == 2) :
-            print(line[0])
-            print(line[1])
             values[line[0]] = line[1]
             
 
@@ -114,8 +111,8 @@ def get_dpinger_status(gwname) :
             time.sleep(1000)
     r['srcip'] = proc['srcip']
     r['targetip'] = proc['targetip']
-    r['latency_avg'] = r['latency_avg']/1000
-    r['latency_stddev'] = r['latency_stddev']/1000
+    r['latency_avg'] = r['latency_avg']/1000+1
+    r['latency_stddev'] = r['latency_stddev']/1000+1
 
     return r
 
@@ -127,7 +124,6 @@ def running_dpinger_processes():
     if len(pidfiles) == 0:
         return result
     for pidfile in pidfiles:
-        print (os.path.basename(pidfile))    
         match = re.search("^dpinger_(.+)~([^~]+)~([^~]+)\.pid$", os.path.basename(pidfile))
         if match :
             socket_file = re.sub('\.pid$', '.sock',pidfile)
@@ -138,12 +134,30 @@ def running_dpinger_processes():
                 'socket'   : socket_file
             }
     return result
+def get_dns_servers():
+    dns_servers = []
+    if (os.path.exists("/etc/resolv.conf")):
+        dns_s = file_get_contents("/etc/resolv.conf").splitlines()
+    if len (dns_s)>0:
+        for dns in dns_s:
+            matches = re.search("nameserver (.*)",dns)
+            if (matches):
+                dns_servers.append(matches.group(1))
+    return dns_servers
+
+
+
 def getGatewaysPingerStatus():
     result ={}
     for gateway in _config["gateways"]["gateway_item"]:
-        tmp = get_dpinger_status(gateway['name']) 
+        tmp = get_dpinger_status(gateway['name'])
+        ifname = _config['interfaces'][gateway['interface']]["if"] 
         if tmp is not None :
-            result[_config['interfaces'][gateway['interface']]["if"] ]=tmp
+            if (os.path.exists("{}/{}_router".format(pfsense_const['tmp_path'],ifname))): 
+                gw = file_get_contents("{}/{}_router".format(pfsense_const['tmp_path'],ifname)).strip(" \n")
+                tmp['gateway']=gw
+
+            result[ifname]=tmp
     return result
 def is_ipaddrv4(ipaddr): 
     return True
@@ -579,6 +593,15 @@ def get_interface_arr(flush = False):
 # 	}
 # 	return($gateways_arr);
 # }
+def get_temp() :
+    temp_out = get_single_sysctl("dev.cpu.0.temperature")
+    if (temp_out == "") :
+        temp_out = get_single_sysctl("hw.acpi.thermal.tz0.temperature")
+    temp_out = temp_out.strip('C').strip(' ')
+    if (temp_out[0] == '-'):
+        return '0'
+    return temp_out
+
 def log_error(message):
     import logging
     logging.error(message)

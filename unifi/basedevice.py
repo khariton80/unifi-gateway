@@ -4,7 +4,7 @@ import ConfigParser
 import logging
 from utils import UnifiTLV
 from utils import mac_string_2_array, ip_string_2_array,getuptime,get_ipv4addr,get_macaddr,_byteify
-from pfsense_utils import pfsense_const
+from pfsense_utils import pfsense_const, get_temp
 from struct import pack, unpack
 import socket 
 import binascii
@@ -294,7 +294,13 @@ class BaseDevice:
         return {
                  "cpu": psutil.cpu_percent(),
                  "mem": mem.percent,
-                 "uptime": getuptime()
+                 "uptime": getuptime(),
+                 "temps": {
+                        "Board (CPU)": get_temp(),
+                        "Board (PHY)": get_temp(),
+                        "CPU": get_temp(),
+                        "PHY": get_temp()
+                        }
             }
     def reload_config(self):
         with open(self.configfile) as config_file:
