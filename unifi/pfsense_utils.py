@@ -7,6 +7,7 @@ import ctypes
 import struct
 import os
 import xmltodict
+import urllib2
 global pfsense_const
 pfsense_const = {
 	"event_address" : "unix:///var/run/check_reload_status",
@@ -60,7 +61,7 @@ def get_sysctl(names) :
 	return values
 
 def get_single_sysctl(name):
-	if (name is None or name ==''): 
+	if (name is None or name =='' or not psutil.FREEBSD): 
 		return ""
 	value = get_sysctl(name)
 	if (value is None or value =='' or name not in value): 
@@ -136,9 +137,10 @@ def running_dpinger_processes():
     return result
 def get_dns_servers():
     dns_servers = []
+    dns_s=None
     if (os.path.exists("/etc/resolv.conf")):
         dns_s = file_get_contents("/etc/resolv.conf").splitlines()
-    if len (dns_s)>0:
+    if dns_s and len (dns_s)>0:
         for dns in dns_s:
             matches = re.search("nameserver (.*)",dns)
             if (matches):
@@ -598,13 +600,33 @@ def get_temp() :
     if (temp_out == "") :
         temp_out = get_single_sysctl("hw.acpi.thermal.tz0.temperature")
     temp_out = temp_out.strip('C').strip(' ')
-    if (temp_out[0] == '-'):
+    if (temp_out=="" or temp_out[0] == '-'):
         return '0'
     return temp_out
 
 def log_error(message):
     import logging
     logging.error(message)
+
+def get_ntopng_stats(login, password,host):
+    import ssl
+    url = "{}:3000/lua/unifi_get_statistics.lua".format(host)
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    try:
+        headers = {
+            'Cookie': 'user={}; password={}'.format(login,password),
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'
+        }
+        request = urllib2.Request(url, None, headers)
+        response = urllib2.urlopen(request, context=ctx)
+        result = response.read()
+        return result
+    except Exception as ex:
+        log_error(ex)
+        return None
+
 
 def stream_socket_client(path):
     import socket,os

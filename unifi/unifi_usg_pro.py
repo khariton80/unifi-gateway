@@ -6,6 +6,7 @@ import re
 import psutil
 import utils
 import pfsense_utils
+import ip_calculator
 class UnifiUSGPro(BaseDevice):
     def __init__(self,configfile):
         BaseDevice.__init__(self,'UGW4','UniFi-Gateway-3',configfile)
@@ -119,7 +120,7 @@ class UnifiUSGPro(BaseDevice):
             "type": "static"
         }
 
-    def create_if_element(self,interface,if_stats,io_counters,if_addrs,dpingerStatuses):
+    def create_if_element(self,interface,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus):
         name = interface["pfsense"]
         ename = interface["unifi"]
         stat = if_stats[name]
@@ -133,12 +134,16 @@ class UnifiUSGPro(BaseDevice):
             dpinger = dpingerStatuses[interface["pfsense-ppp"]] if dpingerStatuses.has_key(interface["pfsense-ppp"]) else dpinger
             #stat = if_stats[interface["pfsense-ppp"]]
             #counter = io_counters[interface["pfsense-ppp"]]
+        ipaddress1 = ipv4.address if ipv4 is not None else "0.0.0.0"
+        ipaddress1 = '192.168.1.1'
+        ntopstat = hostsstatus[ipaddress1] if hostsstatus.has_key(ipaddress1) else None
+
         data = {
                 "drops": counter.dropout+counter.dropin,
                 "enable": True,
                 "full_duplex": stat.duplex==2,
                 "gateways": [ dpinger['gateway'] if dpinger is not None else ""  ],
-                "ip": ipv4.address if ipv4 is not None else "0.0.0.0",
+                "ip": ipaddress1,
                 "latency": dpinger['latency_stddev'] if dpinger is not None else 0,
                 "mac": mac.address,
                 "name": ename,
@@ -159,24 +164,48 @@ class UnifiUSGPro(BaseDevice):
                 "tx_errors": counter.errout,
                 "tx_packets": counter.packets_sent,
                 "up": stat.isup ,
-                "uptime": 37193,
-                "xput_down": 38.161000000000001,
-                "xput_up": 12.484999999999999
+                "uptime": ntopstat['duration'] if ntopstat is not None and ntopstat.has_key('duration') else 0,
+                "xput_down": 0,
+                "xput_up": 0
                 }
         return data
 
-    def append_if_table(self,data,if_stats,io_counters,if_addrs,dpingerStatuses):
+    def append_if_table(self,data,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus):
         data['if_table']=[]
         for interface in self.mapConfig["ports"]:
             if interface["enabled"] and interface["pfsense"] is not "" :
-                data['if_table'].append(self.create_if_element(interface,if_stats,io_counters,if_addrs,dpingerStatuses))
+                data['if_table'].append(self.create_if_element(interface,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus))
             else:
                 data['if_table'].append({
                 "enable": interface["enabled"],
                 "name": interface["unifi"]
                 })
-    
-    def create_network_table_element(self,interface,if_stats,io_counters,if_addrs,dpingerStatuses):
+
+    def create_host_table_element(self,host):
+      data={
+            "age": host['duration'],
+            "authorized": "True",
+            "bc_bytes": 0,
+            "bc_packets": 0,
+            "dev_cat": 1,
+            "dev_family": host['devtype'],
+            "dev_id": host['devtype'],
+            "dev_vendor": host['devtype'],
+            "ip": host['ip'],
+            "mac": host['mac'].replace('-',':').lower(),
+            "mc_bytes": 0,
+            "mc_packets": 0,
+            "os_class": host['operatingSystem'],
+            "os_name": host['os'],
+            "rx_bytes": host['bytes.sent'],
+            "rx_packets": host['packets.sent'],
+            "tx_bytes": host['bytes.rcvd'],
+            "tx_packets": host['packets.rcvd'],
+            "uptime": host['seen.last']-host['seen.first']
+            }
+      return data  
+
+    def create_network_table_element(self,interface,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus):
         name = interface["pfsense"]
         ename = interface["unifi"]
         stat = if_stats[name]
@@ -194,6 +223,9 @@ class UnifiUSGPro(BaseDevice):
                 # "addresses": [
                 #     addr
                 # ],
+        ipaddress1 = ipv4.address if ipv4 is not None else "0.0.0.0"
+        #ipaddress = '192.168.1.1'
+        ntopstat = hostsstatus[ipaddress1] if hostsstatus.has_key(ipaddress1) else None
 
         data = {
                 "autoneg": "True",
@@ -221,9 +253,20 @@ class UnifiUSGPro(BaseDevice):
                 "up": stat.isup
                 }
    
-        if(interface.has_key('address')):
+        if(interface.has_key('address') and 'dhcp' not in interface['address']):
             data["address"]= interface['address'][0]
             data["addresses"]= interface['address']
+            mask = interface['address'][0]
+            print mask
+            calc = ip_calculator.IPCalculator(mask)
+
+            netname = calc.net_name()
+            #mask = '192.168.1.0/24'
+            #if(hostsstatus is not None):
+            #  hosts = [host for key,host in hostsstatus.items() if host['local_network_name'] == netname and not host['is_broadcast'] and not host['is_multicast']]
+            #  data['host_table']=[]
+            #  for rhost in hosts:
+            #    data['host_table'].append(self.create_host_table_element(rhost))
                 
         if interface["wan"] or  ( interface.has_key('address') and 'dhcp' in interface['address']):
             data["address"]= ipv4.address+"/32"
@@ -231,159 +274,13 @@ class UnifiUSGPro(BaseDevice):
             data["gateways"]=[ dpinger['gateway'] if dpinger is not None else ""  ]
         
         return data
-    def append_network_table(self,data,if_stats,io_counters,if_addrs,dpingerStatuses):
+    def append_network_table(self,data,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus):
          data['network_table']=[]
          for interface in self.mapConfig["ports"]:
               if interface["enabled"] and interface["pfsense"] is not "" :
-                  data['network_table'].append(self.create_network_table_element(interface,if_stats,io_counters,if_addrs,dpingerStatuses))
-        #      else:
-        #          data['network_table'].append({
-        #          "enable": interface["enabled"],
-        #          "name": interface["unifi"]
-        #          })
-        # data["network_table"]= [
-        #         {
-        #         "address": "10.1.1.10/24",
-        #         "addresses": [
-        #             "10.1.1.10/24"
-        #         ],
-        #         "autoneg": "True",
-        #         "duplex": "full",
-        #         "gateways": [
-        #             "20.1.2.1"
-        #         ],
-        #         "l1up": "True",
-        #         "mac": "80:2a:a8:cd:a9:54",
-        #         "mtu": "1500",
-        #         "name": "eth2",
-        #         "nameservers": [
-        #             "20.1.2.191",
-        #             "20.1.3.191"
-        #         ],
-        #         "speed": "1000",
-        #         "stats": {
-        #             "multicast": "65627",
-        #             "rx_bps": "0",
-        #             "rx_bytes": 118162997,
-        #             "rx_dropped": 1,
-        #             "rx_errors": 0,
-        #             "rx_multicast": 65629,
-        #             "rx_packets": 1126891,
-        #             "tx_bps": "0",
-        #             "tx_bytes": 77684158,
-        #             "tx_dropped": 0,
-        #             "tx_errors": 0,
-        #             "tx_packets": 1025525
-        #         },
-        #         "up": "True"
-        #         },
-        #         {
-        #         "address": "192.168.1.1/24",
-        #         "addresses": [
-        #             "192.168.1.1/24"
-        #         ],
-        #         "autoneg": "True",
-        #         "duplex": "full",
-        #         "host_table": [
-        #             {
-        #             "age": 10,
-        #             "authorized": "True",
-        #             "bc_bytes": 4814073447,
-        #             "bc_packets": 104642338,
-        #             "dev_cat": 1,
-        #             "dev_family": 4,
-        #             "dev_id": 239,
-        #             "dev_vendor": 47,
-        #             "ip": "192.168.1.8",
-        #             "mac": "81:2a:a8:f0:ef:78",
-        #             "mc_bytes": 4814073447,
-        #             "mc_packets": 104642338,
-        #             "os_class": 15,
-        #             "os_name": 19,
-        #             "rx_bytes": 802239963372,
-        #             "rx_packets": 805925675,
-        #             "tx_bytes": 35371476651,
-        #             "tx_packets": 104136843,
-        #             "uptime": 5822032
-        #             },
-        #             {
-        #             "age": 41,
-        #             "authorized": "True",
-        #             "bc_bytes": 9202676,
-        #             "bc_packets": 200043,
-        #             "hostname": "switch",
-        #             "ip": "192.168.1.10",
-        #             "mac": "f0:9f:c2:09:2b:f2",
-        #             "mc_bytes": 21366640,
-        #             "mc_packets": 406211,
-        #             "rx_bytes": 30862046,
-        #             "rx_packets": 610310,
-        #             "tx_bytes": 13628015,
-        #             "tx_packets": 204110,
-        #             "uptime": 5821979
-        #             }
-        #         ],
-        #         "l1up": "True",
-        #         "mac": "80:2a:a8:cd:a9:53",
-        #         "mtu": "1500",
-        #         "name": "eth0",
-        #         "speed": "1000",
-        #         "stats": {
-        #             "multicast": "412294",
-        #             "rx_bps": "34",
-        #             "rx_bytes": 529472247,
-        #             "rx_dropped": 2800,
-        #             "rx_errors": 0,
-        #             "rx_multicast": 412314,
-        #             "rx_packets": 3412329,
-        #             "tx_bps": "250",
-        #             "tx_bytes": 7922054171,
-        #             "tx_dropped": 0,
-        #             "tx_errors": 0,
-        #             "tx_packets": 5909307
-        #         },
-        #         "up": "True"
-        #         },
-        #         {
-        #         "address": "20.1.2.10/21",
-        #         "addresses": [
-        #             "20.1.2.10/21"
-        #         ],
-        #         "autoneg": "True",
-        #         "duplex": "full",
-        #         "gateways": [
-        #             "20.1.1.1"
-        #         ],
-        #         "l1up": "True",
-        #         "mac": "80:2a:a8:cd:a9:52",
-        #         "mtu": "1500",
-        #         "name": "eth3",
-        #         "nameservers": [
-        #             "20.1.2.1",
-        #             "20.1.2.11"
-        #         ],
-        #         "speed": "1000",
-        #         "stats": {
-        #             "multicast": "65627",
-        #             "rx_bps": "262",
-        #             "rx_bytes": 353519562926,
-        #             "rx_dropped": 19137,
-        #             "rx_errors": 0,
-        #             "rx_multicast": 65629,
-        #             "rx_packets": 645343103,
-        #             "tx_bps": "328",
-        #             "tx_bytes": 953646055362,
-        #             "tx_dropped": 0,
-        #             "tx_errors": 0,
-        #             "tx_packets": 863173990
-        #         },
-        #         "up": "True"
-        #         }
-        #     ]
+                  data['network_table'].append(self.create_network_table_element(interface,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus))
+        
     def append_port_table(self,data,if_stats,io_counters,if_addrs):
-        #data['if_table']=[]
-        #for interface in self.mapConfig["ports"]:
-            
         data["config_port_table"]= [
             {
             "ifname": "eth3",
@@ -552,8 +449,8 @@ class UnifiUSGPro(BaseDevice):
   ]
         data["dpi-stats-table"]= [
     {
-      "_id": "5875d9f9e4b02fd3851c55e4",
-      "_subid": "5875d9f5e4b02fd3851c55d8",
+      "_id": "5aec9b73fc92ac1eb4d8a150",
+      "_subid": "5e67f0961b24b874966aa014",
       "by_app": [
         {
           "app": 5,
@@ -768,15 +665,15 @@ class UnifiUSGPro(BaseDevice):
       "initialized": "88122111307"
     },
     {
-      "_id": "5875d9f9e4b02fd3851c55e4",
-      "_subid": "5875e1f8e4b0ba28be0f8335",
+      "_id": "5aec9b73fc92ac1eb4d8a150",
+      "_subid": "5aec9b71fc92ac1eb4d8a13f",
       "by_app": [
         {
           "app": 5,
           "cat": 3,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 82297468,
               "rx_packets": 57565,
               "tx_bytes": 1710174,
@@ -794,7 +691,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 19,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 1593846895,
               "rx_packets": 1738901,
               "tx_bytes": 348738675,
@@ -828,7 +725,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 3,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 531190,
               "rx_packets": 2465,
               "tx_bytes": 676859,
@@ -846,7 +743,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 3441437,
               "rx_packets": 3033,
               "tx_bytes": 203173,
@@ -864,7 +761,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -882,7 +779,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -900,7 +797,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 24417806554,
               "rx_packets": 18415873,
               "tx_bytes": 2817966897,
@@ -918,7 +815,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 20,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 28812050,
               "rx_packets": 208945,
               "tx_bytes": 160819147,
@@ -936,7 +833,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 255,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 182029551,
               "rx_packets": 1796815,
               "tx_bytes": 435732626,
@@ -962,7 +859,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 10,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 1522,
               "rx_packets": 20,
               "tx_bytes": 882,
@@ -980,7 +877,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 982710,
               "rx_packets": 10919,
               "tx_bytes": 1010970,
@@ -998,7 +895,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 7819852,
               "rx_packets": 20378,
               "tx_bytes": 1293104,
@@ -1016,7 +913,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -1082,7 +979,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 780358,
               "rx_packets": 3520,
               "tx_bytes": 545757,
@@ -1100,7 +997,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 180691586,
               "rx_packets": 132204,
               "tx_bytes": 5970383,
@@ -1126,7 +1023,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 10,
           "clients": [
             {
-              "mac": "f4:1b:a1:d8:55:33",
+              "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 5521547718,
               "rx_packets": 73080390,
               "tx_bytes": 179999309100,
@@ -1268,12 +1165,24 @@ class UnifiUSGPro(BaseDevice):
         io_counters = psutil.net_io_counters(pernic=True)
         if_addrs = psutil.net_if_addrs()
         dpingerStatuses = pfsense_utils.getGatewaysPingerStatus()
+        hostsstatus= None
+        if (self.config['gateway'].has_key('ntopng_user') and self.config['gateway'].has_key('ntopng_password')
+            and self.config['gateway']['ntopng_user'] and self.config['gateway']['ntopng_password']):
+          hostsstatus = pfsense_utils.get_ntopng_stats(self.config['gateway']['ntopng_user'],self.config['gateway']['ntopng_password'],self.config['gateway']['ntopng_url'])
+          try:
+            hostsstatus = json.loads(hostsstatus,object_hook= utils._byteify) if hostsstatus is not None else None
+          except Exception as ex:
+            logging.warn(ex)
+            hostsstatus = None
+
+
+        #print(hostsstatus)
 
         self.appendVPN(data,if_stats,io_counters,if_addrs)
         self.appendWAN(data,if_stats,io_counters,if_addrs)
         self.append_port_table(data,if_stats,io_counters,if_addrs)
-        self.append_if_table(data,if_stats,io_counters,if_addrs,dpingerStatuses)
-        self.append_network_table(data,if_stats,io_counters,if_addrs,dpingerStatuses)
+        self.append_if_table(data,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus)
+        self.append_network_table(data,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus)
        
                
         

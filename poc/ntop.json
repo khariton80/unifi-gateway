@@ -1,0 +1,3447 @@
+{
+    "192.168.1.1": {
+        "flows.as_server": 3964,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 1855,
+                "bytes.sent": 38960,
+                "category": 0,
+                "bytes": 89410,
+                "bytes.rcvd": 50450
+            },
+            "System": {
+                "duration": 1430,
+                "bytes.sent": 2893072,
+                "category": 18,
+                "bytes": 2893072,
+                "bytes.rcvd": 0
+            },
+            "Network": {
+                "duration": 7435,
+                "bytes.sent": 221490,
+                "category": 14,
+                "bytes": 395842,
+                "bytes.rcvd": 174352
+            },
+            "Web": {
+                "duration": 2910,
+                "bytes.sent": 3481092,
+                "category": 5,
+                "bytes": 5726038,
+                "bytes.rcvd": 2244946
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "ICMPv4": {
+            "3,3": {
+                "sent": 0,
+                "last_host_rcvd_peer": "192.168.1.4",
+                "rcvd": 100
+            }
+        },
+        "devtype": 8,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 14022,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232235777,
+        "udp.packets.rcvd": 2370,
+        "tcp.packets.sent": 15216,
+        "udp.packets.sent": 8482,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.1.1",
+        "pktStats.recv": {
+            "finack": 2412,
+            "upTo9000": 0,
+            "upTo1518": 8,
+            "upTo256": 34,
+            "rst": 32,
+            "upTo1024": 0,
+            "upTo64": 32,
+            "upTo6500": 0,
+            "synack": 412,
+            "upTo2500": 0,
+            "upTo128": 12015,
+            "syn": 2000,
+            "above9000": 0,
+            "upTo512": 4404
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083483,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 0,
+        "city": "",
+        "udp.bytes.sent": 3140042,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 3494572,
+        "criteria": {
+            "outgoingflows": 8,
+            "incomingflows": 35,
+            "download": 2469748,
+            "unknown": 89410,
+            "upload": 6634614
+        },
+        "os": "",
+        "tcp.packets.seq_problems": false,
+        "flows.as_client": 972,
+        "name": "pfsense.kharitonenkovs.info",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 2259648,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 35,
+        "icmp.packets.sent": 0,
+        "mac": "00:26:4A:08:D6:0C",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 2000,
+                    "total": 4000,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 2000
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 8,
+                    "total": 8,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": {
+                "192.168.1.1": {
+                    "http.requests_trend": 2,
+                    "http.act_num_requests": 32,
+                    "http.requests": 2000,
+                    "bytes.sent": 2013968,
+                    "bytes.rcvd": 1856544
+                }
+            },
+            "sender": {
+                "query": {
+                    "num_get": 8,
+                    "num_other": 0,
+                    "total": 8,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 2000,
+                    "total": 2000,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 198418,
+        "local_network_id": 4,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": 2098.69921875,
+        "tcp.packets.retransmissions": 0,
+        "is_multicast": false,
+        "packets.rcvd": 16492,
+        "bytes.sent": 6634614,
+        "ndpi": {
+            "MDNS": {
+                "packets.rcvd": 25,
+                "bytes.sent": 15083,
+                "packets.sent": 174,
+                "duration": 315,
+                "breed": "Acceptable",
+                "bytes.rcvd": 4007
+            },
+            "SNMP": {
+                "packets.rcvd": 16,
+                "bytes.sent": 5610,
+                "packets.sent": 66,
+                "duration": 60,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1920
+            },
+            "HTTP": {
+                "packets.rcvd": 13879,
+                "bytes.sent": 3481092,
+                "packets.sent": 15020,
+                "duration": 2910,
+                "breed": "Acceptable",
+                "bytes.rcvd": 2244946
+            },
+            "DHCP": {
+                "packets.rcvd": 10,
+                "bytes.sent": 3441,
+                "packets.sent": 10,
+                "duration": 50,
+                "breed": "Acceptable",
+                "bytes.rcvd": 3416
+            },
+            "DNS": {
+                "packets.rcvd": 1934,
+                "bytes.sent": 192097,
+                "packets.sent": 1928,
+                "duration": 7415,
+                "breed": "Acceptable",
+                "bytes.rcvd": 149070
+            },
+            "SSDP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 2893072,
+                "packets.sent": 5920,
+                "duration": 1430,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            },
+            "Radius": {
+                "packets.rcvd": 12,
+                "bytes.sent": 4699,
+                "packets.sent": 12,
+                "duration": 5,
+                "breed": "Acceptable",
+                "bytes.rcvd": 3473
+            },
+            "STUN": {
+                "packets.rcvd": 8,
+                "bytes.sent": 560,
+                "packets.sent": 8,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 784
+            },
+            "Unknown": {
+                "packets.rcvd": 508,
+                "bytes.sent": 38960,
+                "packets.sent": 560,
+                "duration": 1855,
+                "breed": "Unrated",
+                "bytes.rcvd": 50450
+            },
+            "ICMP": {
+                "packets.rcvd": 100,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 195,
+                "breed": "Acceptable",
+                "bytes.rcvd": 11682
+            }
+        },
+        "local_network_name": "192.168.1.0/24",
+        "sites.old": "{ }",
+        "sites": "{ }",
+        "packets.sent": 23698,
+        "systemhost": true,
+        "seen.first": 1584075784,
+        "active_flows.as_client": 8,
+        "throughput_trend_pps": 1,
+        "last_throughput_pps": 2.9944088459015,
+        "bridge.ingress_drops.bytes": 0,
+        "throughput_pps": 19.537336349487,
+        "total_activity_time": 7540,
+        "throughput_trend_bps": 1,
+        "last_throughput_bps": 1021.6923217773,
+        "privatehost": true,
+        "throughput_bps": 3120.3916015625,
+        "pktStats.sent": {
+            "finack": 2672,
+            "upTo9000": 0,
+            "upTo1518": 747,
+            "upTo256": 158,
+            "rst": 0,
+            "upTo1024": 3908,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 2000,
+            "upTo2500": 0,
+            "upTo128": 14489,
+            "syn": 444,
+            "above9000": 0,
+            "upTo512": 4397
+        },
+        "json": "{ \"mac_address\": \"00:26:4A:08:D6:0C\", \"seen.first\": 1584075784, \"seen.last\": 1584083483, \"asn\": 0, \"symbolic_name\": \"pfsense.kharitonenkovs.info\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.1.1\" }, \"localHost\": true, \"systemHost\": true, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 15216, \"bytes\": 3494572 }, \"tcp_rcvd\": { \"packets\": 14022, \"bytes\": 2259648 }, \"udp_sent\": { \"packets\": 8482, \"bytes\": 3140042 }, \"udp_rcvd\": { \"packets\": 2370, \"bytes\": 198418 }, \"icmp_sent\": { \"packets\": 0, \"bytes\": 0 }, \"icmp_rcvd\": { \"packets\": 100, \"bytes\": 11682 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo128\": 14489, \"upTo256\": 158, \"upTo512\": 4397, \"upTo1024\": 3908, \"upTo1518\": 747, \"syn\": 444, \"synack\": 2000, \"finack\": 2672 }, \"pktStats.recv\": { \"upTo64\": 32, \"upTo128\": 12015, \"upTo256\": 34, \"upTo512\": 4404, \"upTo1518\": 8, \"syn\": 2000, \"synack\": 412, \"finack\": 2412, \"rst\": 32 }, \"throughput_bps\": 3120.3916015625, \"throughput_trend_bps\": \"Up\", \"throughput_pps\": 19.537336349487305, \"throughput_trend_pps\": \"Up\", \"flows.as_client\": 972, \"flows.as_server\": 3964, \"num_alerts\": 0, \"sent\": { \"packets\": 23698, \"bytes\": 6634614 }, \"rcvd\": { \"packets\": 16492, \"bytes\": 2469748 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 1855, \"bytes\": { \"sent\": 38960, \"rcvd\": 50450 }, \"packets\": { \"sent\": 560, \"rcvd\": 508 } }, \"DNS\": { \"duration\": 7415, \"bytes\": { \"sent\": 192097, \"rcvd\": 149070 }, \"packets\": { \"sent\": 1928, \"rcvd\": 1934 } }, \"HTTP\": { \"duration\": 2910, \"bytes\": { \"sent\": 3481092, \"rcvd\": 2244946 }, \"packets\": { \"sent\": 15020, \"rcvd\": 13879 } }, \"MDNS\": { \"duration\": 315, \"bytes\": { \"sent\": 15083, \"rcvd\": 4007 }, \"packets\": { \"sent\": 174, \"rcvd\": 25 } }, \"SSDP\": { \"duration\": 1430, \"bytes\": { \"sent\": 2893072, \"rcvd\": 0 }, \"packets\": { \"sent\": 5920, \"rcvd\": 0 } }, \"SNMP\": { \"duration\": 60, \"bytes\": { \"sent\": 5610, \"rcvd\": 1920 }, \"packets\": { \"sent\": 66, \"rcvd\": 16 } }, \"DHCP\": { \"duration\": 50, \"bytes\": { \"sent\": 3441, \"rcvd\": 3416 }, \"packets\": { \"sent\": 10, \"rcvd\": 10 } }, \"STUN\": { \"duration\": 40, \"bytes\": { \"sent\": 560, \"rcvd\": 784 }, \"packets\": { \"sent\": 8, \"rcvd\": 8 } }, \"ICMP\": { \"duration\": 195, \"bytes\": { \"sent\": 0, \"rcvd\": 11682 }, \"packets\": { \"sent\": 0, \"rcvd\": 100 } }, \"Radius\": { \"duration\": 5, \"bytes\": { \"sent\": 4699, \"rcvd\": 3473 }, \"packets\": { \"sent\": 12, \"rcvd\": 12 } }, \"categories\": { \"Unspecified\": { \"id\": 0, \"bytes_sent\": 38960, \"bytes_rcvd\": 50450, \"duration\": 1855 }, \"Web\": { \"id\": 5, \"bytes_sent\": 3481092, \"bytes_rcvd\": 2244946, \"duration\": 2910 }, \"Network\": { \"id\": 14, \"bytes_sent\": 221490, \"bytes_rcvd\": 174352, \"duration\": 7435 }, \"System\": { \"id\": 18, \"bytes_sent\": 2893072, \"bytes_rcvd\": 0, \"duration\": 1430 } } }, \"total_activity_time\": 7540, \"dns\": { \"sent\": { \"num_replies_ok\": 1908, \"num_replies_error\": 21, \"stats\": { } }, \"rcvd\": { \"num_queries\": 1936, \"stats\": { \"num_a\": 1920, \"num_txt\": 5, \"num_aaaa\": 11 } } }, \"http\": { \"sender\": { \"query\": { \"num_get\": 8 }, \"response\": { \"num_2xx\": 2000 }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { \"num_post\": 2000, \"num_other\": 2000 }, \"response\": { \"num_2xx\": 8 }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "bytes.rcvd": 2469748,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 1920,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 11,
+                    "num_soa": 0,
+                    "num_txt": 5,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 1936,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 1908,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 21
+            }
+        },
+        "asname": "",
+        "duration": 7700,
+        "bridge.egress_drops.bytes": 0,
+        "icmp.bytes.rcvd": 11682,
+        "active_http_hosts": 1,
+        "icmp.packets.rcvd": 100,
+        "ssdp": "http://192.168.1.1:2189/rootDesc.xml",
+        "asn": 0,
+        "num_alerts": 0,
+        "host_pool_id": 2,
+        "latitude": 0,
+        "other_ip.bytes.sent": 0,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 3,
+        "low_goodput_flows.as_client": 0
+    },
+    "192.168.1.6": {
+        "flows.as_server": 225,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 5,
+                "bytes.sent": 1036,
+                "category": 103,
+                "bytes": 1786,
+                "bytes.rcvd": 750
+            },
+            "Network": {
+                "duration": 465,
+                "bytes.sent": 30580,
+                "category": 14,
+                "bytes": 63972,
+                "bytes.rcvd": 33392
+            },
+            "RemoteAccess": {
+                "duration": 10,
+                "bytes.sent": 1952,
+                "category": 12,
+                "bytes": 3304,
+                "bytes.rcvd": 1352
+            },
+            "Web": {
+                "duration": 10,
+                "bytes.sent": 120,
+                "category": 5,
+                "bytes": 268,
+                "bytes.rcvd": 148
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "devtype": 3,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 495,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232235782,
+        "udp.packets.rcvd": 174,
+        "tcp.packets.sent": 316,
+        "udp.packets.sent": 77,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.1.6",
+        "pktStats.recv": {
+            "finack": 90,
+            "upTo9000": 0,
+            "upTo1518": 15,
+            "upTo256": 35,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 619,
+            "syn": 135,
+            "above9000": 0,
+            "upTo512": 0
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083273,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 13089,
+        "city": "",
+        "udp.bytes.sent": 19701,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 46686,
+        "criteria": {
+            "outgoingflows": 0,
+            "incomingflows": 0,
+            "download": 67142,
+            "unknown": 79074,
+            "upload": 79476
+        },
+        "os": "",
+        "tcp.packets.seq_problems": false,
+        "flows.as_client": 54,
+        "name": "unifi-ap",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 33750,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 0,
+        "icmp.packets.sent": 114,
+        "mac": "74:83:C2:2C:29:D4",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": [],
+            "sender": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 33392,
+        "local_network_id": 4,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": 0,
+        "tcp.packets.retransmissions": 0,
+        "is_multicast": false,
+        "packets.rcvd": 669,
+        "bytes.sent": 79476,
+        "json": "{ \"mac_address\": \"74:83:C2:2C:29:D4\", \"seen.first\": 1584042320, \"seen.last\": 1584083273, \"asn\": 0, \"symbolic_name\": \"unifi-ap\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.1.6\" }, \"localHost\": true, \"systemHost\": false, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 316, \"bytes\": 46686 }, \"tcp_rcvd\": { \"packets\": 495, \"bytes\": 33750 }, \"udp_sent\": { \"packets\": 77, \"bytes\": 19701 }, \"udp_rcvd\": { \"packets\": 174, \"bytes\": 33392 }, \"icmp_sent\": { \"packets\": 114, \"bytes\": 13089 }, \"icmp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo64\": 45, \"upTo128\": 295, \"upTo256\": 47, \"upTo512\": 120, \"synack\": 90, \"finack\": 90, \"rst\": 45 }, \"pktStats.recv\": { \"upTo128\": 619, \"upTo256\": 35, \"upTo1518\": 15, \"syn\": 135, \"finack\": 90 }, \"throughput_bps\": 0.0, \"throughput_trend_bps\": \"Stable\", \"throughput_pps\": 0.0, \"throughput_trend_pps\": \"Stable\", \"flows.as_client\": 54, \"flows.as_server\": 225, \"num_alerts\": 0, \"sent\": { \"packets\": 507, \"bytes\": 79476 }, \"rcvd\": { \"packets\": 669, \"bytes\": 67142 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 270, \"bytes\": { \"sent\": 46824, \"rcvd\": 32250 }, \"packets\": { \"sent\": 46566, \"rcvd\": 32250 } }, \"HTTP\": { \"duration\": 10, \"bytes\": { \"sent\": 120, \"rcvd\": 148 }, \"packets\": { \"sent\": 120, \"rcvd\": 148 } }, \"MDNS\": { \"duration\": 230, \"bytes\": { \"sent\": 0, \"rcvd\": 6072 }, \"packets\": { \"sent\": 0, \"rcvd\": 6072 } }, \"SNMP\": { \"duration\": 225, \"bytes\": { \"sent\": 0, \"rcvd\": 3825 }, \"packets\": { \"sent\": 0, \"rcvd\": 3825 } }, \"ICMP\": { \"duration\": 435, \"bytes\": { \"sent\": 13089, \"rcvd\": 0 }, \"packets\": { \"sent\": 13089, \"rcvd\": 0 } }, \"SSH\": { \"duration\": 10, \"bytes\": { \"sent\": 1952, \"rcvd\": 1352 }, \"packets\": { \"sent\": 1952, \"rcvd\": 1352 } }, \"Radius\": { \"duration\": 30, \"bytes\": { \"sent\": 17491, \"rcvd\": 23495 }, \"packets\": { \"sent\": 14030, \"rcvd\": 18808 } }, \"categories\": { \"Unspecified\": { \"id\": 103, \"bytes_sent\": 1036, \"bytes_rcvd\": 750, \"duration\": 5 }, \"Web\": { \"id\": 5, \"bytes_sent\": 120, \"bytes_rcvd\": 148, \"duration\": 10 }, \"RemoteAccess\": { \"id\": 12, \"bytes_sent\": 1952, \"bytes_rcvd\": 1352, \"duration\": 10 }, \"Network\": { \"id\": 14, \"bytes_sent\": 30580, \"bytes_rcvd\": 33392, \"duration\": 465 } } }, \"total_activity_time\": 710, \"dns\": { \"sent\": { \"stats\": { } }, \"rcvd\": { \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "local_network_name": "192.168.1.0/24",
+        "sites.old": "{}",
+        "sites": "{ }",
+        "packets.sent": 507,
+        "systemhost": false,
+        "seen.first": 1584042320,
+        "active_flows.as_client": 0,
+        "throughput_trend_pps": 3,
+        "last_throughput_pps": 0,
+        "bridge.ingress_drops.bytes": 0,
+        "throughput_pps": 0,
+        "total_activity_time": 710,
+        "throughput_trend_bps": 3,
+        "last_throughput_bps": 0,
+        "privatehost": true,
+        "throughput_bps": 0,
+        "dhcpHost": true,
+        "pktStats.sent": {
+            "finack": 90,
+            "upTo9000": 0,
+            "upTo1518": 0,
+            "upTo256": 47,
+            "rst": 45,
+            "upTo1024": 0,
+            "upTo64": 45,
+            "upTo6500": 0,
+            "synack": 90,
+            "upTo2500": 0,
+            "upTo128": 295,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 120
+        },
+        "bytes.rcvd": 67142,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            }
+        },
+        "ndpi": {
+            "MDNS": {
+                "packets.rcvd": 6072,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 230,
+                "breed": "Acceptable",
+                "bytes.rcvd": 6072
+            },
+            "SNMP": {
+                "packets.rcvd": 3825,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 225,
+                "breed": "Acceptable",
+                "bytes.rcvd": 3825
+            },
+            "HTTP": {
+                "packets.rcvd": 148,
+                "bytes.sent": 120,
+                "packets.sent": 120,
+                "duration": 10,
+                "breed": "Acceptable",
+                "bytes.rcvd": 148
+            },
+            "Radius": {
+                "packets.rcvd": 18808,
+                "bytes.sent": 17491,
+                "packets.sent": 14030,
+                "duration": 30,
+                "breed": "Acceptable",
+                "bytes.rcvd": 23495
+            },
+            "SSH": {
+                "packets.rcvd": 1352,
+                "bytes.sent": 1952,
+                "packets.sent": 1952,
+                "duration": 10,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1352
+            },
+            "Unknown": {
+                "packets.rcvd": 32250,
+                "bytes.sent": 46564,
+                "packets.sent": 46564,
+                "duration": 260,
+                "breed": "Unrated",
+                "bytes.rcvd": 32250
+            },
+            "ICMP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 13089,
+                "packets.sent": 13089,
+                "duration": 435,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            }
+        },
+        "duration": 40954,
+        "asname": "",
+        "icmp.bytes.rcvd": 0,
+        "bridge.egress_drops.bytes": 0,
+        "active_http_hosts": 0,
+        "icmp.packets.rcvd": 0,
+        "asn": 0,
+        "num_alerts": 0,
+        "host_pool_id": 2,
+        "latitude": 0,
+        "other_ip.bytes.sent": 0,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 1,
+        "low_goodput_flows.as_client": 0
+    },
+    "192.168.30.4": {
+        "flows.as_server": 64,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 40,
+                "bytes.sent": 4546,
+                "category": 0,
+                "bytes": 9954,
+                "bytes.rcvd": 5408
+            },
+            "System": {
+                "duration": 160,
+                "bytes.sent": 41656,
+                "category": 18,
+                "bytes": 170728,
+                "bytes.rcvd": 129072
+            },
+            "Network": {
+                "duration": 7410,
+                "bytes.sent": 519413,
+                "category": 14,
+                "bytes": 663735,
+                "bytes.rcvd": 144322
+            },
+            "Web": {
+                "duration": 40,
+                "bytes.sent": 11984,
+                "category": 5,
+                "bytes": 16168,
+                "bytes.rcvd": 4184
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "ICMPv4": {
+            "3,3": {
+                "sent": 211,
+                "last_host_sent_peer": "192.168.30.1",
+                "rcvd": 0
+            }
+        },
+        "devtype": 3,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 128,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232243204,
+        "other_ip.bytes.sent": 0,
+        "tcp.packets.sent": 89,
+        "udp.packets.sent": 5558,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.30.4",
+        "pktStats.recv": {
+            "finack": 24,
+            "upTo9000": 0,
+            "upTo1518": 0,
+            "upTo256": 36,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 1627,
+            "syn": 24,
+            "above9000": 0,
+            "upTo512": 290
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083484,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 26402,
+        "city": "",
+        "udp.bytes.sent": 534667,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 16530,
+        "criteria": {
+            "outgoingflows": 20,
+            "incomingflows": 0,
+            "download": 282986,
+            "unknown": 9954,
+            "upload": 577599
+        },
+        "os": "",
+        "tcp.packets.seq_problems": false,
+        "flows.as_client": 1588,
+        "name": "Home",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 9592,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "low_goodput_flows.as_client": 0,
+        "icmp.packets.sent": 211,
+        "mac": "00:1E:06:32:69:CC",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 8,
+                    "num_other": 0,
+                    "total": 8,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": {
+                "192.168.30.4": {
+                    "http.requests_trend": 3,
+                    "http.act_num_requests": 0,
+                    "http.requests": 8,
+                    "bytes.sent": 4184,
+                    "bytes.rcvd": 11984
+                }
+            },
+            "sender": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 8,
+                    "total": 8,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 273394,
+        "local_network_id": 9,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": -0.044887542724609,
+        "tcp.packets.retransmissions": 0,
+        "ndpi": {
+            "DNS": {
+                "packets.rcvd": 1511,
+                "bytes.sent": 115366,
+                "packets.sent": 1517,
+                "duration": 7390,
+                "breed": "Acceptable",
+                "bytes.rcvd": 141550
+            },
+            "MDNS": {
+                "packets.rcvd": 16,
+                "bytes.sent": 376961,
+                "packets.sent": 3895,
+                "duration": 350,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1408
+            },
+            "SNMP": {
+                "packets.rcvd": 8,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 680
+            },
+            "HTTP": {
+                "packets.rcvd": 48,
+                "bytes.sent": 11984,
+                "packets.sent": 32,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 4184
+            },
+            "SSDP": {
+                "packets.rcvd": 288,
+                "bytes.sent": 41656,
+                "packets.sent": 144,
+                "duration": 160,
+                "breed": "Acceptable",
+                "bytes.rcvd": 129072
+            },
+            "DHCP": {
+                "packets.rcvd": 2,
+                "bytes.sent": 684,
+                "packets.sent": 2,
+                "duration": 10,
+                "breed": "Acceptable",
+                "bytes.rcvd": 684
+            },
+            "Unknown": {
+                "packets.rcvd": 80,
+                "bytes.sent": 4546,
+                "packets.sent": 57,
+                "duration": 40,
+                "breed": "Unrated",
+                "bytes.rcvd": 5408
+            },
+            "ICMP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 26402,
+                "packets.sent": 211,
+                "duration": 985,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            }
+        },
+        "is_multicast": false,
+        "packets.rcvd": 1953,
+        "bytes.sent": 577599,
+        "local_network_name": "192.168.30.0/24",
+        "sites.old": "{ }",
+        "sites": "{ }",
+        "packets.sent": 5858,
+        "throughput_trend_pps": 2,
+        "asname": "",
+        "seen.first": 1584075784,
+        "active_flows.as_client": 20,
+        "last_throughput_pps": 0.3992540538311,
+        "throughput_pps": 0.39871969819069,
+        "bridge.ingress_drops.bytes": 0,
+        "throughput_trend_bps": 2,
+        "total_activity_time": 7410,
+        "last_throughput_bps": 33.537342071533,
+        "throughput_bps": 33.492454528809,
+        "privatehost": true,
+        "pktStats.sent": {
+            "finack": 24,
+            "upTo9000": 0,
+            "upTo1518": 8,
+            "upTo256": 487,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 24,
+            "upTo2500": 0,
+            "upTo128": 5265,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 98
+        },
+        "dhcpHost": true,
+        "json": "{ \"mac_address\": \"00:1E:06:32:69:CC\", \"seen.first\": 1584075784, \"seen.last\": 1584083484, \"asn\": 0, \"symbolic_name\": \"Home\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.30.4\" }, \"localHost\": true, \"systemHost\": false, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 89, \"bytes\": 16530 }, \"tcp_rcvd\": { \"packets\": 128, \"bytes\": 9592 }, \"udp_sent\": { \"packets\": 5558, \"bytes\": 534667 }, \"udp_rcvd\": { \"packets\": 1825, \"bytes\": 273394 }, \"icmp_sent\": { \"packets\": 211, \"bytes\": 26402 }, \"icmp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo128\": 5265, \"upTo256\": 487, \"upTo512\": 98, \"upTo1518\": 8, \"synack\": 24, \"finack\": 24 }, \"pktStats.recv\": { \"upTo128\": 1627, \"upTo256\": 36, \"upTo512\": 290, \"syn\": 24, \"finack\": 24 }, \"throughput_bps\": 33.492454528808594, \"throughput_trend_bps\": \"Down\", \"throughput_pps\": 0.39871969819068909, \"throughput_trend_pps\": \"Down\", \"flows.as_client\": 1588, \"flows.as_server\": 64, \"num_alerts\": 0, \"sent\": { \"packets\": 5858, \"bytes\": 577599 }, \"rcvd\": { \"packets\": 1953, \"bytes\": 282986 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 40, \"bytes\": { \"sent\": 4546, \"rcvd\": 5408 }, \"packets\": { \"sent\": 57, \"rcvd\": 80 } }, \"DNS\": { \"duration\": 7390, \"bytes\": { \"sent\": 115366, \"rcvd\": 141550 }, \"packets\": { \"sent\": 1517, \"rcvd\": 1511 } }, \"HTTP\": { \"duration\": 40, \"bytes\": { \"sent\": 11984, \"rcvd\": 4184 }, \"packets\": { \"sent\": 32, \"rcvd\": 48 } }, \"MDNS\": { \"duration\": 350, \"bytes\": { \"sent\": 376961, \"rcvd\": 1408 }, \"packets\": { \"sent\": 3895, \"rcvd\": 16 } }, \"SSDP\": { \"duration\": 160, \"bytes\": { \"sent\": 41656, \"rcvd\": 129072 }, \"packets\": { \"sent\": 144, \"rcvd\": 288 } }, \"SNMP\": { \"duration\": 40, \"bytes\": { \"sent\": 0, \"rcvd\": 680 }, \"packets\": { \"sent\": 0, \"rcvd\": 8 } }, \"DHCP\": { \"duration\": 10, \"bytes\": { \"sent\": 684, \"rcvd\": 684 }, \"packets\": { \"sent\": 2, \"rcvd\": 2 } }, \"ICMP\": { \"duration\": 985, \"bytes\": { \"sent\": 26402, \"rcvd\": 0 }, \"packets\": { \"sent\": 211, \"rcvd\": 0 } }, \"categories\": { \"Unspecified\": { \"id\": 0, \"bytes_sent\": 4546, \"bytes_rcvd\": 5408, \"duration\": 40 }, \"Web\": { \"id\": 5, \"bytes_sent\": 11984, \"bytes_rcvd\": 4184, \"duration\": 40 }, \"Network\": { \"id\": 14, \"bytes_sent\": 519413, \"bytes_rcvd\": 144322, \"duration\": 7410 }, \"System\": { \"id\": 18, \"bytes_sent\": 41656, \"bytes_rcvd\": 129072, \"duration\": 160 } } }, \"total_activity_time\": 7410, \"dns\": { \"sent\": { \"num_queries\": 1517, \"stats\": { \"num_a\": 1517 } }, \"rcvd\": { \"num_replies_ok\": 1511, \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { }, \"response\": { \"num_2xx\": 8 }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { \"num_get\": 8 }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "bytes.rcvd": 282986,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 1511,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 1517,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 1517,
+                "num_replies_error": 0
+            }
+        },
+        "systemhost": false,
+        "duration": 7701,
+        "bridge.egress_drops.bytes": 0,
+        "icmp.bytes.rcvd": 0,
+        "active_http_hosts": 1,
+        "ssdp": "http://192.168.30.4:8200/rootDesc.xml",
+        "asn": 0,
+        "num_alerts": 0,
+        "udp.packets.rcvd": 1825,
+        "host_pool_id": 0,
+        "icmp.packets.rcvd": 0,
+        "other_ip.bytes.rcvd": 0,
+        "latitude": 0,
+        "operatingSystem": 1,
+        "active_flows.as_server": 0
+    },
+    "fe80::806:e884:b9b7:f74": {
+        "flows.as_server": 0,
+        "ndpi_categories": {
+            "Network": {
+                "duration": 50,
+                "bytes.sent": 8027,
+                "category": 14,
+                "bytes": 8027,
+                "bytes.rcvd": 0
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "devtype": 6,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 0,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 4177018559,
+        "other_ip.bytes.sent": 0,
+        "tcp.packets.sent": 0,
+        "udp.packets.sent": 27,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "fe80::806:e884:b9b7:f74",
+        "pktStats.recv": {
+            "finack": 0,
+            "upTo9000": 0,
+            "upTo1518": 0,
+            "upTo256": 0,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 0,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 0
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083233,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 0,
+        "city": "",
+        "udp.bytes.sent": 8027,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 0,
+        "criteria": {
+            "outgoingflows": 0,
+            "incomingflows": 0,
+            "download": 0,
+            "unknown": 0,
+            "upload": 8027
+        },
+        "os": "",
+        "tcp.packets.seq_problems": false,
+        "flows.as_client": 4,
+        "name": "+f4:1b:a1:d8:55:33@fe80::f61b:a1ff:fed8:5533 [IPv6]",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 0,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 0,
+        "icmp.packets.sent": 0,
+        "mac": "F4:1B:A1:D8:55:33",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": [],
+            "sender": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 0,
+        "local_network_id": 8,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": 0,
+        "tcp.packets.retransmissions": 0,
+        "is_multicast": false,
+        "packets.rcvd": 0,
+        "bytes.sent": 8027,
+        "json": "{ \"mac_address\": \"F4:1B:A1:D8:55:33\", \"seen.first\": 1584078720, \"seen.last\": 1584083233, \"asn\": 0, \"symbolic_name\": \"+f4:1b:a1:d8:55:33@fe80::f61b:a1ff:fed8:5533\", \"ip\": { \"ipVersion\": 6, \"localHost\": false, \"ip\": \"fe80::806:e884:b9b7:f74\" }, \"localHost\": true, \"systemHost\": false, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 0, \"bytes\": 0 }, \"tcp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"udp_sent\": { \"packets\": 27, \"bytes\": 8027 }, \"udp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"icmp_sent\": { \"packets\": 0, \"bytes\": 0 }, \"icmp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo128\": 2, \"upTo256\": 15, \"upTo512\": 4, \"upTo1024\": 6 }, \"pktStats.recv\": { }, \"throughput_bps\": 0.0, \"throughput_trend_bps\": \"Stable\", \"throughput_pps\": 0.0, \"throughput_trend_pps\": \"Stable\", \"flows.as_client\": 4, \"flows.as_server\": 0, \"num_alerts\": 0, \"sent\": { \"packets\": 27, \"bytes\": 8027 }, \"rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"ndpiStats\": { \"MDNS\": { \"duration\": 50, \"bytes\": { \"sent\": 8027, \"rcvd\": 0 }, \"packets\": { \"sent\": 275, \"rcvd\": 0 } }, \"categories\": { \"Network\": { \"id\": 14, \"bytes_sent\": 8027, \"bytes_rcvd\": 0, \"duration\": 50 } } }, \"total_activity_time\": 50, \"dns\": { \"sent\": { \"stats\": { } }, \"rcvd\": { \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "local_network_name": "fe80::226:4aff:fe08:d60c/64",
+        "sites.old": "{ }",
+        "sites": "{ }",
+        "active_http_hosts": 0,
+        "seen.first": 1584078720,
+        "active_flows.as_client": 0,
+        "packets.sent": 27,
+        "throughput_trend_pps": 3,
+        "bridge.ingress_drops.bytes": 0,
+        "last_throughput_pps": 0,
+        "total_activity_time": 50,
+        "throughput_pps": 0,
+        "throughput_trend_bps": 3,
+        "privatehost": false,
+        "last_throughput_bps": 0,
+        "throughput_bps": 0,
+        "pktStats.sent": {
+            "finack": 0,
+            "upTo9000": 0,
+            "upTo1518": 0,
+            "upTo256": 15,
+            "rst": 0,
+            "upTo1024": 6,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 2,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 4
+        },
+        "bytes.rcvd": 0,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            }
+        },
+        "ndpi": {
+            "MDNS": {
+                "packets.rcvd": 0,
+                "bytes.sent": 8027,
+                "packets.sent": 275,
+                "duration": 50,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            }
+        },
+        "duration": 4514,
+        "asname": "",
+        "icmp.bytes.rcvd": 0,
+        "bridge.egress_drops.bytes": 0,
+        "num_alerts": 0,
+        "latitude": 0,
+        "udp.packets.rcvd": 0,
+        "asn": 0,
+        "host_pool_id": 1,
+        "systemhost": false,
+        "icmp.packets.rcvd": 0,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 3,
+        "low_goodput_flows.as_client": 0
+    },
+    "192.168.1.4": {
+        "flows.as_server": 1104,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 2345,
+                "bytes.sent": 72226,
+                "category": 0,
+                "bytes": 109418,
+                "bytes.rcvd": 37192
+            },
+            "System": {
+                "duration": 230,
+                "bytes.sent": 46980,
+                "category": 18,
+                "bytes": 176124,
+                "bytes.rcvd": 129144
+            },
+            "Web": {
+                "duration": 7610,
+                "bytes.sent": 9305060,
+                "category": 5,
+                "bytes": 24133431,
+                "bytes.rcvd": 14828371
+            },
+            "Chat": {
+                "duration": 5,
+                "bytes.sent": 186,
+                "category": 9,
+                "bytes": 342,
+                "bytes.rcvd": 156
+            },
+            "Download-FileTransfer-FileSharing": {
+                "duration": 2295,
+                "bytes.sent": 143832,
+                "category": 7,
+                "bytes": 305297,
+                "bytes.rcvd": 161465
+            },
+            "RPC": {
+                "duration": 1410,
+                "bytes.sent": 118354,
+                "category": 16,
+                "bytes": 145710,
+                "bytes.rcvd": 27356
+            },
+            "Network": {
+                "duration": 7390,
+                "bytes.sent": 498338,
+                "category": 14,
+                "bytes": 651288,
+                "bytes.rcvd": 152950
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "ICMPv4": {
+            "3,1": {
+                "sent": 0,
+                "last_host_rcvd_peer": "101.177.178.220",
+                "rcvd": 4
+            },
+            "3,3": {
+                "last_host_rcvd_peer": "45.14.20.3",
+                "sent": 35,
+                "last_host_sent_peer": "192.168.1.1",
+                "rcvd": 41
+            },
+            "3,0": {
+                "sent": 0,
+                "last_host_rcvd_peer": "103.88.80.2",
+                "rcvd": 6
+            },
+            "3,13": {
+                "sent": 0,
+                "last_host_rcvd_peer": "85.16.117.153",
+                "rcvd": 2
+            }
+        },
+        "devtype": 3,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 39630,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232235780,
+        "other_ip.bytes.sent": 0,
+        "tcp.packets.sent": 40480,
+        "udp.packets.sent": 7348,
+        "tcp.packets.out_of_order": 3,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.1.4",
+        "pktStats.recv": {
+            "finack": 4390,
+            "upTo9000": 0,
+            "upTo1518": 6692,
+            "upTo256": 2569,
+            "rst": 6,
+            "upTo1024": 2646,
+            "upTo64": 3798,
+            "upTo6500": 0,
+            "synack": 3485,
+            "upTo2500": 0,
+            "upTo128": 22669,
+            "syn": 645,
+            "above9000": 0,
+            "upTo512": 4548
+        },
+        "tcp.packets.lost": 3,
+        "seen.last": 1584083483,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 4702,
+        "city": "",
+        "udp.bytes.sent": 727636,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 9452638,
+        "criteria": {
+            "outgoingflows": 67,
+            "incomingflows": 14,
+            "download": 15336634,
+            "unknown": 109418,
+            "upload": 10184976
+        },
+        "os": "",
+        "tcp.packets.seq_problems": true,
+        "flows.as_client": 6369,
+        "name": "Home",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 14867595,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "low_goodput_flows.as_client": 0,
+        "icmp.packets.sent": 35,
+        "mac": "00:1E:06:32:69:CC",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 9,
+                    "num_other": 2,
+                    "total": 11,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 2000,
+                    "total": 2000,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": {
+                "ip.ws.126.net": {
+                    "http.requests_trend": 3,
+                    "http.act_num_requests": 0,
+                    "http.requests": 0,
+                    "bytes.sent": 1354,
+                    "bytes.rcvd": 1540
+                },
+                "86.57.243.70": {
+                    "http.requests_trend": 3,
+                    "http.act_num_requests": 0,
+                    "http.requests": 1,
+                    "bytes.sent": 434,
+                    "bytes.rcvd": 761
+                },
+                "192.168.1.4": {
+                    "http.requests_trend": 3,
+                    "http.act_num_requests": 0,
+                    "http.requests": 8,
+                    "bytes.sent": 1624548,
+                    "bytes.rcvd": 230978
+                }
+            },
+            "sender": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 2000,
+                    "total": 4000,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 2000
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 8,
+                    "total": 11,
+                    "num_4xx": 3,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 461111,
+        "local_network_id": 4,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": 2753.15234375,
+        "tcp.packets.retransmissions": 5,
+        "ndpi": {
+            "MQTT": {
+                "packets.rcvd": 290,
+                "bytes.sent": 118354,
+                "packets.sent": 546,
+                "duration": 1410,
+                "breed": "Acceptable",
+                "bytes.rcvd": 27356
+            },
+            "MDNS": {
+                "packets.rcvd": 14,
+                "bytes.sent": 376798,
+                "packets.sent": 3893,
+                "duration": 345,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1232
+            },
+            "SNMP": {
+                "packets.rcvd": 8,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 680
+            },
+            "HTTP": {
+                "packets.rcvd": 15043,
+                "bytes.sent": 2247247,
+                "packets.sent": 13897,
+                "duration": 2920,
+                "breed": "Acceptable",
+                "bytes.rcvd": 3482880
+            },
+            "NetBIOS": {
+                "packets.rcvd": 0,
+                "bytes.sent": 5060,
+                "packets.sent": 20,
+                "duration": 50,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            },
+            "Cloudflare": {
+                "packets.rcvd": 3,
+                "bytes.sent": 60,
+                "packets.sent": 1,
+                "duration": 5,
+                "breed": "Acceptable",
+                "bytes.rcvd": 186
+            },
+            "Unknown": {
+                "packets.rcvd": 528,
+                "bytes.sent": 72226,
+                "packets.sent": 692,
+                "duration": 2345,
+                "breed": "Unrated",
+                "bytes.rcvd": 37192
+            },
+            "BitTorrent": {
+                "packets.rcvd": 1026,
+                "bytes.sent": 143832,
+                "packets.sent": 1275,
+                "duration": 2295,
+                "breed": "Unsafe",
+                "bytes.rcvd": 161465
+            },
+            "DNS": {
+                "packets.rcvd": 1512,
+                "bytes.sent": 115370,
+                "packets.sent": 1517,
+                "duration": 7365,
+                "breed": "Acceptable",
+                "bytes.rcvd": 141866
+            },
+            "SSDP": {
+                "packets.rcvd": 288,
+                "bytes.sent": 41560,
+                "packets.sent": 144,
+                "duration": 160,
+                "breed": "Acceptable",
+                "bytes.rcvd": 128784
+            },
+            "Telegram": {
+                "packets.rcvd": 2,
+                "bytes.sent": 186,
+                "packets.sent": 3,
+                "duration": 5,
+                "breed": "Acceptable",
+                "bytes.rcvd": 156
+            },
+            "SSL": {
+                "packets.rcvd": 24128,
+                "bytes.sent": 7057753,
+                "packets.sent": 25826,
+                "duration": 7580,
+                "breed": "Safe",
+                "bytes.rcvd": 11345305
+            },
+            "ICMP": {
+                "packets.rcvd": 53,
+                "bytes.sent": 4702,
+                "packets.sent": 35,
+                "duration": 380,
+                "breed": "Acceptable",
+                "bytes.rcvd": 7928
+            },
+            "STUN": {
+                "packets.rcvd": 8,
+                "bytes.sent": 784,
+                "packets.sent": 8,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 560
+            },
+            "DHCP": {
+                "packets.rcvd": 2,
+                "bytes.sent": 684,
+                "packets.sent": 2,
+                "duration": 10,
+                "breed": "Acceptable",
+                "bytes.rcvd": 684
+            },
+            "NTP": {
+                "packets.rcvd": 4,
+                "bytes.sent": 360,
+                "packets.sent": 4,
+                "duration": 20,
+                "breed": "Acceptable",
+                "bytes.rcvd": 360
+            }
+        },
+        "is_multicast": false,
+        "packets.rcvd": 42909,
+        "bytes.sent": 10184976,
+        "local_network_name": "192.168.1.0/24",
+        "sites.old": "{ \"telegram.org\": 1437, \"17track.net\": 13, \"api.met.no\": 2, \"ubnt.com\": 1 }",
+        "sites": "{ \"telegram.org\": 1469, \"17track.net\": 13, \"api.met.no\": 2, \"ubnt.com\": 1 }",
+        "packets.sent": 47863,
+        "throughput_trend_pps": 1,
+        "asname": "",
+        "seen.first": 1584075784,
+        "active_flows.as_client": 67,
+        "last_throughput_pps": 8.983226776123,
+        "throughput_pps": 27.910478591919,
+        "bridge.ingress_drops.bytes": 0,
+        "throughput_trend_bps": 1,
+        "total_activity_time": 7650,
+        "last_throughput_bps": 2997.4033203125,
+        "throughput_bps": 5750.5556640625,
+        "privatehost": true,
+        "pktStats.sent": {
+            "finack": 4128,
+            "upTo9000": 0,
+            "upTo1518": 2485,
+            "upTo256": 2573,
+            "rst": 2934,
+            "upTo1024": 2446,
+            "upTo64": 4305,
+            "upTo6500": 0,
+            "synack": 646,
+            "upTo2500": 0,
+            "upTo128": 29507,
+            "syn": 3485,
+            "above9000": 0,
+            "upTo512": 6561
+        },
+        "dhcpHost": true,
+        "json": "{ \"mac_address\": \"00:1E:06:32:69:CC\", \"seen.first\": 1584075784, \"seen.last\": 1584083483, \"asn\": 0, \"symbolic_name\": \"Home\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.1.4\" }, \"localHost\": true, \"systemHost\": false, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 40480, \"bytes\": 9452638 }, \"tcp_rcvd\": { \"packets\": 39630, \"bytes\": 14867595 }, \"udp_sent\": { \"packets\": 7348, \"bytes\": 727636 }, \"udp_rcvd\": { \"packets\": 3226, \"bytes\": 461111 }, \"icmp_sent\": { \"packets\": 35, \"bytes\": 4702 }, \"icmp_rcvd\": { \"packets\": 53, \"bytes\": 7928 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo64\": 4305, \"upTo128\": 29507, \"upTo256\": 2573, \"upTo512\": 6561, \"upTo1024\": 2446, \"upTo1518\": 2485, \"syn\": 3485, \"synack\": 646, \"finack\": 4128, \"rst\": 2934 }, \"pktStats.recv\": { \"upTo64\": 3798, \"upTo128\": 22669, \"upTo256\": 2569, \"upTo512\": 4548, \"upTo1024\": 2646, \"upTo1518\": 6692, \"syn\": 645, \"synack\": 3485, \"finack\": 4390, \"rst\": 6 }, \"tcpPacketStats.pktRetr\": 5, \"tcpPacketStats.pktOOO\": 3, \"tcpPacketStats.pktLost\": 3, \"throughput_bps\": 5750.5556640625, \"throughput_trend_bps\": \"Up\", \"throughput_pps\": 27.910478591918945, \"throughput_trend_pps\": \"Up\", \"flows.as_client\": 6369, \"flows.as_server\": 1104, \"num_alerts\": 0, \"sent\": { \"packets\": 47863, \"bytes\": 10184976 }, \"rcvd\": { \"packets\": 42909, \"bytes\": 15336634 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 2345, \"bytes\": { \"sent\": 72226, \"rcvd\": 37192 }, \"packets\": { \"sent\": 692, \"rcvd\": 528 } }, \"DNS\": { \"duration\": 7365, \"bytes\": { \"sent\": 115370, \"rcvd\": 141866 }, \"packets\": { \"sent\": 1517, \"rcvd\": 1512 } }, \"HTTP\": { \"duration\": 2920, \"bytes\": { \"sent\": 2247247, \"rcvd\": 3482880 }, \"packets\": { \"sent\": 13897, \"rcvd\": 15043 } }, \"MDNS\": { \"duration\": 345, \"bytes\": { \"sent\": 376798, \"rcvd\": 1232 }, \"packets\": { \"sent\": 3893, \"rcvd\": 14 } }, \"NTP\": { \"duration\": 20, \"bytes\": { \"sent\": 360, \"rcvd\": 360 }, \"packets\": { \"sent\": 4, \"rcvd\": 4 } }, \"NetBIOS\": { \"duration\": 50, \"bytes\": { \"sent\": 5060, \"rcvd\": 0 }, \"packets\": { \"sent\": 20, \"rcvd\": 0 } }, \"SSDP\": { \"duration\": 160, \"bytes\": { \"sent\": 41560, \"rcvd\": 128784 }, \"packets\": { \"sent\": 144, \"rcvd\": 288 } }, \"SNMP\": { \"duration\": 40, \"bytes\": { \"sent\": 0, \"rcvd\": 680 }, \"packets\": { \"sent\": 0, \"rcvd\": 8 } }, \"DHCP\": { \"duration\": 10, \"bytes\": { \"sent\": 684, \"rcvd\": 684 }, \"packets\": { \"sent\": 2, \"rcvd\": 2 } }, \"BitTorrent\": { \"duration\": 2295, \"bytes\": { \"sent\": 143832, \"rcvd\": 161465 }, \"packets\": { \"sent\": 1275, \"rcvd\": 1026 } }, \"STUN\": { \"duration\": 40, \"bytes\": { \"sent\": 784, \"rcvd\": 560 }, \"packets\": { \"sent\": 8, \"rcvd\": 8 } }, \"ICMP\": { \"duration\": 380, \"bytes\": { \"sent\": 4702, \"rcvd\": 7928 }, \"packets\": { \"sent\": 35, \"rcvd\": 53 } }, \"SSL\": { \"duration\": 7580, \"bytes\": { \"sent\": 7057753, \"rcvd\": 11345305 }, \"packets\": { \"sent\": 25826, \"rcvd\": 24128 } }, \"Telegram\": { \"duration\": 5, \"bytes\": { \"sent\": 186, \"rcvd\": 156 }, \"packets\": { \"sent\": 3, \"rcvd\": 2 } }, \"Cloudflare\": { \"duration\": 5, \"bytes\": { \"sent\": 60, \"rcvd\": 186 }, \"packets\": { \"sent\": 1, \"rcvd\": 3 } }, \"MQTT\": { \"duration\": 1410, \"bytes\": { \"sent\": 118354, \"rcvd\": 27356 }, \"packets\": { \"sent\": 546, \"rcvd\": 290 } }, \"categories\": { \"Unspecified\": { \"id\": 0, \"bytes_sent\": 72226, \"bytes_rcvd\": 37192, \"duration\": 2345 }, \"Web\": { \"id\": 5, \"bytes_sent\": 9305060, \"bytes_rcvd\": 14828371, \"duration\": 7610 }, \"Download-FileTransfer-FileSharing\": { \"id\": 7, \"bytes_sent\": 143832, \"bytes_rcvd\": 161465, \"duration\": 2295 }, \"Chat\": { \"id\": 9, \"bytes_sent\": 186, \"bytes_rcvd\": 156, \"duration\": 5 }, \"Network\": { \"id\": 14, \"bytes_sent\": 498338, \"bytes_rcvd\": 152950, \"duration\": 7390 }, \"RPC\": { \"id\": 16, \"bytes_sent\": 118354, \"bytes_rcvd\": 27356, \"duration\": 1410 }, \"System\": { \"id\": 18, \"bytes_sent\": 46980, \"bytes_rcvd\": 129144, \"duration\": 230 } } }, \"total_activity_time\": 7650, \"dns\": { \"sent\": { \"num_queries\": 1519, \"stats\": { \"num_a\": 1519 } }, \"rcvd\": { \"num_replies_ok\": 1513, \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { \"num_post\": 2000, \"num_other\": 2000 }, \"response\": { \"num_2xx\": 8, \"num_4xx\": 3 }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { \"num_get\": 9, \"num_other\": 2 }, \"response\": { \"num_2xx\": 2000 }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "bytes.rcvd": 15336634,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 1513,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 1519,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 1519,
+                "num_replies_error": 0
+            }
+        },
+        "systemhost": false,
+        "duration": 7700,
+        "bridge.egress_drops.bytes": 0,
+        "icmp.bytes.rcvd": 7928,
+        "active_http_hosts": 3,
+        "ssdp": "http://192.168.1.4:8200/rootDesc.xml",
+        "asn": 0,
+        "num_alerts": 0,
+        "udp.packets.rcvd": 3226,
+        "host_pool_id": 2,
+        "icmp.packets.rcvd": 53,
+        "other_ip.bytes.rcvd": 0,
+        "latitude": 0,
+        "operatingSystem": 1,
+        "active_flows.as_server": 14
+    },
+    "10.10.10.1": {
+        "flows.as_server": 969,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 15,
+                "bytes.sent": 832,
+                "category": 103,
+                "bytes": 2437,
+                "bytes.rcvd": 1605
+            },
+            "Web": {
+                "duration": 1950,
+                "bytes.sent": 1989148,
+                "category": 5,
+                "bytes": 2698778,
+                "bytes.rcvd": 709630
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "devtype": 8,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 7463,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 168430081,
+        "other_ip.bytes.sent": 0,
+        "tcp.packets.sent": 5785,
+        "udp.packets.sent": 0,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "10.10.10.1",
+        "pktStats.recv": {
+            "finack": 544,
+            "upTo9000": 0,
+            "upTo1518": 1,
+            "upTo256": 297,
+            "rst": 1136,
+            "upTo1024": 30,
+            "upTo64": 714,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 5783,
+            "syn": 921,
+            "above9000": 0,
+            "upTo512": 638
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083464,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 0,
+        "city": "",
+        "udp.bytes.sent": 0,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 1989980,
+        "criteria": {
+            "outgoingflows": 0,
+            "incomingflows": 1,
+            "download": 711309,
+            "unknown": 2511,
+            "upload": 1989980
+        },
+        "os": "",
+        "tcp.packets.seq_problems": true,
+        "flows.as_client": 0,
+        "name": "10.10.10.1",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 711309,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 1,
+        "icmp.packets.sent": 0,
+        "mac": "00:26:4A:08:D6:0C",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": [],
+            "sender": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 0,
+        "local_network_id": 5,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": 0,
+        "tcp.packets.retransmissions": 1,
+        "is_multicast": false,
+        "packets.rcvd": 7463,
+        "bytes.sent": 1989980,
+        "json": "{ \"mac_address\": \"00:26:4A:08:D6:0C\", \"seen.first\": 1584068735, \"seen.last\": 1584083464, \"asn\": 0, \"symbolic_name\": \"10.10.10.1\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"10.10.10.1\" }, \"localHost\": true, \"systemHost\": true, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 5785, \"bytes\": 1989980 }, \"tcp_rcvd\": { \"packets\": 7463, \"bytes\": 711309 }, \"udp_sent\": { \"packets\": 0, \"bytes\": 0 }, \"udp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"icmp_sent\": { \"packets\": 0, \"bytes\": 0 }, \"icmp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo128\": 3853, \"upTo512\": 966, \"upTo1518\": 966, \"synack\": 920, \"finack\": 950 }, \"pktStats.recv\": { \"upTo64\": 714, \"upTo128\": 5783, \"upTo256\": 297, \"upTo512\": 638, \"upTo1024\": 30, \"upTo1518\": 1, \"syn\": 921, \"finack\": 544, \"rst\": 1136 }, \"tcpPacketStats.pktRetr\": 1, \"throughput_bps\": 0.0, \"throughput_trend_bps\": \"Stable\", \"throughput_pps\": 0.0, \"throughput_trend_pps\": \"Stable\", \"flows.as_client\": 0, \"flows.as_server\": 969, \"num_alerts\": 0, \"sent\": { \"packets\": 5785, \"bytes\": 1989980 }, \"rcvd\": { \"packets\": 7463, \"bytes\": 711309 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 20, \"bytes\": { \"sent\": 832, \"rcvd\": 1679 }, \"packets\": { \"sent\": 832, \"rcvd\": 1679 } }, \"SSL\": { \"duration\": 1805, \"bytes\": { \"sent\": 1905341, \"rcvd\": 676272 }, \"packets\": { \"sent\": 1469206, \"rcvd\": 513703 } }, \"Google\": { \"duration\": 155, \"bytes\": { \"sent\": 63329, \"rcvd\": 25536 }, \"packets\": { \"sent\": 2354, \"rcvd\": 2373 } }, \"Apple\": { \"duration\": 5, \"bytes\": { \"sent\": 2073, \"rcvd\": 925 }, \"packets\": { \"sent\": 2073, \"rcvd\": 925 } }, \"Microsoft\": { \"duration\": 40, \"bytes\": { \"sent\": 18405, \"rcvd\": 6897 }, \"packets\": { \"sent\": 18405, \"rcvd\": 6897 } }, \"categories\": { \"Unspecified\": { \"id\": 103, \"bytes_sent\": 832, \"bytes_rcvd\": 1605, \"duration\": 15 }, \"Web\": { \"id\": 5, \"bytes_sent\": 1989148, \"bytes_rcvd\": 709630, \"duration\": 1950 } } }, \"total_activity_time\": 1950, \"dns\": { \"sent\": { \"stats\": { } }, \"rcvd\": { \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "local_network_name": "10.10.10.0/24",
+        "sites.old": "{ }",
+        "sites": "{ }",
+        "active_http_hosts": 0,
+        "seen.first": 1584068735,
+        "active_flows.as_client": 0,
+        "packets.sent": 5785,
+        "throughput_trend_pps": 3,
+        "bridge.ingress_drops.bytes": 0,
+        "last_throughput_pps": 0,
+        "total_activity_time": 1950,
+        "throughput_pps": 0,
+        "throughput_trend_bps": 3,
+        "privatehost": true,
+        "last_throughput_bps": 0,
+        "throughput_bps": 0,
+        "pktStats.sent": {
+            "finack": 950,
+            "upTo9000": 0,
+            "upTo1518": 966,
+            "upTo256": 0,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 920,
+            "upTo2500": 0,
+            "upTo128": 3853,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 966
+        },
+        "bytes.rcvd": 711309,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            }
+        },
+        "ndpi": {
+            "SSL": {
+                "packets.rcvd": 513703,
+                "bytes.sent": 1905341,
+                "packets.sent": 1469206,
+                "duration": 1805,
+                "breed": "Safe",
+                "bytes.rcvd": 676272
+            },
+            "Google": {
+                "packets.rcvd": 2373,
+                "bytes.sent": 63329,
+                "packets.sent": 2354,
+                "duration": 155,
+                "breed": "Unrated",
+                "bytes.rcvd": 25536
+            },
+            "Apple": {
+                "packets.rcvd": 925,
+                "bytes.sent": 2073,
+                "packets.sent": 2073,
+                "duration": 5,
+                "breed": "Safe",
+                "bytes.rcvd": 925
+            },
+            "Unknown": {
+                "packets.rcvd": 1679,
+                "bytes.sent": 832,
+                "packets.sent": 832,
+                "duration": 20,
+                "breed": "Unrated",
+                "bytes.rcvd": 1679
+            },
+            "Microsoft": {
+                "packets.rcvd": 6897,
+                "bytes.sent": 18405,
+                "packets.sent": 18405,
+                "duration": 40,
+                "breed": "Safe",
+                "bytes.rcvd": 6897
+            }
+        },
+        "duration": 14730,
+        "asname": "",
+        "icmp.bytes.rcvd": 0,
+        "bridge.egress_drops.bytes": 0,
+        "num_alerts": 0,
+        "latitude": 0,
+        "udp.packets.rcvd": 0,
+        "asn": 0,
+        "host_pool_id": 2,
+        "systemhost": true,
+        "icmp.packets.rcvd": 0,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 3,
+        "low_goodput_flows.as_client": 0
+    },
+    "192.168.1.153": {
+        "flows.as_server": 118,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 195,
+                "bytes.sent": 7549,
+                "category": 103,
+                "bytes": 15042,
+                "bytes.rcvd": 7493
+            },
+            "Email": {
+                "duration": 70,
+                "bytes.sent": 41175,
+                "category": 3,
+                "bytes": 170175,
+                "bytes.rcvd": 129000
+            },
+            "SoftwareUpdate": {
+                "duration": 5,
+                "bytes.sent": 1817,
+                "category": 19,
+                "bytes": 10187,
+                "bytes.rcvd": 8370
+            },
+            "Web": {
+                "duration": 2920,
+                "bytes.sent": 4746527,
+                "category": 5,
+                "bytes": 84636381,
+                "bytes.rcvd": 79889854
+            },
+            "Chat": {
+                "duration": 105,
+                "bytes.sent": 24150,
+                "category": 9,
+                "bytes": 150174,
+                "bytes.rcvd": 126024
+            },
+            "SocialNetwork": {
+                "duration": 20,
+                "bytes.sent": 5916,
+                "category": 6,
+                "bytes": 24745,
+                "bytes.rcvd": 18829
+            },
+            "System": {
+                "duration": 5,
+                "bytes.sent": 90,
+                "category": 18,
+                "bytes": 180,
+                "bytes.rcvd": 90
+            },
+            "Network": {
+                "duration": 1820,
+                "bytes.sent": 52466,
+                "category": 14,
+                "bytes": 90407,
+                "bytes.rcvd": 37941
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "ICMPv4": {
+            "3,3": {
+                "sent": 14,
+                "last_host_sent_peer": "192.168.1.1",
+                "rcvd": 0
+            }
+        },
+        "devtype": 3,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 66091,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232235929,
+        "udp.packets.rcvd": 527,
+        "tcp.packets.sent": 50471,
+        "udp.packets.sent": 713,
+        "tcp.packets.out_of_order": 343,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.1.153",
+        "pktStats.recv": {
+            "finack": 1407,
+            "upTo9000": 0,
+            "upTo1518": 51965,
+            "upTo256": 1095,
+            "rst": 99,
+            "upTo1024": 2221,
+            "upTo64": 3492,
+            "upTo6500": 0,
+            "synack": 1414,
+            "upTo2500": 0,
+            "upTo128": 5254,
+            "syn": 24,
+            "above9000": 0,
+            "upTo512": 2591
+        },
+        "tcp.packets.lost": 5,
+        "seen.last": 1584083464,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 2272,
+        "city": "",
+        "udp.bytes.sent": 77718,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 4820422,
+        "criteria": {
+            "outgoingflows": 15,
+            "incomingflows": 0,
+            "download": 80251301,
+            "unknown": 69464,
+            "upload": 4900412
+        },
+        "os": "",
+        "tcp.packets.seq_problems": true,
+        "flows.as_client": 1847,
+        "name": "Galaxy-A40",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 80154678,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 0,
+        "icmp.packets.sent": 19,
+        "mac": "6C:00:6B:D5:2E:2F",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": [],
+            "sender": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 96623,
+        "local_network_id": 4,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": 0,
+        "tcp.packets.retransmissions": 368,
+        "is_multicast": false,
+        "packets.rcvd": 66618,
+        "bytes.sent": 4900412,
+        "json": "{ \"mac_address\": \"6C:00:6B:D5:2E:2F\", \"seen.first\": 1584076377, \"seen.last\": 1584083464, \"asn\": 0, \"symbolic_name\": \"Galaxy-A40\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.1.153\" }, \"localHost\": true, \"systemHost\": false, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 50471, \"bytes\": 4820422 }, \"tcp_rcvd\": { \"packets\": 66091, \"bytes\": 80154678 }, \"udp_sent\": { \"packets\": 713, \"bytes\": 77718 }, \"udp_rcvd\": { \"packets\": 527, \"bytes\": 96623 }, \"icmp_sent\": { \"packets\": 19, \"bytes\": 2272 }, \"icmp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo64\": 34638, \"upTo128\": 11940, \"upTo256\": 2864, \"upTo512\": 682, \"upTo1024\": 554, \"upTo1518\": 525, \"syn\": 1414, \"finack\": 326, \"rst\": 1978 }, \"pktStats.recv\": { \"upTo64\": 3492, \"upTo128\": 5254, \"upTo256\": 1095, \"upTo512\": 2591, \"upTo1024\": 2221, \"upTo1518\": 51965, \"syn\": 24, \"synack\": 1414, \"finack\": 1407, \"rst\": 99 }, \"tcpPacketStats.pktRetr\": 368, \"tcpPacketStats.pktOOO\": 343, \"tcpPacketStats.pktLost\": 5, \"throughput_bps\": 0.0, \"throughput_trend_bps\": \"Stable\", \"throughput_pps\": 0.0, \"throughput_trend_pps\": \"Stable\", \"flows.as_client\": 1847, \"flows.as_server\": 118, \"num_alerts\": 0, \"sent\": { \"packets\": 51203, \"bytes\": 4900412 }, \"rcvd\": { \"packets\": 66618, \"bytes\": 80251301 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 655, \"bytes\": { \"sent\": 28271, \"rcvd\": 41193 }, \"packets\": { \"sent\": 7796, \"rcvd\": 7718 } }, \"DNS\": { \"duration\": 990, \"bytes\": { \"sent\": 25476, \"rcvd\": 35521 }, \"packets\": { \"sent\": 2631, \"rcvd\": 3807 } }, \"MDNS\": { \"duration\": 1000, \"bytes\": { \"sent\": 24038, \"rcvd\": 1056 }, \"packets\": { \"sent\": 2326, \"rcvd\": 360 } }, \"NTP\": { \"duration\": 5, \"bytes\": { \"sent\": 90, \"rcvd\": 90 }, \"packets\": { \"sent\": 1, \"rcvd\": 1 } }, \"SNMP\": { \"duration\": 40, \"bytes\": { \"sent\": 0, \"rcvd\": 680 }, \"packets\": { \"sent\": 0, \"rcvd\": 260 } }, \"DHCP\": { \"duration\": 10, \"bytes\": { \"sent\": 680, \"rcvd\": 684 }, \"packets\": { \"sent\": 341, \"rcvd\": 343 } }, \"IMAPS\": { \"duration\": 65, \"bytes\": { \"sent\": 37213, \"rcvd\": 121118 }, \"packets\": { \"sent\": 9997, \"rcvd\": 25766 } }, \"SSL_No_Cert\": { \"duration\": 25, \"bytes\": { \"sent\": 9303, \"rcvd\": 16459 }, \"packets\": { \"sent\": 6966, \"rcvd\": 10142 } }, \"ICMP\": { \"duration\": 65, \"bytes\": { \"sent\": 2272, \"rcvd\": 0 }, \"packets\": { \"sent\": 585, \"rcvd\": 0 } }, \"SSL\": { \"duration\": 2745, \"bytes\": { \"sent\": 4374090, \"rcvd\": 79558850 }, \"packets\": { \"sent\": 71144, \"rcvd\": 173036 } }, \"Facebook\": { \"duration\": 20, \"bytes\": { \"sent\": 5916, \"rcvd\": 18829 }, \"packets\": { \"sent\": 818, \"rcvd\": 925 } }, \"GMail\": { \"duration\": 5, \"bytes\": { \"sent\": 3962, \"rcvd\": 7882 }, \"packets\": { \"sent\": 15, \"rcvd\": 22 } }, \"Google\": { \"duration\": 265, \"bytes\": { \"sent\": 61616, \"rcvd\": 157968 }, \"packets\": { \"sent\": 7128, \"rcvd\": 23785 } }, \"Viber\": { \"duration\": 105, \"bytes\": { \"sent\": 24150, \"rcvd\": 126024 }, \"packets\": { \"sent\": 19473, \"rcvd\": 112947 } }, \"Amazon\": { \"duration\": 10, \"bytes\": { \"sent\": 598, \"rcvd\": 815 }, \"packets\": { \"sent\": 7, \"rcvd\": 7 } }, \"QUIC\": { \"duration\": 190, \"bytes\": { \"sent\": 10220, \"rcvd\": 9193 }, \"packets\": { \"sent\": 132, \"rcvd\": 120 } }, \"PlayStore\": { \"duration\": 5, \"bytes\": { \"sent\": 1817, \"rcvd\": 8370 }, \"packets\": { \"sent\": 10, \"rcvd\": 12 } }, \"GoogleServices\": { \"duration\": 100, \"bytes\": { \"sent\": 290700, \"rcvd\": 146569 }, \"packets\": { \"sent\": 93019, \"rcvd\": 20544 } }, \"categories\": { \"Unspecified\": { \"id\": 103, \"bytes_sent\": 7549, \"bytes_rcvd\": 7493, \"duration\": 195 }, \"Email\": { \"id\": 3, \"bytes_sent\": 41175, \"bytes_rcvd\": 129000, \"duration\": 70 }, \"Web\": { \"id\": 5, \"bytes_sent\": 4746527, \"bytes_rcvd\": 79889854, \"duration\": 2920 }, \"SocialNetwork\": { \"id\": 6, \"bytes_sent\": 5916, \"bytes_rcvd\": 18829, \"duration\": 20 }, \"Chat\": { \"id\": 9, \"bytes_sent\": 24150, \"bytes_rcvd\": 126024, \"duration\": 105 }, \"Network\": { \"id\": 14, \"bytes_sent\": 52466, \"bytes_rcvd\": 37941, \"duration\": 1820 }, \"System\": { \"id\": 18, \"bytes_sent\": 90, \"bytes_rcvd\": 90, \"duration\": 5 }, \"SoftwareUpdate\": { \"id\": 19, \"bytes_sent\": 1817, \"bytes_rcvd\": 8370, \"duration\": 5 } } }, \"total_activity_time\": 3540, \"dns\": { \"sent\": { \"num_queries\": 316, \"stats\": { \"num_a\": 316 } }, \"rcvd\": { \"num_replies_ok\": 299, \"num_replies_error\": 16, \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "local_network_name": "192.168.1.0/24",
+        "sites.old": "{ \"wildberries.by\": 517, \"wildberries.ru\": 504, \"app-measurement.com\": 168, \"google-analytics.com\": 29, \"googleapis.com\": 23, \"wbstatic.net\": 19, \"mixpanel.com\": 13, \"google.com\": 7, \"crashlytics.com\": 6, \"gstatic.com\": 3, \"facebook.com\": 3, \"adjust.com\": 2, \"samsungcloud.com\": 2, \"ok.ru\": 2, \"di.atlas.samsung.com\": 2, \"cdn.viber.com\": 1, \"iad.appboy.com\": 1, \"clients.google.com\": 1 }",
+        "sites": "{ \"wildberries.by\": 540, \"wildberries.ru\": 527, \"app-measurement.com\": 174, \"google-analytics.com\": 30, \"googleapis.com\": 25, \"wbstatic.net\": 19, \"mixpanel.com\": 13, \"google.com\": 7, \"crashlytics.com\": 6, \"gstatic.com\": 3, \"facebook.com\": 3, \"adjust.com\": 2, \"samsungcloud.com\": 2, \"ok.ru\": 2, \"di.atlas.samsung.com\": 2, \"cdn.viber.com\": 1, \"iad.appboy.com\": 1, \"clients.google.com\": 1 }",
+        "packets.sent": 51203,
+        "systemhost": false,
+        "seen.first": 1584076377,
+        "active_flows.as_client": 15,
+        "throughput_trend_pps": 3,
+        "last_throughput_pps": 0,
+        "bridge.ingress_drops.bytes": 0,
+        "throughput_pps": 0,
+        "total_activity_time": 3540,
+        "throughput_trend_bps": 3,
+        "last_throughput_bps": 0,
+        "privatehost": true,
+        "throughput_bps": 0,
+        "dhcpHost": true,
+        "pktStats.sent": {
+            "finack": 326,
+            "upTo9000": 0,
+            "upTo1518": 525,
+            "upTo256": 2864,
+            "rst": 1978,
+            "upTo1024": 554,
+            "upTo64": 34638,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 11940,
+            "syn": 1414,
+            "above9000": 0,
+            "upTo512": 682
+        },
+        "bytes.rcvd": 80251301,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 299,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 16
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 316,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 316,
+                "num_replies_error": 0
+            }
+        },
+        "ndpi": {
+            "MDNS": {
+                "packets.rcvd": 360,
+                "bytes.sent": 24038,
+                "packets.sent": 2326,
+                "duration": 1000,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1056
+            },
+            "SNMP": {
+                "packets.rcvd": 260,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 680
+            },
+            "DNS": {
+                "packets.rcvd": 3807,
+                "bytes.sent": 25476,
+                "packets.sent": 2631,
+                "duration": 990,
+                "breed": "Acceptable",
+                "bytes.rcvd": 35521
+            },
+            "Amazon": {
+                "packets.rcvd": 7,
+                "bytes.sent": 598,
+                "packets.sent": 7,
+                "duration": 10,
+                "breed": "Safe",
+                "bytes.rcvd": 815
+            },
+            "QUIC": {
+                "packets.rcvd": 120,
+                "bytes.sent": 10220,
+                "packets.sent": 132,
+                "duration": 190,
+                "breed": "Acceptable",
+                "bytes.rcvd": 9193
+            },
+            "ICMP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 2272,
+                "packets.sent": 585,
+                "duration": 65,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            },
+            "IMAPS": {
+                "packets.rcvd": 25766,
+                "bytes.sent": 37213,
+                "packets.sent": 9997,
+                "duration": 65,
+                "breed": "Safe",
+                "bytes.rcvd": 121118
+            },
+            "SSL": {
+                "packets.rcvd": 173036,
+                "bytes.sent": 4374090,
+                "packets.sent": 71144,
+                "duration": 2745,
+                "breed": "Safe",
+                "bytes.rcvd": 79558850
+            },
+            "Viber": {
+                "packets.rcvd": 112947,
+                "bytes.sent": 24150,
+                "packets.sent": 19473,
+                "duration": 105,
+                "breed": "Acceptable",
+                "bytes.rcvd": 126024
+            },
+            "SSL_No_Cert": {
+                "packets.rcvd": 10142,
+                "bytes.sent": 9303,
+                "packets.sent": 6966,
+                "duration": 25,
+                "breed": "Acceptable",
+                "bytes.rcvd": 16459
+            },
+            "Unknown": {
+                "packets.rcvd": 7493,
+                "bytes.sent": 7549,
+                "packets.sent": 7549,
+                "duration": 195,
+                "breed": "Unrated",
+                "bytes.rcvd": 7493
+            },
+            "GMail": {
+                "packets.rcvd": 22,
+                "bytes.sent": 3962,
+                "packets.sent": 15,
+                "duration": 5,
+                "breed": "Acceptable",
+                "bytes.rcvd": 7882
+            },
+            "GoogleServices": {
+                "packets.rcvd": 20544,
+                "bytes.sent": 290700,
+                "packets.sent": 93019,
+                "duration": 100,
+                "breed": "Acceptable",
+                "bytes.rcvd": 146569
+            },
+            "PlayStore": {
+                "packets.rcvd": 12,
+                "bytes.sent": 1817,
+                "packets.sent": 10,
+                "duration": 5,
+                "breed": "Safe",
+                "bytes.rcvd": 8370
+            },
+            "DHCP": {
+                "packets.rcvd": 343,
+                "bytes.sent": 680,
+                "packets.sent": 341,
+                "duration": 10,
+                "breed": "Acceptable",
+                "bytes.rcvd": 684
+            },
+            "Google": {
+                "packets.rcvd": 23785,
+                "bytes.sent": 61616,
+                "packets.sent": 7128,
+                "duration": 265,
+                "breed": "Unrated",
+                "bytes.rcvd": 157968
+            },
+            "Facebook": {
+                "packets.rcvd": 925,
+                "bytes.sent": 5916,
+                "packets.sent": 818,
+                "duration": 20,
+                "breed": "Fun",
+                "bytes.rcvd": 18829
+            },
+            "NTP": {
+                "packets.rcvd": 1,
+                "bytes.sent": 90,
+                "packets.sent": 1,
+                "duration": 5,
+                "breed": "Acceptable",
+                "bytes.rcvd": 90
+            }
+        },
+        "duration": 7088,
+        "asname": "",
+        "icmp.bytes.rcvd": 0,
+        "bridge.egress_drops.bytes": 0,
+        "active_http_hosts": 0,
+        "icmp.packets.rcvd": 0,
+        "asn": 0,
+        "num_alerts": 0,
+        "host_pool_id": 1,
+        "latitude": 0,
+        "other_ip.bytes.sent": 0,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 0,
+        "low_goodput_flows.as_client": 0
+    },
+    "192.168.1.3": {
+        "flows.as_server": 16,
+        "ndpi_categories": {
+            "Network": {
+                "duration": 715,
+                "bytes.sent": 10160,
+                "category": 14,
+                "bytes": 12936,
+                "bytes.rcvd": 2776
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "ICMPv4": {
+            "3,3": {
+                "sent": 16,
+                "last_host_sent_peer": "192.168.1.1",
+                "rcvd": 0
+            }
+        },
+        "devtype": 8,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 0,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232235779,
+        "udp.packets.rcvd": 26,
+        "tcp.packets.sent": 0,
+        "udp.packets.sent": 2,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.1.3",
+        "pktStats.recv": {
+            "finack": 0,
+            "upTo9000": 0,
+            "upTo1518": 0,
+            "upTo256": 0,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 24,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 2
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083478,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 1856,
+        "city": "",
+        "udp.bytes.sent": 684,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 0,
+        "criteria": {
+            "outgoingflows": 1,
+            "incomingflows": 0,
+            "download": 2776,
+            "unknown": 0,
+            "upload": 10160
+        },
+        "os": "",
+        "tcp.packets.seq_problems": false,
+        "flows.as_client": 18,
+        "name": "unifi",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 0,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 0,
+        "icmp.packets.sent": 16,
+        "mac": "78:8A:20:DF:ED:17",
+        "other_ip.packets.sent": 127,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": [],
+            "sender": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 2776,
+        "local_network_id": 4,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": -11.977635383606,
+        "tcp.packets.retransmissions": 0,
+        "is_multicast": false,
+        "packets.rcvd": 26,
+        "bytes.sent": 10160,
+        "json": "{ \"mac_address\": \"78:8A:20:DF:ED:17\", \"seen.first\": 1584075833, \"seen.last\": 1584083478, \"asn\": 0, \"symbolic_name\": \"unifi\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.1.3\" }, \"localHost\": true, \"systemHost\": false, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 0, \"bytes\": 0 }, \"tcp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"udp_sent\": { \"packets\": 2, \"bytes\": 684 }, \"udp_rcvd\": { \"packets\": 26, \"bytes\": 2776 }, \"icmp_sent\": { \"packets\": 16, \"bytes\": 1856 }, \"icmp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_sent\": { \"packets\": 127, \"bytes\": 7620 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo64\": 127, \"upTo128\": 16, \"upTo512\": 2 }, \"pktStats.recv\": { \"upTo128\": 24, \"upTo512\": 2 }, \"throughput_bps\": 0.0, \"throughput_trend_bps\": \"Down\", \"throughput_pps\": 0.0, \"throughput_trend_pps\": \"Down\", \"flows.as_client\": 18, \"flows.as_server\": 16, \"num_alerts\": 0, \"sent\": { \"packets\": 145, \"bytes\": 10160 }, \"rcvd\": { \"packets\": 26, \"bytes\": 2776 }, \"ndpiStats\": { \"MDNS\": { \"duration\": 40, \"bytes\": { \"sent\": 0, \"rcvd\": 1408 }, \"packets\": { \"sent\": 0, \"rcvd\": 16 } }, \"SNMP\": { \"duration\": 40, \"bytes\": { \"sent\": 0, \"rcvd\": 680 }, \"packets\": { \"sent\": 0, \"rcvd\": 8 } }, \"DHCP\": { \"duration\": 10, \"bytes\": { \"sent\": 684, \"rcvd\": 688 }, \"packets\": { \"sent\": 2, \"rcvd\": 2 } }, \"ICMP\": { \"duration\": 40, \"bytes\": { \"sent\": 1856, \"rcvd\": 0 }, \"packets\": { \"sent\": 16, \"rcvd\": 0 } }, \"IGMP\": { \"duration\": 635, \"bytes\": { \"sent\": 7620, \"rcvd\": 0 }, \"packets\": { \"sent\": 127, \"rcvd\": 0 } }, \"categories\": { \"Network\": { \"id\": 14, \"bytes_sent\": 10160, \"bytes_rcvd\": 2776, \"duration\": 715 } } }, \"total_activity_time\": 715, \"dns\": { \"sent\": { \"stats\": { } }, \"rcvd\": { \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "local_network_name": "192.168.1.0/24",
+        "sites.old": "{ }",
+        "sites": "{ }",
+        "packets.sent": 145,
+        "systemhost": false,
+        "seen.first": 1584075833,
+        "active_flows.as_client": 1,
+        "throughput_trend_pps": 2,
+        "last_throughput_pps": 0.19962726533413,
+        "bridge.ingress_drops.bytes": 0,
+        "throughput_pps": 0,
+        "total_activity_time": 715,
+        "throughput_trend_bps": 2,
+        "last_throughput_bps": 11.977635383606,
+        "privatehost": true,
+        "throughput_bps": 0,
+        "dhcpHost": true,
+        "pktStats.sent": {
+            "finack": 0,
+            "upTo9000": 0,
+            "upTo1518": 0,
+            "upTo256": 0,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 127,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 16,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 2
+        },
+        "bytes.rcvd": 2776,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            }
+        },
+        "ndpi": {
+            "MDNS": {
+                "packets.rcvd": 16,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1408
+            },
+            "SNMP": {
+                "packets.rcvd": 8,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 680
+            },
+            "IGMP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 7620,
+                "packets.sent": 127,
+                "duration": 635,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            },
+            "DHCP": {
+                "packets.rcvd": 2,
+                "bytes.sent": 684,
+                "packets.sent": 2,
+                "duration": 10,
+                "breed": "Acceptable",
+                "bytes.rcvd": 688
+            },
+            "ICMP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 1856,
+                "packets.sent": 16,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            }
+        },
+        "duration": 7646,
+        "asname": "",
+        "icmp.bytes.rcvd": 0,
+        "bridge.egress_drops.bytes": 0,
+        "active_http_hosts": 0,
+        "icmp.packets.rcvd": 0,
+        "asn": 0,
+        "num_alerts": 0,
+        "host_pool_id": 2,
+        "latitude": 0,
+        "other_ip.bytes.sent": 7620,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 0,
+        "low_goodput_flows.as_client": 0
+    },
+    "192.168.1.112": {
+        "flows.as_server": 42,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 215,
+                "bytes.sent": 3738,
+                "category": 0,
+                "bytes": 5923,
+                "bytes.rcvd": 2185
+            },
+            "Email": {
+                "duration": 55,
+                "bytes.sent": 23275,
+                "category": 3,
+                "bytes": 114926,
+                "bytes.rcvd": 91651
+            },
+            "Web": {
+                "duration": 330,
+                "bytes.sent": 9995205,
+                "category": 5,
+                "bytes": 10921979,
+                "bytes.rcvd": 926774
+            },
+            "Network": {
+                "duration": 1675,
+                "bytes.sent": 60008,
+                "category": 14,
+                "bytes": 69021,
+                "bytes.rcvd": 9013
+            },
+            "System": {
+                "duration": 20,
+                "bytes.sent": 1080,
+                "category": 18,
+                "bytes": 2160,
+                "bytes.rcvd": 1080
+            },
+            "Cloud": {
+                "duration": 40,
+                "bytes.sent": 5423,
+                "category": 13,
+                "bytes": 6977,
+                "bytes.rcvd": 1554
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "ICMPv4": {
+            "3,3": {
+                "sent": 8,
+                "last_host_sent_peer": "192.168.1.1",
+                "rcvd": 0
+            }
+        },
+        "devtype": 6,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 4,
+        "tcp.packets.rcvd": 4451,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232235888,
+        "other_ip.bytes.sent": 0,
+        "tcp.packets.sent": 8052,
+        "udp.packets.sent": 552,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.1.112",
+        "pktStats.recv": {
+            "finack": 70,
+            "upTo9000": 0,
+            "upTo1518": 496,
+            "upTo256": 110,
+            "rst": 3,
+            "upTo1024": 34,
+            "upTo64": 1689,
+            "upTo6500": 0,
+            "synack": 68,
+            "upTo2500": 0,
+            "upTo128": 2141,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 64
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083233,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 560,
+        "city": "",
+        "udp.bytes.sent": 60528,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 10027641,
+        "criteria": {
+            "outgoingflows": 0,
+            "incomingflows": 0,
+            "download": 1032257,
+            "unknown": 5923,
+            "upload": 10088729
+        },
+        "os": "",
+        "tcp.packets.seq_problems": true,
+        "flows.as_client": 165,
+        "name": "+f4:1b:a1:d8:55:33@fe80::f61b:a1ff:fed8:5533",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 1022164,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 0,
+        "icmp.packets.sent": 8,
+        "mac": "F4:1B:A1:D8:55:33",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 1,
+                    "total": 9,
+                    "num_4xx": 0,
+                    "num_3xx": 8,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": [],
+            "sender": {
+                "query": {
+                    "num_get": 9,
+                    "num_other": 0,
+                    "total": 9,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 10093,
+        "local_network_id": 4,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": 0,
+        "tcp.packets.retransmissions": 1,
+        "is_multicast": false,
+        "packets.rcvd": 4534,
+        "bytes.sent": 10088729,
+        "json": "{ \"mac_address\": \"F4:1B:A1:D8:55:33\", \"seen.first\": 1584075783, \"seen.last\": 1584083233, \"asn\": 0, \"symbolic_name\": \"+f4:1b:a1:d8:55:33@fe80::f61b:a1ff:fed8:5533\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.1.112\" }, \"localHost\": true, \"systemHost\": false, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 8052, \"bytes\": 10027641 }, \"tcp_rcvd\": { \"packets\": 4451, \"bytes\": 1022164 }, \"udp_sent\": { \"packets\": 552, \"bytes\": 60528 }, \"udp_rcvd\": { \"packets\": 83, \"bytes\": 10093 }, \"icmp_sent\": { \"packets\": 8, \"bytes\": 560 }, \"icmp_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo64\": 74, \"upTo128\": 1516, \"upTo256\": 122, \"upTo512\": 226, \"upTo1024\": 32, \"upTo1518\": 6642, \"syn\": 67, \"finack\": 96, \"rst\": 24 }, \"pktStats.recv\": { \"upTo64\": 1689, \"upTo128\": 2141, \"upTo256\": 110, \"upTo512\": 64, \"upTo1024\": 34, \"upTo1518\": 496, \"synack\": 68, \"finack\": 70, \"rst\": 3 }, \"tcpPacketStats.pktRetr\": 1, \"tcpPacketStats.pktKeepAlive\": 4, \"throughput_bps\": 0.0, \"throughput_trend_bps\": \"Stable\", \"throughput_pps\": 0.0, \"throughput_trend_pps\": \"Stable\", \"flows.as_client\": 165, \"flows.as_server\": 42, \"num_alerts\": 0, \"sent\": { \"packets\": 8612, \"bytes\": 10088729 }, \"rcvd\": { \"packets\": 4534, \"bytes\": 1032257 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 215, \"bytes\": { \"sent\": 3738, \"rcvd\": 2185 }, \"packets\": { \"sent\": 57, \"rcvd\": 33 } }, \"DNS\": { \"duration\": 205, \"bytes\": { \"sent\": 4391, \"rcvd\": 7453 }, \"packets\": { \"sent\": 53, \"rcvd\": 53 } }, \"HTTP\": { \"duration\": 5, \"bytes\": { \"sent\": 669, \"rcvd\": 1156 }, \"packets\": { \"sent\": 6, \"rcvd\": 5 } }, \"MDNS\": { \"duration\": 1475, \"bytes\": { \"sent\": 55057, \"rcvd\": 880 }, \"packets\": { \"sent\": 487, \"rcvd\": 10 } }, \"NTP\": { \"duration\": 20, \"bytes\": { \"sent\": 1080, \"rcvd\": 1080 }, \"packets\": { \"sent\": 12, \"rcvd\": 12 } }, \"SNMP\": { \"duration\": 40, \"bytes\": { \"sent\": 0, \"rcvd\": 680 }, \"packets\": { \"sent\": 0, \"rcvd\": 8 } }, \"IMAPS\": { \"duration\": 55, \"bytes\": { \"sent\": 23275, \"rcvd\": 91651 }, \"packets\": { \"sent\": 242, \"rcvd\": 216 } }, \"ICMP\": { \"duration\": 40, \"bytes\": { \"sent\": 560, \"rcvd\": 0 }, \"packets\": { \"sent\": 8, \"rcvd\": 0 } }, \"SSL\": { \"duration\": 160, \"bytes\": { \"sent\": 9675795, \"rcvd\": 266850 }, \"packets\": { \"sent\": 6868, \"rcvd\": 3386 } }, \"Google\": { \"duration\": 10, \"bytes\": { \"sent\": 2112, \"rcvd\": 5682 }, \"packets\": { \"sent\": 20, \"rcvd\": 16 } }, \"Apple\": { \"duration\": 80, \"bytes\": { \"sent\": 22154, \"rcvd\": 54555 }, \"packets\": { \"sent\": 156, \"rcvd\": 114 } }, \"AppleiCloud\": { \"duration\": 120, \"bytes\": { \"sent\": 292136, \"rcvd\": 593363 }, \"packets\": { \"sent\": 664, \"rcvd\": 654 } }, \"ApplePush\": { \"duration\": 40, \"bytes\": { \"sent\": 5423, \"rcvd\": 1554 }, \"packets\": { \"sent\": 17, \"rcvd\": 10 } }, \"GoogleServices\": { \"duration\": 5, \"bytes\": { \"sent\": 2339, \"rcvd\": 5168 }, \"packets\": { \"sent\": 22, \"rcvd\": 17 } }, \"categories\": { \"Unspecified\": { \"id\": 0, \"bytes_sent\": 3738, \"bytes_rcvd\": 2185, \"duration\": 215 }, \"Email\": { \"id\": 3, \"bytes_sent\": 23275, \"bytes_rcvd\": 91651, \"duration\": 55 }, \"Web\": { \"id\": 5, \"bytes_sent\": 9995205, \"bytes_rcvd\": 926774, \"duration\": 330 }, \"Cloud\": { \"id\": 13, \"bytes_sent\": 5423, \"bytes_rcvd\": 1554, \"duration\": 40 }, \"Network\": { \"id\": 14, \"bytes_sent\": 60008, \"bytes_rcvd\": 9013, \"duration\": 1675 }, \"System\": { \"id\": 18, \"bytes_sent\": 1080, \"bytes_rcvd\": 1080, \"duration\": 20 } } }, \"total_activity_time\": 2000, \"dns\": { \"sent\": { \"num_queries\": 53, \"stats\": { \"num_a\": 43, \"num_txt\": 5, \"num_aaaa\": 5 } }, \"rcvd\": { \"num_replies_ok\": 48, \"num_replies_error\": 5, \"stats\": { } } }, \"http\": { \"sender\": { \"query\": { \"num_get\": 9 }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { }, \"response\": { \"num_2xx\": 1, \"num_3xx\": 8 }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "local_network_name": "192.168.1.0/24",
+        "sites.old": "{ \"crashlytics.com\": 25, \"icloud.com\": 19, \"apple.com\": 7, \"app-measurement.com\": 6, \"ls.apple.com\": 4, \"googleapis.com\": 1, \"google.com\": 1, \"digicert.com\": 1, \"icloud-content.com\": 1, \"4\": 1 }",
+        "sites": "{ \"crashlytics.com\": 25, \"icloud.com\": 19, \"apple.com\": 7, \"app-measurement.com\": 6, \"ls.apple.com\": 4, \"googleapis.com\": 1, \"google.com\": 1, \"digicert.com\": 1, \"icloud-content.com\": 1, \"4\": 1 }",
+        "active_http_hosts": 0,
+        "seen.first": 1584075783,
+        "active_flows.as_client": 0,
+        "packets.sent": 8612,
+        "throughput_trend_pps": 3,
+        "bridge.ingress_drops.bytes": 0,
+        "last_throughput_pps": 0,
+        "total_activity_time": 2000,
+        "throughput_pps": 0,
+        "throughput_trend_bps": 3,
+        "privatehost": true,
+        "last_throughput_bps": 0,
+        "throughput_bps": 0,
+        "pktStats.sent": {
+            "finack": 96,
+            "upTo9000": 0,
+            "upTo1518": 6642,
+            "upTo256": 122,
+            "rst": 24,
+            "upTo1024": 32,
+            "upTo64": 74,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 1516,
+            "syn": 67,
+            "above9000": 0,
+            "upTo512": 226
+        },
+        "bytes.rcvd": 1032257,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 48,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 5
+            },
+            "sent": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 43,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 5,
+                    "num_soa": 0,
+                    "num_txt": 5,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 53,
+                "num_replies_error": 0
+            }
+        },
+        "ndpi": {
+            "IMAPS": {
+                "packets.rcvd": 216,
+                "bytes.sent": 23275,
+                "packets.sent": 242,
+                "duration": 55,
+                "breed": "Safe",
+                "bytes.rcvd": 91651
+            },
+            "MDNS": {
+                "packets.rcvd": 10,
+                "bytes.sent": 55057,
+                "packets.sent": 487,
+                "duration": 1475,
+                "breed": "Acceptable",
+                "bytes.rcvd": 880
+            },
+            "SNMP": {
+                "packets.rcvd": 8,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 680
+            },
+            "HTTP": {
+                "packets.rcvd": 5,
+                "bytes.sent": 669,
+                "packets.sent": 6,
+                "duration": 5,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1156
+            },
+            "Apple": {
+                "packets.rcvd": 114,
+                "bytes.sent": 22154,
+                "packets.sent": 156,
+                "duration": 80,
+                "breed": "Safe",
+                "bytes.rcvd": 54555
+            },
+            "Unknown": {
+                "packets.rcvd": 33,
+                "bytes.sent": 3738,
+                "packets.sent": 57,
+                "duration": 215,
+                "breed": "Unrated",
+                "bytes.rcvd": 2185
+            },
+            "DNS": {
+                "packets.rcvd": 53,
+                "bytes.sent": 4391,
+                "packets.sent": 53,
+                "duration": 205,
+                "breed": "Acceptable",
+                "bytes.rcvd": 7453
+            },
+            "GoogleServices": {
+                "packets.rcvd": 17,
+                "bytes.sent": 2339,
+                "packets.sent": 22,
+                "duration": 5,
+                "breed": "Acceptable",
+                "bytes.rcvd": 5168
+            },
+            "AppleiCloud": {
+                "packets.rcvd": 654,
+                "bytes.sent": 292136,
+                "packets.sent": 664,
+                "duration": 120,
+                "breed": "Acceptable",
+                "bytes.rcvd": 593363
+            },
+            "ApplePush": {
+                "packets.rcvd": 10,
+                "bytes.sent": 5423,
+                "packets.sent": 17,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1554
+            },
+            "Google": {
+                "packets.rcvd": 16,
+                "bytes.sent": 2112,
+                "packets.sent": 20,
+                "duration": 10,
+                "breed": "Unrated",
+                "bytes.rcvd": 5682
+            },
+            "SSL": {
+                "packets.rcvd": 3386,
+                "bytes.sent": 9675795,
+                "packets.sent": 6868,
+                "duration": 160,
+                "breed": "Safe",
+                "bytes.rcvd": 266850
+            },
+            "NTP": {
+                "packets.rcvd": 12,
+                "bytes.sent": 1080,
+                "packets.sent": 12,
+                "duration": 20,
+                "breed": "Acceptable",
+                "bytes.rcvd": 1080
+            },
+            "ICMP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 560,
+                "packets.sent": 8,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            }
+        },
+        "duration": 7451,
+        "asname": "",
+        "icmp.bytes.rcvd": 0,
+        "bridge.egress_drops.bytes": 0,
+        "num_alerts": 0,
+        "latitude": 0,
+        "udp.packets.rcvd": 83,
+        "asn": 0,
+        "host_pool_id": 1,
+        "systemhost": false,
+        "icmp.packets.rcvd": 0,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 3,
+        "low_goodput_flows.as_client": 0
+    },
+    "192.168.30.1": {
+        "flows.as_server": 1532,
+        "ndpi_categories": {
+            "Unspecified": {
+                "duration": 40,
+                "bytes.sent": 5408,
+                "category": 0,
+                "bytes": 9954,
+                "bytes.rcvd": 4546
+            },
+            "System": {
+                "duration": 1420,
+                "bytes.sent": 2898992,
+                "category": 18,
+                "bytes": 2898992,
+                "bytes.rcvd": 0
+            },
+            "Network": {
+                "duration": 7485,
+                "bytes.sent": 517513,
+                "category": 14,
+                "bytes": 659965,
+                "bytes.rcvd": 142452
+            },
+            "Web": {
+                "duration": 40,
+                "bytes.sent": 4184,
+                "category": 5,
+                "bytes": 16168,
+                "bytes.rcvd": 11984
+            }
+        },
+        "continent": "",
+        "vlan": 0,
+        "low_goodput_flows.as_server": 0,
+        "ICMPv4": {
+            "3,3": {
+                "sent": 0,
+                "last_host_rcvd_peer": "192.168.30.4",
+                "rcvd": 211
+            }
+        },
+        "devtype": 8,
+        "drop_all_host_traffic": false,
+        "tcp.packets.keep_alive": 0,
+        "tcp.packets.rcvd": 89,
+        "dump_host_traffic": false,
+        "is_blacklisted": false,
+        "ipkey": 3232243201,
+        "udp.packets.rcvd": 1519,
+        "tcp.packets.sent": 128,
+        "udp.packets.sent": 11351,
+        "tcp.packets.out_of_order": 0,
+        "bridge.ingress_drops.packets": 0,
+        "localhost": true,
+        "country": "",
+        "ip": "192.168.30.1",
+        "pktStats.recv": {
+            "finack": 24,
+            "upTo9000": 0,
+            "upTo1518": 8,
+            "upTo256": 14,
+            "rst": 0,
+            "upTo1024": 0,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 24,
+            "upTo2500": 0,
+            "upTo128": 1795,
+            "syn": 0,
+            "above9000": 0,
+            "upTo512": 2
+        },
+        "tcp.packets.lost": 0,
+        "seen.last": 1584083484,
+        "is_broadcast": false,
+        "icmp.bytes.sent": 0,
+        "city": "",
+        "udp.bytes.sent": 3416505,
+        "other_ip.packets.rcvd": 0,
+        "tcp.bytes.sent": 9592,
+        "criteria": {
+            "outgoingflows": 2,
+            "incomingflows": 20,
+            "download": 158982,
+            "unknown": 9954,
+            "upload": 3426097
+        },
+        "os": "",
+        "tcp.packets.seq_problems": false,
+        "flows.as_client": 68,
+        "name": "Home",
+        "longitude": 0,
+        "tcp.bytes.rcvd": 16530,
+        "bridge.egress_drops.packets": 0,
+        "childSafe": false,
+        "active_flows.as_server": 20,
+        "icmp.packets.sent": 0,
+        "mac": "00:26:4A:08:D6:0C",
+        "other_ip.packets.sent": 0,
+        "http": {
+            "receiver": {
+                "query": {
+                    "num_get": 0,
+                    "num_other": 0,
+                    "total": 0,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 8,
+                    "total": 8,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            },
+            "virtual_hosts": [],
+            "sender": {
+                "query": {
+                    "num_get": 8,
+                    "num_other": 0,
+                    "total": 8,
+                    "num_head": 0,
+                    "num_put": 0,
+                    "num_post": 0
+                },
+                "response": {
+                    "num_5xx": 0,
+                    "num_2xx": 0,
+                    "total": 0,
+                    "num_4xx": 0,
+                    "num_3xx": 0,
+                    "num_1xx": 0
+                },
+                "rate": {
+                    "query": {
+                        "post": 0,
+                        "other": 0,
+                        "get": 0,
+                        "put": 0,
+                        "head": 0
+                    },
+                    "response": {
+                        "3xx": 0,
+                        "4xx": 0,
+                        "5xx": 0,
+                        "1xx": 0,
+                        "2xx": 0
+                    }
+                }
+            }
+        },
+        "udp.bytes.rcvd": 116050,
+        "local_network_id": 9,
+        "hiddenFromTop": false,
+        "throughput_trend_bps_diff": -0.044887542724609,
+        "tcp.packets.retransmissions": 0,
+        "is_multicast": false,
+        "packets.rcvd": 1819,
+        "bytes.sent": 3426097,
+        "ndpi": {
+            "DNS": {
+                "packets.rcvd": 1517,
+                "bytes.sent": 141550,
+                "packets.sent": 1511,
+                "duration": 7390,
+                "breed": "Acceptable",
+                "bytes.rcvd": 115366
+            },
+            "MDNS": {
+                "packets.rcvd": 0,
+                "bytes.sent": 374599,
+                "packets.sent": 3910,
+                "duration": 2655,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            },
+            "SNMP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 680,
+                "packets.sent": 8,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            },
+            "HTTP": {
+                "packets.rcvd": 32,
+                "bytes.sent": 4184,
+                "packets.sent": 48,
+                "duration": 40,
+                "breed": "Acceptable",
+                "bytes.rcvd": 11984
+            },
+            "SSDP": {
+                "packets.rcvd": 0,
+                "bytes.sent": 2898992,
+                "packets.sent": 5920,
+                "duration": 1420,
+                "breed": "Acceptable",
+                "bytes.rcvd": 0
+            },
+            "DHCP": {
+                "packets.rcvd": 2,
+                "bytes.sent": 684,
+                "packets.sent": 2,
+                "duration": 10,
+                "breed": "Acceptable",
+                "bytes.rcvd": 684
+            },
+            "Unknown": {
+                "packets.rcvd": 57,
+                "bytes.sent": 5408,
+                "packets.sent": 80,
+                "duration": 40,
+                "breed": "Unrated",
+                "bytes.rcvd": 4546
+            },
+            "ICMP": {
+                "packets.rcvd": 211,
+                "bytes.sent": 0,
+                "packets.sent": 0,
+                "duration": 985,
+                "breed": "Acceptable",
+                "bytes.rcvd": 26402
+            }
+        },
+        "local_network_name": "192.168.30.0/24",
+        "sites.old": "{ }",
+        "sites": "{ }",
+        "packets.sent": 11479,
+        "systemhost": true,
+        "seen.first": 1584075784,
+        "active_flows.as_client": 2,
+        "throughput_trend_pps": 2,
+        "last_throughput_pps": 0.3992540538311,
+        "bridge.ingress_drops.bytes": 0,
+        "throughput_pps": 0.39871969819069,
+        "total_activity_time": 7510,
+        "throughput_trend_bps": 2,
+        "last_throughput_bps": 33.537342071533,
+        "privatehost": true,
+        "throughput_bps": 33.492454528809,
+        "pktStats.sent": {
+            "finack": 24,
+            "upTo9000": 0,
+            "upTo1518": 0,
+            "upTo256": 139,
+            "rst": 0,
+            "upTo1024": 1536,
+            "upTo64": 0,
+            "upTo6500": 0,
+            "synack": 0,
+            "upTo2500": 0,
+            "upTo128": 5341,
+            "syn": 24,
+            "above9000": 0,
+            "upTo512": 4463
+        },
+        "json": "{ \"mac_address\": \"00:26:4A:08:D6:0C\", \"seen.first\": 1584075784, \"seen.last\": 1584083484, \"asn\": 0, \"symbolic_name\": \"Home\", \"ip\": { \"ipVersion\": 4, \"localHost\": false, \"ip\": \"192.168.30.1\" }, \"localHost\": true, \"systemHost\": true, \"is_blacklisted\": false, \"tcp_sent\": { \"packets\": 128, \"bytes\": 9592 }, \"tcp_rcvd\": { \"packets\": 89, \"bytes\": 16530 }, \"udp_sent\": { \"packets\": 11351, \"bytes\": 3416505 }, \"udp_rcvd\": { \"packets\": 1519, \"bytes\": 116050 }, \"icmp_sent\": { \"packets\": 0, \"bytes\": 0 }, \"icmp_rcvd\": { \"packets\": 211, \"bytes\": 26402 }, \"other_ip_sent\": { \"packets\": 0, \"bytes\": 0 }, \"other_ip_rcvd\": { \"packets\": 0, \"bytes\": 0 }, \"pktStats.sent\": { \"upTo128\": 5341, \"upTo256\": 139, \"upTo512\": 4463, \"upTo1024\": 1536, \"syn\": 24, \"finack\": 24 }, \"pktStats.recv\": { \"upTo128\": 1795, \"upTo256\": 14, \"upTo512\": 2, \"upTo1518\": 8, \"synack\": 24, \"finack\": 24 }, \"throughput_bps\": 33.492454528808594, \"throughput_trend_bps\": \"Down\", \"throughput_pps\": 0.39871969819068909, \"throughput_trend_pps\": \"Down\", \"flows.as_client\": 68, \"flows.as_server\": 1532, \"num_alerts\": 0, \"sent\": { \"packets\": 11479, \"bytes\": 3426097 }, \"rcvd\": { \"packets\": 1819, \"bytes\": 158982 }, \"ndpiStats\": { \"Unknown\": { \"duration\": 40, \"bytes\": { \"sent\": 5408, \"rcvd\": 4546 }, \"packets\": { \"sent\": 80, \"rcvd\": 57 } }, \"DNS\": { \"duration\": 7390, \"bytes\": { \"sent\": 141550, \"rcvd\": 115366 }, \"packets\": { \"sent\": 1511, \"rcvd\": 1517 } }, \"HTTP\": { \"duration\": 40, \"bytes\": { \"sent\": 4184, \"rcvd\": 11984 }, \"packets\": { \"sent\": 48, \"rcvd\": 32 } }, \"MDNS\": { \"duration\": 2655, \"bytes\": { \"sent\": 374599, \"rcvd\": 0 }, \"packets\": { \"sent\": 3910, \"rcvd\": 0 } }, \"SSDP\": { \"duration\": 1420, \"bytes\": { \"sent\": 2898992, \"rcvd\": 0 }, \"packets\": { \"sent\": 5920, \"rcvd\": 0 } }, \"SNMP\": { \"duration\": 40, \"bytes\": { \"sent\": 680, \"rcvd\": 0 }, \"packets\": { \"sent\": 8, \"rcvd\": 0 } }, \"DHCP\": { \"duration\": 10, \"bytes\": { \"sent\": 684, \"rcvd\": 684 }, \"packets\": { \"sent\": 2, \"rcvd\": 2 } }, \"ICMP\": { \"duration\": 985, \"bytes\": { \"sent\": 0, \"rcvd\": 26402 }, \"packets\": { \"sent\": 0, \"rcvd\": 211 } }, \"categories\": { \"Unspecified\": { \"id\": 0, \"bytes_sent\": 5408, \"bytes_rcvd\": 4546, \"duration\": 40 }, \"Web\": { \"id\": 5, \"bytes_sent\": 4184, \"bytes_rcvd\": 11984, \"duration\": 40 }, \"Network\": { \"id\": 14, \"bytes_sent\": 517513, \"bytes_rcvd\": 142452, \"duration\": 7485 }, \"System\": { \"id\": 18, \"bytes_sent\": 2898992, \"bytes_rcvd\": 0, \"duration\": 1420 } } }, \"total_activity_time\": 7510, \"dns\": { \"sent\": { \"num_replies_ok\": 1511, \"stats\": { } }, \"rcvd\": { \"num_queries\": 1517, \"stats\": { \"num_a\": 1517 } } }, \"http\": { \"sender\": { \"query\": { \"num_get\": 8 }, \"response\": { }, \"query_rate\": { }, \"response_rate\": { } }, \"receiver\": { \"query\": { }, \"response\": { \"num_2xx\": 8 }, \"query_rate\": { }, \"response_rate\": { } } } }",
+        "bytes.rcvd": 158982,
+        "dns": {
+            "rcvd": {
+                "num_replies_ok": 0,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 1517,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 1517,
+                "num_replies_error": 0
+            },
+            "sent": {
+                "num_replies_ok": 1511,
+                "queries": {
+                    "num_ptr": 0,
+                    "num_a": 0,
+                    "num_other": 0,
+                    "num_mx": 0,
+                    "num_aaaa": 0,
+                    "num_soa": 0,
+                    "num_txt": 0,
+                    "num_ns": 0,
+                    "num_any": 0,
+                    "num_cname": 0
+                },
+                "num_queries": 0,
+                "num_replies_error": 0
+            }
+        },
+        "asname": "",
+        "duration": 7701,
+        "bridge.egress_drops.bytes": 0,
+        "icmp.bytes.rcvd": 26402,
+        "active_http_hosts": 0,
+        "icmp.packets.rcvd": 211,
+        "ssdp": "http://192.168.30.1:2189/rootDesc.xml",
+        "asn": 0,
+        "num_alerts": 0,
+        "host_pool_id": 0,
+        "latitude": 0,
+        "other_ip.bytes.sent": 0,
+        "other_ip.bytes.rcvd": 0,
+        "operatingSystem": 3,
+        "low_goodput_flows.as_client": 0
+    }
+}

@@ -1,0 +1,855 @@
+<?xml version="1.0"?>
+<data>
+  <vendor_ids>
+    <vendor_id id="1" name="Others" />
+    <vendor_id id="2" name="2Wire, Inc." />
+    <vendor_id id="3" name="3Com" />
+    <vendor_id id="4" name="Adobe" />
+    <vendor_id id="5" name="Alcatel-Lucent" />
+    <vendor_id id="6" name="Amino Technologies" />
+    <vendor_id id="7" name="Fedora" />
+    <vendor_id id="8" name="Google Inc." />
+    <vendor_id id="9" name="OpenBSD" />
+    <vendor_id id="10" name="American Power Conversion Corp." />
+    <vendor_id id="11" name="Apple, Inc." />
+    <vendor_id id="12" name="Apple" />
+    <vendor_id id="13" name="Avaya, Inc." />
+    <vendor_id id="14" name="Axis Communications" />
+    <vendor_id id="15" name="remote-exploit.org" />
+    <vendor_id id="16" name="BATM" />
+    <vendor_id id="17" name="Belkin" />
+    <vendor_id id="18" name="Be, Inc." />
+    <vendor_id id="19" name="BlackBerry" />
+    <vendor_id id="20" name="Bluesocket" />
+    <vendor_id id="21" name="Brother Industries, Ltd." />
+    <vendor_id id="22" name="Buffalo Technology, Inc." />
+    <vendor_id id="23" name="Canon, Inc." />
+    <vendor_id id="24" name="Cisco Systems, Inc." />
+    <vendor_id id="25" name="Clipcomm, Inc." />
+    <vendor_id id="26" name="Compex Systems Pte, Ltd." />
+    <vendor_id id="27" name="DD-WRT" />
+    <vendor_id id="28" name="Debian" />
+    <vendor_id id="29" name="Dell, Inc." />
+    <vendor_id id="30" name="D-Link Systems, Inc." />
+    <vendor_id id="31" name="Damn Small Linux" />
+    <vendor_id id="32" name="Enterasys Networks, Inc." />
+    <vendor_id id="33" name="Seiko Epson Corp." />
+    <vendor_id id="34" name="Etherboot" />
+    <vendor_id id="35" name="Extron" />
+    <vendor_id id="36" name="EyeFi, Inc." />
+    <vendor_id id="37" name="Fluke Electronics" />
+    <vendor_id id="38" name="FreeBSD" />
+    <vendor_id id="39" name="FreeNAS" />
+    <vendor_id id="40" name="Nintendo Co., Ltd." />
+    <vendor_id id="41" name="Gemtek Technology Co., Ltd." />
+    <vendor_id id="42" name="Gentoo" />
+    <vendor_id id="43" name="Haiku, Inc." />
+    <vendor_id id="44" name="Hakin9" />
+    <vendor_id id="45" name="Hewlett-Packard" />
+    <vendor_id id="46" name="Hotway" />
+    <vendor_id id="47" name="Microsoft Corp." />
+    <vendor_id id="48" name="Microsoft" />
+    <vendor_id id="49" name="Amazon" />
+    <vendor_id id="50" name="Knoppix" />
+    <vendor_id id="51" name="Kyocera Mita Corp." />
+    <vendor_id id="52" name="Lexmark International, Inc." />
+    <vendor_id id="53" name="LifeSize Communications, Inc." />
+    <vendor_id id="54" name="Linksys" />
+    <vendor_id id="55" name="Linux Mint" />
+    <vendor_id id="56" name="Mediatrix Telecom" />
+    <vendor_id id="57" name="Meraki" />
+    <vendor_id id="58" name="Mitel Corp." />
+    <vendor_id id="59" name="Moneris Solutions" />
+    <vendor_id id="60" name="Motorola, Inc." />
+    <vendor_id id="61" name="Netbotz" />
+    <vendor_id id="62" name="NETGEAR" />
+    <vendor_id id="63" name="Nokia" />
+    <vendor_id id="64" name="Maemo" />
+    <vendor_id id="65" name="Nortel Networks" />
+    <vendor_id id="66" name="Novell, Inc." />
+    <vendor_id id="67" name="Sun Microsystems, Inc." />
+    <vendor_id id="68" name="IBM Corp." />
+    <vendor_id id="69" name="PC-BSD" />
+    <vendor_id id="70" name="Linux" />
+    <vendor_id id="71" name="Sony" />
+    <vendor_id id="72" name="Polycom, Inc." />
+    <vendor_id id="73" name="Porteus" />
+    <vendor_id id="74" name="Puppy Linux" />
+    <vendor_id id="75" name="Red Hat" />
+    <vendor_id id="76" name="DIRECTV, Inc." />
+    <vendor_id id="77" name="ShoreTel, Inc." />
+    <vendor_id id="78" name="Infineon Technologies AG" />
+    <vendor_id id="79" name="Wind River" />
+    <vendor_id id="80" name="Sipura Technology" />
+    <vendor_id id="81" name="Slax" />
+    <vendor_id id="82" name="SUSE" />
+    <vendor_id id="83" name="Sling Media" />
+    <vendor_id id="84" name="InnoMedia, Inc." />
+    <vendor_id id="85" name="Symbol" />
+    <vendor_id id="86" name="TallyGenicom LP" />
+    <vendor_id id="87" name="TANDBERG" />
+    <vendor_id id="88" name="TiVo" />
+    <vendor_id id="89" name="TP-LINK Technologies Co., Ltd." />
+    <vendor_id id="90" name="Trapeze Networks" />
+    <vendor_id id="91" name="TRENDnet" />
+    <vendor_id id="92" name="Ubuntu" />
+    <vendor_id id="93" name="UniData Communications Systems Inc." />
+    <vendor_id id="94" name="Uniden" />
+    <vendor_id id="95" name="UTStarcom, Inc." />
+    <vendor_id id="96" name="Western Digital Corp." />
+    <vendor_id id="97" name="Amazon.com, Inc." />
+    <vendor_id id="98" name="Barnes &amp; Noble, Inc." />
+    <vendor_id id="99" name="Sony Corporation" />
+    <vendor_id id="100" name="BlackBerry Limited" />
+    <vendor_id id="101" name="Nokia Oyj" />
+    <vendor_id id="102" name="HTC Corporation" />
+    <vendor_id id="103" name="ASUSTeK Computer Inc." />
+    <vendor_id id="104" name="Huawei Technologies Co. Ltd." />
+    <vendor_id id="105" name="Samsung Group" />
+    <vendor_id id="106" name="LG Corporation" />
+    <vendor_id id="107" name="Xerox Corp." />
+    <vendor_id id="108" name="Zenwalk.org" />
+    <vendor_id id="109" name="ZyXEL Corp." />
+    <vendor_id id="110" name="Mozilla Corporation" />
+    <vendor_id id="111" name="D-Link Corporation" />
+    <vendor_id id="112" name="NEC Corporation" />
+    <vendor_id id="113" name="Roku, Inc." />
+    <vendor_id id="114" name="Mozilla" />
+    <vendor_id id="115" name="Trend Micro Inc." />
+    <vendor_id id="116" name="Sharp Corporation" />
+    <vendor_id id="117" name="Xiaomi Inc." />
+    <vendor_id id="118" name="Synology Inc." />
+    <vendor_id id="119" name="Lenovo Group Ltd." />
+    <vendor_id id="120" name="Philips" />
+    <vendor_id id="121" name="Vonage Holdings Corp." />
+    <vendor_id id="122" name="Fujitsu Ltd." />
+    <vendor_id id="123" name="Hitachi, Ltd." />
+    <vendor_id id="124" name="Mitsubishi Electric Corporation" />
+    <vendor_id id="125" name="Panasonic Corporation" />
+    <vendor_id id="126" name="Toshiba Corporation" />
+    <vendor_id id="127" name="Pioneer Corporation" />
+    <vendor_id id="128" name="Ooma, Inc." />
+  </vendor_ids>
+  <os_name_ids>
+    <os_name_id id="1" name="Others" />
+    <os_name_id id="2" name="VxWorks" />
+    <os_name_id id="3" name="Linux" />
+    <os_name_id id="4" name="Android 0.9" />
+    <os_name_id id="5" name="Android 1.0" />
+    <os_name_id id="6" name="Android 1.5-2.1" />
+    <os_name_id id="7" name="Android 2.2-2.3" />
+    <os_name_id id="8" name="Android 3.0-4.1" />
+    <os_name_id id="9" name="Android 4.2-4.3" />
+    <os_name_id id="10" name="Android 4.4" />
+    <os_name_id id="11" name="OpenBSD" />
+    <os_name_id id="12" name="Mac OS X" />
+    <os_name_id id="13" name="Linux 2.6" />
+    <os_name_id id="14" name="BeOS 4" />
+    <os_name_id id="15" name="BeOS 5" />
+    <os_name_id id="16" name="BlackBerry" />
+    <os_name_id id="17" name="Cisco Native Unix" />
+    <os_name_id id="18" name="Cisco IOS" />
+    <os_name_id id="19" name="Windows" />
+    <os_name_id id="20" name="Linux 2.4" />
+    <os_name_id id="21" name="FreeBSD 6.0" />
+    <os_name_id id="22" name="FreeBSD 6.3" />
+    <os_name_id id="23" name="FreeNAS" />
+    <os_name_id id="24" name="Haiku" />
+    <os_name_id id="25" name="Apple iOS" />
+    <os_name_id id="26" name="Linux 2.0" />
+    <os_name_id id="27" name="Linux 2.2" />
+    <os_name_id id="28" name="Mac OS 9.1" />
+    <os_name_id id="29" name="Mac OS 9.2" />
+    <os_name_id id="30" name="Mac OS 9.x" />
+    <os_name_id id="31" name="FreeBSD" />
+    <os_name_id id="32" name="Maemo" />
+    <os_name_id id="33" name="OpenSolaris" />
+    <os_name_id id="34" name="OS/2 Warp" />
+    <os_name_id id="35" name="FreeBSD 6.2" />
+    <os_name_id id="36" name="XMB" />
+    <os_name_id id="37" name="VxWorks 5.4" />
+    <os_name_id id="38" name="SunOS" />
+    <os_name_id id="39" name="VxWorks 5.5" />
+    <os_name_id id="40" name="Wii system" />
+    <os_name_id id="41" name="Windows 2000" />
+    <os_name_id id="42" name="Windows 7" />
+    <os_name_id id="43" name="Windows 8" />
+    <os_name_id id="44" name="Windows 95" />
+    <os_name_id id="45" name="Windows 95 B" />
+    <os_name_id id="46" name="Windows 98" />
+    <os_name_id id="47" name="Windows 98 SE" />
+    <os_name_id id="48" name="Windows CE" />
+    <os_name_id id="49" name="Windows ME" />
+    <os_name_id id="50" name="Windows NT 4" />
+    <os_name_id id="51" name="Windows Phone" />
+    <os_name_id id="52" name="Windows Server 2003" />
+    <os_name_id id="53" name="Windows Server 2008" />
+    <os_name_id id="54" name="Windows Vista" />
+    <os_name_id id="55" name="Windows XP" />
+    <os_name_id id="56" name="Xbox" />
+    <os_name_id id="57" name="Android" />
+    <os_name_id id="58" name="Symbian" />
+    <os_name_id id="59" name="Bada" />
+    <os_name_id id="60" name="Windows Mobile" />
+    <os_name_id id="61" name="Ubuntu" />
+    <os_name_id id="62" name="Firefox OS" />
+    <os_name_id id="63" name="FirefoxOS 1.3" />
+    <os_name_id id="64" name="ChromeOS" />
+    <os_name_id id="65" name="Android 5.0" />
+    <os_name_id id="66" name="FreeBSD 10.1" />
+  </os_name_ids>
+  <os_class_ids>
+    <os_class_id id="1" name="Others" />
+    <os_class_id id="2" name="VxWorks" />
+    <os_class_id id="3" name="Linux" />
+    <os_class_id id="4" name="Network Boot Loader" />
+    <os_class_id id="5" name="Android" />
+    <os_class_id id="6" name="OpenBSD" />
+    <os_class_id id="7" name="Mac OS" />
+    <os_class_id id="8" name="BeOS" />
+    <os_class_id id="9" name="BlackBerry" />
+    <os_class_id id="10" name="Cisco Native Unix" />
+    <os_class_id id="11" name="Cisco IOS" />
+    <os_class_id id="12" name="Threat" />
+    <os_class_id id="13" name="FreeBSD" />
+    <os_class_id id="14" name="Haiku" />
+    <os_class_id id="15" name="Windows" />
+    <os_class_id id="16" name="Apple iOS" />
+    <os_class_id id="17" name="Solaris" />
+    <os_class_id id="18" name="OS/2 Warp" />
+    <os_class_id id="19" name="XMB" />
+    <os_class_id id="20" name="Network Bootloader" />
+    <os_class_id id="21" name="Unix" />
+    <os_class_id id="22" name="Wii system" />
+    <os_class_id id="23" name="Xbox" />
+    <os_class_id id="24" name="Symbian" />
+    <os_class_id id="25" name="Bada" />
+    <os_class_id id="26" name="Firefox OS" />
+    <os_class_id id="27" name="FirefoxOS" />
+    <os_class_id id="28" name="ChromeOS" />
+  </os_class_ids>
+  <dev_type_ids>
+    <dev_type_id id="1" name="Desktop/Laptop" />
+    <dev_type_id id="2" name="Router" />
+    <dev_type_id id="3" name="VoIP Phone" />
+    <dev_type_id id="4" name="Miscellaneous" />
+    <dev_type_id id="5" name="IPTV" />
+    <dev_type_id id="6" name="Smartphone" />
+    <dev_type_id id="7" name="UPS" />
+    <dev_type_id id="8" name="Wireless Router" />
+    <dev_type_id id="9" name="IP Network Camera" />
+    <dev_type_id id="10" name="VoIP Gateway" />
+    <dev_type_id id="11" name="Printer" />
+    <dev_type_id id="12" name="Wireless Access Point" />
+    <dev_type_id id="13" name="Switch" />
+    <dev_type_id id="14" name="Wireless Controller" />
+    <dev_type_id id="15" name="Media Link Controller" />
+    <dev_type_id id="16" name="Network Diagnostics" />
+    <dev_type_id id="17" name="Game Console" />
+    <dev_type_id id="18" name="NAS" />
+    <dev_type_id id="19" name="PDA" />
+    <dev_type_id id="20" name="Multimedia Device" />
+    <dev_type_id id="21" name="eBook Reader" />
+    <dev_type_id id="22" name="Scanner" />
+    <dev_type_id id="23" name="Video Conferencing" />
+    <dev_type_id id="24" name="DVR" />
+    <dev_type_id id="25" name="Thin Client" />
+    <dev_type_id id="26" name="Phone" />
+    <dev_type_id id="27" name="Video Phone" />
+    <dev_type_id id="28" name="Workstation" />
+    <dev_type_id id="29" name="Apple iOS Device" />
+    <dev_type_id id="30" name="Tablet" />
+    <dev_type_id id="31" name="SmartTV" />
+    <dev_type_id id="32" name="Android Device" />
+    <dev_type_id id="33" name="Automation Switch" />
+    <dev_type_id id="34" name="Projector" />
+    <dev_type_id id="35" name="Wireless Lighting" />
+  </dev_type_ids>
+  <device_ids>
+    <device_id id="1" name="2Wire Residential Gateway" />
+    <device_id id="2" name="3Com IP Phone" />
+    <device_id id="3" name="Adobe Flash Player" />
+    <device_id id="4" name="Alcatel 4037 Advanced Reflex IP Phone" />
+    <device_id id="5" name="Alcatel IP Touch 8 Series Phones" />
+    <device_id id="6" name="Amino AmiNET110" />
+    <device_id id="7" name="Amino AmiNET110 (Not configured)" />
+    <device_id id="8" name="Anaconda" />
+    <device_id id="9" name="Android 0.9" />
+    <device_id id="10" name="Android 1.0" />
+    <device_id id="11" name="Android 1.5-2.1" />
+    <device_id id="12" name="Android 2.2-2.3" />
+    <device_id id="13" name="Android 3.0-4.1" />
+    <device_id id="14" name="Android 4.2-4.4" />
+    <device_id id="15" name="Android 4.4" />
+    <device_id id="16" name="Anonym.OS" />
+    <device_id id="17" name="APC UPS" />
+    <device_id id="18" name="Apple Airport" />
+    <device_id id="19" name="Apple Airport Extreme" />
+    <device_id id="20" name="Apple Netboot" />
+    <device_id id="21" name="Avaya IP Phone" />
+    <device_id id="22" name="Axis Network Camera" />
+    <device_id id="23" name="Backtrack 1.0" />
+    <device_id id="24" name="BATM VoIP Adapter" />
+    <device_id id="25" name="Belkin F5D8235-4 v2" />
+    <device_id id="26" name="Belkin Skype Phone" />
+    <device_id id="27" name="BeOS 4.x" />
+    <device_id id="28" name="BeOS 5.0" />
+    <device_id id="29" name="BlackBerry" />
+    <device_id id="30" name="Bluesocket BSC" />
+    <device_id id="31" name="Brother Printer" />
+    <device_id id="32" name="Brother Printer 2" />
+    <device_id id="33" name="Buffalo Wireless Access Point" />
+    <device_id id="34" name="Canon Printer" />
+    <device_id id="35" name="Cisco 7905 IP Phone" />
+    <device_id id="36" name="Cisco 7910 IP Phone" />
+    <device_id id="37" name="Cisco 7911x IP Phone" />
+    <device_id id="38" name="Cisco 7912 IP Phone" />
+    <device_id id="39" name="Cisco 7935 IP Phone" />
+    <device_id id="40" name="Cisco 7940/7960x IP Phone" />
+    <device_id id="41" name="Cisco 7961G IP Phone" />
+    <device_id id="42" name="Cisco 7965G IP Phone" />
+    <device_id id="43" name="Cisco Aironet 1100" />
+    <device_id id="44" name="Cisco Aironet 1130" />
+    <device_id id="45" name="Cisco Aironet 1140" />
+    <device_id id="46" name="Cisco Aironet 1200" />
+    <device_id id="47" name="Cisco Aironet 1240" />
+    <device_id id="48" name="Cisco Aironet 1300" />
+    <device_id id="49" name="Cisco Aironet 1310" />
+    <device_id id="50" name="Cisco Aironet 1500" />
+    <device_id id="51" name="Cisco Aironet 4800" />
+    <device_id id="52" name="Cisco ATA 186" />
+    <device_id id="53" name="Cisco Catalyst 29xx" />
+    <device_id id="54" name="Cisco Catalyst 35xx" />
+    <device_id id="55" name="Cisco IP Phone" />
+    <device_id id="56" name="Cisco Wireless Access Point" />
+    <device_id id="57" name="Clipcomm IP Phone" />
+    <device_id id="58" name="Compex Wireless Access Point" />
+    <device_id id="59" name="DD-WRT Router" />
+    <device_id id="60" name="Debian 3.1" />
+    <device_id id="61" name="Debian 4 based distro" />
+    <device_id id="62" name="Debian 6" />
+    <device_id id="63" name="Debian-based Linux" />
+    <device_id id="64" name="Dell Printer" />
+    <device_id id="65" name="D-Link Wireless Router" />
+    <device_id id="66" name="DNSChanger Trojan" />
+    <device_id id="67" name="DSL 4.4.x" />
+    <device_id id="68" name="Enterasys HiPath Wireless Access Point 2610/2620/2..." />
+    <device_id id="69" name="Enterasys HiPath Wireless Access Point 2630/2640" />
+    <device_id id="70" name="Enterasys HiPath Wireless Access Point 3610/3620" />
+    <device_id id="71" name="Enterasys HiPath Wireless C20N Controller" />
+    <device_id id="72" name="Enterasys Matrix N-Series DFE-G/P/D" />
+    <device_id id="73" name="Enterasys RBT-1002-EU Wireless Access Point" />
+    <device_id id="74" name="Enterasys RBT-1602 Wireless Access Point" />
+    <device_id id="75" name="Enterasys RBT-1602C Wireless Access Point" />
+    <device_id id="76" name="Enterasys RBT-4102C-EU Wireless Access Point" />
+    <device_id id="77" name="Enterasys RBT-4102-EU Wireless Access Point" />
+    <device_id id="78" name="Enterasys RBT-8200 Wireless Controller" />
+    <device_id id="79" name="Enterasys SecureStack A2" />
+    <device_id id="80" name="Enterasys SecureStack B2/B3/C2/C3" />
+    <device_id id="81" name="Epson Printer" />
+    <device_id id="82" name="Etherboot/gPXE" />
+    <device_id id="83" name="Extron MLC 226 IP" />
+    <device_id id="84" name="Eye-Fi Wireless Memory Card" />
+    <device_id id="85" name="Fedora 13 based distro" />
+    <device_id id="86" name="Fedora 14 based distro" />
+    <device_id id="87" name="Fedora 15-16 based distro" />
+    <device_id id="88" name="Fedora 3-8 based distro" />
+    <device_id id="89" name="Fedora 9-12 based distro" />
+    <device_id id="90" name="Fluke OneTouch Series II/III" />
+    <device_id id="91" name="FreeBSD 6.0-6.2" />
+    <device_id id="92" name="FreeBSD 6.3-7.2" />
+    <device_id id="93" name="FreeNAS 0.7" />
+    <device_id id="94" name="GameCube" />
+    <device_id id="95" name="Gemtek Wireless Router" />
+    <device_id id="96" name="Generic Printer" />
+    <device_id id="97" name="Gentoo 2004.3" />
+    <device_id id="98" name="Gentoo 2005.0" />
+    <device_id id="99" name="Gentoo 2006.0" />
+    <device_id id="100" name="Gentoo 2006.1" />
+    <device_id id="101" name="Gentoo 2007.0" />
+    <device_id id="102" name="Gentoo 2008.0 R1" />
+    <device_id id="103" name="Haiku" />
+    <device_id id="104" name="Hakin9 Live 2.8" />
+    <device_id id="105" name="Hewlett-Packard iLO Agent" />
+    <device_id id="106" name="Hewlett-Packard iLO Agent (Not Configured)" />
+    <device_id id="107" name="Hewlett-Packard JetDirect (J311xA/J32xxx)" />
+    <device_id id="108" name="Hewlett-Packard JetDirect (J4169A/J6035D/J6038A/J6..." />
+    <device_id id="109" name="Hewlett-Packard JetDirect (J6035A)" />
+    <device_id id="110" name="Hewlett-Packard JetDirect (J7973E)" />
+    <device_id id="111" name="Hewlett-Packard LaserJet P2015 Printer Series" />
+    <device_id id="112" name="Hewlett-Packard Printer" />
+    <device_id id="113" name="Hewlett-Packard Printer MFP" />
+    <device_id id="114" name="Hewlett-Packard Procurve" />
+    <device_id id="115" name="Hewlett-Packard ProCurve AP" />
+    <device_id id="116" name="Hotway LanDrive" />
+    <device_id id="117" name="Internet Connection Sharing - Microsoft" />
+    <device_id id="118" name="iPhone/iPad/iPod" />
+    <device_id id="119" name="Amazon Kindle" />
+    <device_id id="120" name="Knoppix" />
+    <device_id id="121" name="Kyocera FS-1028MFP" />
+    <device_id id="122" name="Kyocera KM-XXXX" />
+    <device_id id="123" name="Kyocera Printer" />
+    <device_id id="124" name="Lexmark MFP Printer" />
+    <device_id id="125" name="Lexmark Printer" />
+    <device_id id="126" name="LifeSize Room" />
+    <device_id id="127" name="Linksys BEFW11S4" />
+    <device_id id="128" name="Linksys PAP2/SPA 941" />
+    <device_id id="129" name="Linksys Router" />
+    <device_id id="130" name="Linux 2.0.x" />
+    <device_id id="131" name="Linux 2.2.x" />
+    <device_id id="132" name="Linux 2.4.x" />
+    <device_id id="133" name="Linux 2.6.x" />
+    <device_id id="134" name="Linux Mint Debian" />
+    <device_id id="135" name="Mac OS 9.1" />
+    <device_id id="136" name="Mac OS 9.2" />
+    <device_id id="137" name="Mac OS 9.x" />
+    <device_id id="138" name="Mac OS X" />
+    <device_id id="139" name="Mandriva 2011" />
+    <device_id id="140" name="Mediatrix VoIP Adapter" />
+    <device_id id="141" name="Meraki Indoor" />
+    <device_id id="142" name="Mitel IP Phone" />
+    <device_id id="143" name="Moneris HiSpeed 3100IP" />
+    <device_id id="144" name="Motorola NIM100" />
+    <device_id id="145" name="Motorola Router" />
+    <device_id id="146" name="Neoware Capio Thin Client (Windows CE)" />
+    <device_id id="147" name="Neoware e100 Thin Client (NeoLinux)" />
+    <device_id id="148" name="NetBotz WallBotz 400C" />
+    <device_id id="149" name="NetBotz WallBotz 420E" />
+    <device_id id="150" name="NetBotz WallBotz 500" />
+    <device_id id="151" name="NETGEAR FVS114" />
+    <device_id id="152" name="NETGEAR Router" />
+    <device_id id="153" name="NETGEAR WGR614v6" />
+    <device_id id="154" name="NETGEAR WGT624v4" />
+    <device_id id="155" name="NETGEAR WNDR3000" />
+    <device_id id="156" name="NETGEAR WNR3500L" />
+    <device_id id="157" name="NETGEAR WNR854T" />
+    <device_id id="158" name="Nokia 6086 UMA" />
+    <device_id id="159" name="Nokia E-Series" />
+    <device_id id="160" name="Nokia Internet Tablet" />
+    <device_id id="161" name="Nortel IP Phone" />
+    <device_id id="162" name="Novell NetWare Client" />
+    <device_id id="163" name="OpenBSD" />
+    <device_id id="164" name="OpenSolaris 2008.11 - 2010.02" />
+    <device_id id="165" name="openSUSE 12.1" />
+    <device_id id="166" name="OS/2 Warp" />
+    <device_id id="167" name="PC-BSD 1.4" />
+    <device_id id="168" name="PC-BSD 1.5" />
+    <device_id id="169" name="pdaNet" />
+    <device_id id="170" name="PlayStation 2" />
+    <device_id id="171" name="PlayStation 3" />
+    <device_id id="172" name="Polycom Video Phone (VSX 3000A)" />
+    <device_id id="173" name="Polycom ViewStation" />
+    <device_id id="174" name="Porteus 1.0" />
+    <device_id id="175" name="Puppy Linux 4.x" />
+    <device_id id="176" name="PXE Client" />
+    <device_id id="177" name="PXE Client (ZEN)" />
+    <device_id id="178" name="Red Hat Linux" />
+    <device_id id="179" name="ReplayTV" />
+    <device_id id="180" name="ShoreTel IP Phone" />
+    <device_id id="181" name="Siemens OpenStage 20/40/60/80" />
+    <device_id id="182" name="Siemens optiPoint 150 S" />
+    <device_id id="183" name="Siemens optiPoint 410/420" />
+    <device_id id="184" name="Siemens optiPoint WL2 professional" />
+    <device_id id="185" name="Sipura VoIP Adaptor" />
+    <device_id id="186" name="Slax 5.x-6.x based distros" />
+    <device_id id="187" name="SLED 10" />
+    <device_id id="188" name="SLED 10.1" />
+    <device_id id="189" name="Slingbox" />
+    <device_id id="190" name="SPA 942" />
+    <device_id id="191" name="Sun Blade 100 Workstation" />
+    <device_id id="192" name="SunOS 5.6" />
+    <device_id id="193" name="SunRocket Gizmo" />
+    <device_id id="194" name="SUSE Linux Enterprise" />
+    <device_id id="195" name="SUSE Linux Enterprise 9.3" />
+    <device_id id="196" name="Sweex LW050 WAP" />
+    <device_id id="197" name="Symbol Wireless Access Point" />
+    <device_id id="198" name="Symbol Wireless Switch" />
+    <device_id id="199" name="TallyGenicom Printer" />
+    <device_id id="200" name="TANDBERG" />
+    <device_id id="201" name="TANDBERG 1000" />
+    <device_id id="202" name="TiVo" />
+    <device_id id="203" name="TP-LINK Wireless LAN Router" />
+    <device_id id="204" name="Trapeze 2330 Wireless Access Point" />
+    <device_id id="205" name="Trapeze MP-422 Wireless Access Point" />
+    <device_id id="206" name="Trendnet IP Camera" />
+    <device_id id="207" name="Trendnet Print Server" />
+    <device_id id="208" name="Trendnet Wireless Access Point" />
+    <device_id id="209" name="Ubuntu" />
+    <device_id id="210" name="Ubuntu 11 based distro" />
+    <device_id id="211" name="Ubuntu 6.0.6" />
+    <device_id id="212" name="Ubuntu 6.10" />
+    <device_id id="213" name="Ubuntu 7.x based distro" />
+    <device_id id="214" name="Ubuntu 8.04" />
+    <device_id id="215" name="Ubuntu 8.10 based distro" />
+    <device_id id="216" name="Ubuntu 9-10 based distro" />
+    <device_id id="217" name="UniData IP Phone" />
+    <device_id id="218" name="Uniden DTA VoIP Adapater" />
+    <device_id id="219" name="UTStarcom F3000" />
+    <device_id id="220" name="WD My Book World Edition" />
+    <device_id id="221" name="WD ShareSpace" />
+    <device_id id="222" name="Wii" />
+    <device_id id="223" name="Windows 2000" />
+    <device_id id="224" name="Windows 7" />
+    <device_id id="225" name="Windows 8" />
+    <device_id id="226" name="Windows 95" />
+    <device_id id="227" name="Windows 95 B" />
+    <device_id id="228" name="Windows 98" />
+    <device_id id="229" name="Windows 98 SE" />
+    <device_id id="230" name="Windows CE" />
+    <device_id id="231" name="Windows ME" />
+    <device_id id="232" name="Windows NT 4" />
+    <device_id id="233" name="Windows Phone 7.5" />
+    <device_id id="234" name="Windows Phone 8.0" />
+    <device_id id="235" name="Windows Server 2003" />
+    <device_id id="236" name="Windows Server 2008" />
+    <device_id id="237" name="Windows Vista" />
+    <device_id id="238" name="Windows XP" />
+    <device_id id="239" name="Windows" />
+    <device_id id="240" name="Xbox" />
+    <device_id id="241" name="Xbox 360" />
+    <device_id id="242" name="Xerox Printer" />
+    <device_id id="243" name="Xerox WorkCentre" />
+    <device_id id="244" name="Zenwalk based distro" />
+    <device_id id="245" name="ZyXEL WiFi Phone" />
+    <device_id id="246" name="Apple iPod" />
+    <device_id id="247" name="Apple iPhone" />
+    <device_id id="248" name="Apple iPad" />
+    <device_id id="249" name="Apple TV" />
+    <device_id id="250" name="BarnesNoble NOOK" />
+    <device_id id="251" name="SonyEricsson Symbian Phone" />
+    <device_id id="252" name="SonyEricsson Android Phone" />
+    <device_id id="253" name="Sony Android Device" />
+    <device_id id="254" name="Sony PSP" />
+    <device_id id="255" name="Sony PlayStation" />
+    <device_id id="256" name="Nintendo Wii" />
+    <device_id id="257" name="Nokia Symbian" />
+    <device_id id="258" name="Nokia Lumia" />
+    <device_id id="259" name="Nokia Windows Phone" />
+    <device_id id="260" name="Google Nexus Series" />
+    <device_id id="261" name="HTC Android Phone" />
+    <device_id id="262" name="HTC Windows Phone" />
+    <device_id id="263" name="ASUS Transformer" />
+    <device_id id="264" name="ASUS PadFone" />
+    <device_id id="265" name="Motorola XOOM" />
+    <device_id id="266" name="Motorola Droid" />
+    <device_id id="267" name="Motorola Android Phone" />
+    <device_id id="268" name="Huawei Android Phone" />
+    <device_id id="269" name="Samsung Smartphone" />
+    <device_id id="270" name="Samsung Symbian" />
+    <device_id id="271" name="Samsung Android Tab" />
+    <device_id id="272" name="Samsung Android Phone" />
+    <device_id id="273" name="Samsung Windows Phone" />
+    <device_id id="274" name="LG Android Tab" />
+    <device_id id="275" name="LG Android Phone" />
+    <device_id id="276" name="Android Device" />
+    <device_id id="277" name="Windows Mobile Device" />
+    <device_id id="278" name="Windows Phone Device" />
+    <device_id id="279" name="Macintosh" />
+    <device_id id="280" name="FreeBSD" />
+    <device_id id="281" name="SunOS" />
+    <device_id id="282" name="Solaris" />
+    <device_id id="283" name="Linux" />
+    <device_id id="284" name="Sony PlayStation 2" />
+    <device_id id="285" name="Sony PlayStation 3" />
+    <device_id id="286" name="Firefox Device" />
+    <device_id id="287" name="D-Link Boxee" />
+    <device_id id="288" name="Belkin wemo" />
+    <device_id id="289" name="Canon Photo Printer" />
+    <device_id id="290" name="NEC M300X" />
+    <device_id id="291" name="Roku" />
+    <device_id id="292" name="Roku Device" />
+    <device_id id="293" name="FirefoxOS Mobile" />
+    <device_id id="294" name="NETGEAR NTV300" />
+    <device_id id="295" name="TrendMicro JewelryBox" />
+    <device_id id="296" name="Chromecast" />
+    <device_id id="297" name="Samsung SmartTV" />
+    <device_id id="298" name="Xbox One" />
+    <device_id id="299" name="Amazon Kindle Fire" />
+    <device_id id="300" name="Sony Android Tab" />
+    <device_id id="301" name="Asus Pad" />
+    <device_id id="302" name="Alcatel Device" />
+    <device_id id="303" name="Apple iPhone 5s" />
+    <device_id id="304" name="Apple iPhone 5" />
+    <device_id id="305" name="Apple iPhone 5c" />
+    <device_id id="306" name="Sharp SmartTV" />
+    <device_id id="307" name="Xiaomi Router" />
+    <device_id id="308" name="Apple iPhone 6 Plus" />
+    <device_id id="309" name="Apple iPhone 6" />
+    <device_id id="310" name="Apple iPhone 4s" />
+    <device_id id="311" name="Apple iPhone 4" />
+    <device_id id="312" name="Apple iPad Mini" />
+    <device_id id="313" name="Apple iPad Air" />
+    <device_id id="314" name="Apple iPad 4" />
+    <device_id id="315" name="Apple iPad 3" />
+    <device_id id="316" name="Apple iPad 2" />
+    <device_id id="317" name="Samsung Galaxy S5" />
+    <device_id id="318" name="Samsung Galaxy S4" />
+    <device_id id="319" name="Samsung Galaxy S3" />
+    <device_id id="320" name="Samsung Galaxy Note 4" />
+    <device_id id="321" name="Samsung Galaxy Note 3" />
+    <device_id id="322" name="Samsung Galaxy Note 3 Neo" />
+    <device_id id="323" name="Samsung Galaxy Note 2" />
+    <device_id id="324" name="Samsung Galaxy Note" />
+    <device_id id="325" name="Samsung Galaxy NotePRO" />
+    <device_id id="326" name="Samsung Galaxy Tab" />
+    <device_id id="327" name="Samsung Galaxy Tab S" />
+    <device_id id="328" name="Samsung Galaxy TabPRO" />
+    <device_id id="329" name="Sony Xperia Z3" />
+    <device_id id="330" name="Sony Xperia Z3 Compact" />
+    <device_id id="331" name="Sony Xperia Z3 Tablet" />
+    <device_id id="332" name="Sony Xperia Z2a" />
+    <device_id id="333" name="Sony Xperia Z2" />
+    <device_id id="334" name="Sony Xperia Z2 Tablet" />
+    <device_id id="335" name="Sony Xperia Z1" />
+    <device_id id="336" name="Sony Xperia Z1 Compact" />
+    <device_id id="337" name="Sony Xperia Tablet Z" />
+    <device_id id="338" name="Sony Xperia Z Ultra" />
+    <device_id id="339" name="Sony Xperia Z" />
+    <device_id id="340" name="Sony Xperia L" />
+    <device_id id="341" name="Sony Xperia ZR" />
+    <device_id id="342" name="Sony Xperia SP" />
+    <device_id id="343" name="Sony Xperia ZL" />
+    <device_id id="344" name="Sony Xperia C" />
+    <device_id id="345" name="Sony Xperia C3" />
+    <device_id id="346" name="Sony Xperia T3" />
+    <device_id id="347" name="Sony Xperia E1" />
+    <device_id id="348" name="Sony Xperia E3" />
+    <device_id id="349" name="Sony Xperia M" />
+    <device_id id="350" name="Sony Xperia M2" />
+    <device_id id="351" name="Sony Xperia M2 Agua" />
+    <device_id id="352" name="HTC Butterfly 2" />
+    <device_id id="353" name="HTC Butterfly Series" />
+    <device_id id="354" name="HTC Desire 610" />
+    <device_id id="355" name="HTC Desire 816" />
+    <device_id id="356" name="HTC Desire Series" />
+    <device_id id="357" name="HTC One E8" />
+    <device_id id="358" name="HTC One M8" />
+    <device_id id="359" name="HTC One Max" />
+    <device_id id="360" name="HTC One Mini 2" />
+    <device_id id="361" name="HTC One Mini" />
+    <device_id id="362" name="HTC One X+" />
+    <device_id id="363" name="HTC One Series" />
+    <device_id id="364" name="HTC EVO Series" />
+    <device_id id="365" name="HTC J" />
+    <device_id id="366" name="HTC Flyer" />
+    <device_id id="367" name="HTC Sensation Series" />
+    <device_id id="368" name="HTC Wildfire Series" />
+    <device_id id="369" name="Sony PlayStation 4" />
+    <device_id id="370" name="Synology NAS" />
+    <device_id id="371" name="Apple iPad Mini 3" />
+    <device_id id="372" name="Apple iPad Air 2" />
+    <device_id id="373" name="Amazon Fire TV" />
+    <device_id id="374" name="Nintendo 3DS" />
+    <device_id id="375" name="Google Nexus 4" />
+    <device_id id="376" name="Google Nexus 5" />
+    <device_id id="377" name="Google Nexus 7" />
+    <device_id id="378" name="Google Nexus 9" />
+    <device_id id="379" name="Google Nexus 10" />
+    <device_id id="380" name="Huawei MediaPad" />
+    <device_id id="381" name="Xiaomi Redmi" />
+    <device_id id="382" name="Xiaomi Mi 3" />
+    <device_id id="383" name="Xiaomi Mi 2 Series" />
+    <device_id id="384" name="Lenovo YOGA Tablet" />
+    <device_id id="385" name="Philips hue" />
+    <device_id id="386" name="Vonage VoIP Phone" />
+    <device_id id="387" name="Sony BRAVIA SmartTV" />
+    <device_id id="388" name="Sony Xperia Z1 f" />
+    <device_id id="389" name="Sony Xperia AX" />
+    <device_id id="390" name="Sony Xperia GX" />
+    <device_id id="391" name="Sony Xperia SX" />
+    <device_id id="392" name="Sony Reader PRS-T3" />
+    <device_id id="393" name="HTC INFOBAR" />
+    <device_id id="394" name="HTC J One" />
+    <device_id id="395" name="Samsung Galaxy Tab Plus" />
+    <device_id id="396" name="LG SmartTV" />
+    <device_id id="397" name="Fujitsu ANTEPRIMA F-09D" />
+    <device_id id="398" name="Sharp AQUOS PAD" />
+    <device_id id="399" name="Sharp AQUOS PHONE Xx" />
+    <device_id id="400" name="Sharp AQUOS PHONE Xx mini" />
+    <device_id id="401" name="Sharp AQUOS PHONE SL" />
+    <device_id id="402" name="Sharp AQUOS PHONE CL" />
+    <device_id id="403" name="Sharp AQUOS PHONE EX" />
+    <device_id id="404" name="Sharp AQUOS PHONE SERIE" />
+    <device_id id="405" name="Sharp AQUOS PHONE SERIE mini" />
+    <device_id id="406" name="Sharp AQUOS PHONE si" />
+    <device_id id="407" name="Sharp AQUOS PHONE ss" />
+    <device_id id="408" name="Sharp AQUOS PHONE st" />
+    <device_id id="409" name="Sharp AQUOS PHONE sv" />
+    <device_id id="410" name="Sharp AQUOS PHONE ZETA" />
+    <device_id id="411" name="Sharp AQUOS ZETA" />
+    <device_id id="412" name="Sharp AQUOS SmartTV" />
+    <device_id id="413" name="Sharp AQUOS PHONE Vivienne Westwood" />
+    <device_id id="414" name="Fujitsu ARROWS A" />
+    <device_id id="415" name="Fujitsu ARROWS ef" />
+    <device_id id="416" name="Fujitsu ARROWS Kiss" />
+    <device_id id="417" name="Fujitsu ARROWS V" />
+    <device_id id="418" name="Fujitsu ARROWS X" />
+    <device_id id="419" name="Fujitsu ARROWS NX" />
+    <device_id id="420" name="Fujitsu ARROWS Z" />
+    <device_id id="421" name="Fujitsu ARROWS REGZA Phone" />
+    <device_id id="422" name="Fujitsu ARROWS Tab" />
+    <device_id id="423" name="Hitachi SmartTV" />
+    <device_id id="424" name="Mitsubishi SmartTV" />
+    <device_id id="425" name="Panasonic Viera SmartTV" />
+    <device_id id="426" name="Toshiba REGZA SmartTV" />
+    <device_id id="427" name="NEC MEDIAS W" />
+    <device_id id="428" name="Kyocera URBANO L01" />
+    <device_id id="429" name="Kyocera URBANO L02" />
+    <device_id id="430" name="Kyocera URBANO L03" />
+    <device_id id="431" name="Kyocera TORQUE G01" />
+    <device_id id="432" name="Chromebook" />
+    <device_id id="433" name="Hitachi Wooo TV" />
+    <device_id id="434" name="Mitsubishi LCD SmartTV" />
+    <device_id id="435" name="Panasoic DMR" />
+    <device_id id="436" name="Panasoic SmartTV" />
+    <device_id id="437" name="Pioneer BDP" />
+    <device_id id="438" name="Sony BDZ" />
+    <device_id id="439" name="Sony BDP" />
+    <device_id id="440" name="Sony PlayStation Portable" />
+    <device_id id="441" name="Sony PlayStation Vita" />
+    <device_id id="442" name="Toshiba DBR" />
+    <device_id id="443" name="Toshiba SmartTV" />
+    <device_id id="444" name="Nintendo Wii U" />
+    <device_id id="445" name="Ooma VoIP Adapter" />
+    <device_id id="446" name="Fujitsu ARROWS" />
+    <device_id id="447" name="Fujitsu Disney" />
+    <device_id id="448" name="Fujitsu Raku-Raku" />
+    <device_id id="449" name="Sharp AQUOS PHONE" />
+    <device_id id="450" name="Sharp AQUOS PHONE THE PREMIUM" />
+    <device_id id="451" name="Sharp AQUOS PHONE THE HYBRID" />
+    <device_id id="452" name="Sharp PANTON 4" />
+    <device_id id="453" name="Sharp PANTON 5" />
+    <device_id id="454" name="Sharp PANTON 6" />
+    <device_id id="455" name="Sharp PANTON WATERPROOF" />
+    <device_id id="456" name="Sharp Galapagos" />
+    <device_id id="457" name="NEC MEDIAS CH" />
+    <device_id id="458" name="NEC MEDIAS BR" />
+    <device_id id="459" name="NEC MEDIAS PP" />
+    <device_id id="460" name="NEC MEDIAS U" />
+    <device_id id="461" name="NEC Disney" />
+    <device_id id="462" name="NEC MEDIAS" />
+    <device_id id="463" name="NEC MEDIAS X" />
+    <device_id id="464" name="NEC MEDIAS ES" />
+    <device_id id="465" name="NEC MEDIAS WP" />
+    <device_id id="466" name="NEC MEDIAS Tab" />
+    <device_id id="467" name="NEC MEDIAS Tab UL" />
+    <device_id id="468" name="Kyocera DIGNO S" />
+    <device_id id="469" name="Kyocera DIGNO M" />
+    <device_id id="470" name="Alcatel One Touch Evolve" />
+    <device_id id="471" name="ASUS PadFone 2" />
+    <device_id id="472" name="Asus Fonepad" />
+    <device_id id="473" name="Asus Fonepad 7" />
+    <device_id id="474" name="CASIO GzOne TYPE-L" />
+    <device_id id="475" name="Fujitsu ARROWS Me" />
+    <device_id id="476" name="HTC J Butterfly" />
+    <device_id id="477" name="Huawei Stream" />
+    <device_id id="478" name="Huawei Stream S" />
+    <device_id id="479" name="Huawei Stream X" />
+    <device_id id="480" name="Huawei MediaPad 7 Lite" />
+    <device_id id="481" name="Kobo Arc 7 HD" />
+    <device_id id="482" name="Kyocera Honey Bee" />
+    <device_id id="483" name="Kyocera DIGNO R" />
+    <device_id id="484" name="Kyocera Disney" />
+    <device_id id="485" name="Kyocera URBANO PROGRESSO" />
+    <device_id id="486" name="Kyocera Digno Dual 2" />
+    <device_id id="487" name="Lenovo IdeaTab" />
+    <device_id id="488" name="LG Optimus L1 II Dual" />
+    <device_id id="489" name="LG Optimus L5II" />
+    <device_id id="490" name="LG Optimus L5II Duet" />
+    <device_id id="491" name="LG Optimus Vu JOJO" />
+    <device_id id="492" name="LG Optimus G" />
+    <device_id id="493" name="LG Optimus G Flex" />
+    <device_id id="494" name="LG Optimus L7" />
+    <device_id id="495" name="LG Optimus F5" />
+    <device_id id="496" name="Motorola Droid RAZR M" />
+    <device_id id="497" name="Motorola Droid RAZR HD" />
+    <device_id id="498" name="Motorola Droid XYBOARD" />
+    <device_id id="499" name="Motorola DEFY Mini" />
+    <device_id id="500" name="Motorola DEFY XT" />
+    <device_id id="501" name="Motorola Admiral" />
+    <device_id id="502" name="Motorola Master" />
+    <device_id id="503" name="Motorola MOTO" />
+    <device_id id="504" name="Motorola Electrify 2" />
+    <device_id id="505" name="Motorola Droid RAZR V" />
+    <device_id id="506" name="Motorola RAZR i" />
+    <device_id id="507" name="Motorola Photon Q" />
+    <device_id id="508" name="Motorola Electrify M" />
+    <device_id id="509" name="Motorola RAZR M" />
+    <device_id id="510" name="Motorola Droid RAZR M" />
+    <device_id id="511" name="Motorola RAZR XT910" />
+    <device_id id="512" name="Motorola RAZR D1" />
+    <device_id id="513" name="Motorola RAZR D3" />
+    <device_id id="514" name="NEC LifeTouch L" />
+    <device_id id="515" name="NEC LaVie Tab S" />
+    <device_id id="516" name="Panasonic Eluga" />
+    <device_id id="517" name="Panasonic Disney" />
+    <device_id id="518" name="Panasonic Eluga V" />
+    <device_id id="519" name="Panasonic Eluga Power" />
+    <device_id id="520" name="Panasonic Eluga Live" />
+    <device_id id="521" name="Samsung Galaxy Core" />
+    <device_id id="522" name="Samsung Galaxy Win" />
+    <device_id id="523" name="Samsung Galaxy Mega" />
+    <device_id id="524" name="Samsung Galaxy Pocket Neo" />
+    <device_id id="525" name="Samsung Galaxy Fame" />
+    <device_id id="526" name="Samsung Galaxy Ace 3" />
+    <device_id id="527" name="Samsung Galaxy S II" />
+    <device_id id="528" name="Samsung Galaxy Young" />
+    <device_id id="529" name="Samsung Galaxy Fame Lite" />
+    <device_id id="530" name="Samsung Galaxy Fame Lite Duos" />
+    <device_id id="531" name="Samsung Galaxy Trend Lite" />
+    <device_id id="532" name="Samsung Galaxy S Duos" />
+    <device_id id="533" name="Samsung Galaxy S Duos 2" />
+    <device_id id="534" name="Samsung Galaxy S" />
+    <device_id id="535" name="Samsung Galaxy J" />
+    <device_id id="536" name="Samsung Galaxy S III alpha" />
+    <device_id id="537" name="Sharp Disney" />
+    <device_id id="538" name="Sharp AQUOS PHONE CRYSTAL" />
+    <device_id id="539" name="Sharp AQUOS PHONE Slider" />
+    <device_id id="540" name="Sharp Q-pot PHONE" />
+    <device_id id="541" name="Sharp Junior" />
+    <device_id id="542" name="Sharp AQUOS PHONE NERV" />
+    <device_id id="543" name="Sharp Lynx" />
+    <device_id id="544" name="Sharp Shot PHONE" />
+    <device_id id="545" name="Sony Xperia T2 Ultra" />
+    <device_id id="546" name="Sony Xperia Arc" />
+    <device_id id="547" name="Sony Xperia Tablet S" />
+    <device_id id="548" name="Sony Xperia A" />
+    <device_id id="549" name="Sony Xperia VL" />
+    <device_id id="550" name="Sony Xperia UL" />
+    <device_id id="551" name="Sony Xperia ZL2" />
+    <device_id id="552" name="Sony Xperia tipo" />
+    <device_id id="553" name="Toshiba Tablet" />
+    <device_id id="554" name="Toshiba REGZA Tablet" />
+    <device_id id="555" name="Alcatel One Touch Idol" />
+    <device_id id="556" name="Alcatel One Touch Idol X" />
+    <device_id id="557" name="Mitsubishi DVR" />
+    <device_id id="558" name="Nintendo DSi" />
+    <device_id id="559" name="Coolpad 5216D" />
+    <device_id id="560" name="Coolpad 5879T" />
+    <device_id id="561" name="Coolpad 5890" />
+    <device_id id="562" name="Coolpad 5951" />
+    <device_id id="563" name="Coolpad 5950T" />
+    <device_id id="564" name="Coolpad 7270" />
+    <device_id id="565" name="Coolpad 7295T" />
+    <device_id id="566" name="Coolpad 7620L" />
+    <device_id id="567" name="Coolpad 8012" />
+    <device_id id="568" name="Coolpad 8297" />
+    <device_id id="569" name="Coolpad 8720L" />
+    <device_id id="570" name="Coolpad 9080W" />
+    <device_id id="571" name="Coolpad D530TW" />
+    <device_id id="572" name="Coolpad device" />
+    <device_id id="573" name="Fujitsu Girls" />
+    <device_id id="574" name="Android 5.0" />
+    <device_id id="575" name="D-Link IPCam" />
+    <device_id id="576" name="FreeBSD 10.1" />
+  </device_ids>
+  <family_ids>
+    <family_id id="1" name="Smart TV &amp;  Set-top box" />
+    <family_id id="2" name="Game Console" />
+    <family_id id="3" name="Handheld" />
+    <family_id id="4" name="Computer" />
+    <family_id id="5" name="Intelligent Home Appliances" />
+    <family_id id="6" name="Wearable devices" />
+    <family_id id="7" name="Network &amp; Peripheral" />
+  </family_ids>
+</data>
