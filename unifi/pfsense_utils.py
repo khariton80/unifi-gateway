@@ -34,7 +34,7 @@ pfsense_const = {
 }
 
 global _config
-#pfsense_const['cf_conf_path']='conf'
+pfsense_const['cf_conf_path']='conf'
 with open(pfsense_const['cf_conf_path']+'/config.xml') as fd:
         _config = xmltodict.parse(fd.read())["pfsense"]
 

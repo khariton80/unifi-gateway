@@ -135,8 +135,8 @@ class UnifiUSGPro(BaseDevice):
             #stat = if_stats[interface["pfsense-ppp"]]
             #counter = io_counters[interface["pfsense-ppp"]]
         ipaddress1 = ipv4.address if ipv4 is not None else "0.0.0.0"
-        ipaddress1 = '192.168.1.1'
-        ntopstat = hostsstatus[ipaddress1] if hostsstatus.has_key(ipaddress1) else None
+        #ipaddress1 = '192.168.1.1'
+        ntopstat = hostsstatus[ipaddress1] if hostsstatus is not None and  hostsstatus.has_key(ipaddress1) else None
 
         data = {
                 "drops": counter.dropout+counter.dropin,
@@ -156,8 +156,8 @@ class UnifiUSGPro(BaseDevice):
                 "rx_multicast": 0,
                 "rx_packets": counter.packets_recv,
                 "speed": stat.speed,
-                "speedtest_lastrun": 1583600088374,
-                "speedtest_ping": 68,
+                "speedtest_lastrun": 1584280907546,
+                "speedtest_ping": 18,
                 "speedtest_status": "Idle",
                 "tx_bytes": counter.bytes_sent,
                 "tx_dropped": counter.dropout,
@@ -225,7 +225,7 @@ class UnifiUSGPro(BaseDevice):
                 # ],
         ipaddress1 = ipv4.address if ipv4 is not None else "0.0.0.0"
         #ipaddress = '192.168.1.1'
-        ntopstat = hostsstatus[ipaddress1] if hostsstatus.has_key(ipaddress1) else None
+        ntopstat = hostsstatus[ipaddress1] if  hostsstatus is not None and  hostsstatus.has_key(ipaddress1) else None
 
         data = {
                 "autoneg": "True",
@@ -311,9 +311,31 @@ class UnifiUSGPro(BaseDevice):
         data["has_fan"]=True
         data["general_temperature"]=30
         data["fan_level"]=20
+        data["speedtest-status"]= {
+    "latency": 10,
+    "rundate": 1584282407463,
+    "runtime": 1584282407463,
+    "status_download": 1,
+    "status_ping": 1,
+    "status_summary": 1,
+    "status_upload": 1,
+    "xput_download": 100000.0,
+    "xput_upload": 1000000.0,
+    "upload-progress":[
+      100,
+      50,
+      10
+
+    ],
+    "download-progress":[
+      50,
+      25,
+      10
+    ],
+  }
         data["dpi-stats"]= [
     {
-      "initialized": "94107792805",
+      "initialized": "1584128269122",
       "mac": "00:26:4a:08:d6:0c",
       "stats": [
         {
@@ -662,16 +684,23 @@ class UnifiUSGPro(BaseDevice):
           "tx_packets": 695
         }
       ],
-      "initialized": "88122111307"
+      "initialized": "1584128269122"
     },
     {
       "_id": "5aec9b73fc92ac1eb4d8a150",
-      "_subid": "5aec9b71fc92ac1eb4d8a13f",
+      "_subid": "5e67f0961b24b874966aa014",
       "by_app": [
         {
-          "app": 5,
-          "cat": 3,
+          "app": 20,
+          "cat": 1,
           "clients": [
+            {
+              "mac": "00:26:4a:08:d6:0c",
+              "rx_bytes": 82297468,
+              "rx_packets": 57565,
+              "tx_bytes": 1710174,
+              "tx_packets": 25324
+            },
             {
               "mac": "6c:00:6b:d5:2e:2f",
               "rx_bytes": 82297468,
@@ -680,7 +709,7 @@ class UnifiUSGPro(BaseDevice):
               "tx_packets": 25324
             }
           ],
-          "known_clients": 1,
+          "known_clients": 2,
           "rx_bytes": 82300120,
           "rx_packets": 57569,
           "tx_bytes": 1711971,
@@ -691,7 +720,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 19,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 1593846895,
               "rx_packets": 1738901,
               "tx_bytes": 348738675,
@@ -725,7 +754,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 3,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 531190,
               "rx_packets": 2465,
               "tx_bytes": 676859,
@@ -743,7 +772,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 3441437,
               "rx_packets": 3033,
               "tx_bytes": 203173,
@@ -761,7 +790,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -779,7 +808,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -797,7 +826,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 24417806554,
               "rx_packets": 18415873,
               "tx_bytes": 2817966897,
@@ -815,7 +844,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 20,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 28812050,
               "rx_packets": 208945,
               "tx_bytes": 160819147,
@@ -833,7 +862,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 255,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 182029551,
               "rx_packets": 1796815,
               "tx_bytes": 435732626,
@@ -859,7 +888,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 10,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 1522,
               "rx_packets": 20,
               "tx_bytes": 882,
@@ -877,7 +906,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 982710,
               "rx_packets": 10919,
               "tx_bytes": 1010970,
@@ -895,7 +924,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 7819852,
               "rx_packets": 20378,
               "tx_bytes": 1293104,
@@ -913,7 +942,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 0,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 0,
               "rx_packets": 0,
               "tx_bytes": 145,
@@ -979,7 +1008,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 18,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 780358,
               "rx_packets": 3520,
               "tx_bytes": 545757,
@@ -997,7 +1026,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 13,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 180691586,
               "rx_packets": 132204,
               "tx_bytes": 5970383,
@@ -1023,7 +1052,7 @@ class UnifiUSGPro(BaseDevice):
           "cat": 10,
           "clients": [
             {
-              "mac": "6c:00:6b:d5:2e:2f",
+              "mac": "00:26:4a:08:d6:0c",
               "rx_bytes": 5521547718,
               "rx_packets": 73080390,
               "tx_bytes": 179999309100,
@@ -1044,7 +1073,7 @@ class UnifiUSGPro(BaseDevice):
             7,
             1
           ],
-          "cat": 0,
+          "cat": 128,
           "rx_bytes": 0,
           "rx_packets": 0,
           "tx_bytes": 435,
@@ -1155,11 +1184,14 @@ class UnifiUSGPro(BaseDevice):
           "tx_packets": 1934359
         }
       ],
-      "initialized": "88121276686",
+      "initialized": "1584128269122",
       "is_ugw": True
     }
   ]
   
+        #data['inform_as_notif']=True
+        #data['notif_reason']="speedtest"
+        #data['notif_payload']="5e6e3b27f1030700f34883f6"
 
         if_stats = psutil.net_if_stats()
         io_counters = psutil.net_io_counters(pernic=True)
@@ -1170,10 +1202,10 @@ class UnifiUSGPro(BaseDevice):
             and self.config['gateway']['ntopng_user'] and self.config['gateway']['ntopng_password']):
           hostsstatus = pfsense_utils.get_ntopng_stats(self.config['gateway']['ntopng_user'],self.config['gateway']['ntopng_password'],self.config['gateway']['ntopng_url'])
           try:
-            hostsstatus = json.loads(hostsstatus,object_hook= utils._byteify) if hostsstatus is not None else None
+            hostsstatus = json.loads(hostsstatus,object_hook= utils._byteify) if hostsstatus is not None else {}
           except Exception as ex:
             logging.warn(ex)
-            hostsstatus = None
+            hostsstatus = {}
 
 
         #print(hostsstatus)

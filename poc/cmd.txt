@@ -13,7 +13,11 @@ route add 224.0.0.0/4 -interface em1
 
 route add 224.0.0.0/4 -interface nfe0
 route add 233.89.188.1 -interface nfe0
+route add -net 224.0.0.0/4 -interface nfe0
 
+
+route add -net 224.0.0.0/4  192.168.1.1
+route add  233.89.188.1  192.168.1.1
 commands
 "adopt", "adv-adopt", "replace", "restart", "upgrade", "upgrade-external", "upgrade-all", "set-rollupgrade", "unset-rollupgrade", "locate", 
             "set-locate", "unset-locate", "show-lcm-tracker", "hide-lcm-tracker", "build-ssh-session", "get-sdp-offer", "ssh-sdp-answer", "close-ssh-session", "clone-config", "migrate", 
