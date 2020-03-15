@@ -156,7 +156,7 @@ class UnifiUSGPro(BaseDevice):
                 "rx_multicast": 0,
                 "rx_packets": counter.packets_recv,
                 "speed": stat.speed,
-                "speedtest_lastrun": 1584280907546,
+                "speedtest_lastrun": 1584300616,
                 "speedtest_ping": 18,
                 "speedtest_status": "Idle",
                 "tx_bytes": counter.bytes_sent,
@@ -165,8 +165,8 @@ class UnifiUSGPro(BaseDevice):
                 "tx_packets": counter.packets_sent,
                 "up": stat.isup ,
                 "uptime": ntopstat['duration'] if ntopstat is not None and ntopstat.has_key('duration') else 0,
-                "xput_down": 0,
-                "xput_up": 0
+                "xput_down": 123,
+                "xput_up": 321
                 }
         return data
 
@@ -312,27 +312,18 @@ class UnifiUSGPro(BaseDevice):
         data["general_temperature"]=30
         data["fan_level"]=20
         data["speedtest-status"]= {
-    "latency": 10,
-    "rundate": 1584282407463,
-    "runtime": 1584282407463,
-    "status_download": 1,
-    "status_ping": 1,
-    "status_summary": 1,
-    "status_upload": 1,
-    "xput_download": 100000.0,
-    "xput_upload": 1000000.0,
-    "upload-progress":[
-      100,
-      50,
-      10
-
-    ],
-    "download-progress":[
-      50,
-      25,
-      10
-    ],
-  }
+    "latency": 23,
+    "rundate": 1584300616,
+    "runtime": 1584300616,
+    "status_download": 100,
+    "status_ping": 100,
+    "status_summary": 100,
+    "status_upload": 100,
+    "xput_download": 80.0,
+    "xput_upload": 111.0,
+    "upload-progress":30,
+    "download-progress":20
+    }
         data["dpi-stats"]= [
     {
       "initialized": "1584128269122",
@@ -1189,26 +1180,26 @@ class UnifiUSGPro(BaseDevice):
     }
   ]
   
-        #data['inform_as_notif']=True
-        #data['notif_reason']="speedtest"
-        #data['notif_payload']="5e6e3b27f1030700f34883f6"
-
         if_stats = psutil.net_if_stats()
         io_counters = psutil.net_io_counters(pernic=True)
         if_addrs = psutil.net_if_addrs()
         dpingerStatuses = pfsense_utils.getGatewaysPingerStatus()
-        hostsstatus= None
-        if (self.config['gateway'].has_key('ntopng_user') and self.config['gateway'].has_key('ntopng_password')
-            and self.config['gateway']['ntopng_user'] and self.config['gateway']['ntopng_password']):
-          hostsstatus = pfsense_utils.get_ntopng_stats(self.config['gateway']['ntopng_user'],self.config['gateway']['ntopng_password'],self.config['gateway']['ntopng_url'])
+        hostsstatus= {}
+        if (self.config.has_key('ntopng') 
+            and self.config['ntopng'].has_key('enabled') 
+            and self.config['ntopng']['enabled']  
+            and self.config['ntopng'].has_key('user') 
+            and self.config['ntopng'].has_key('password')
+            and self.config['ntopng'].has_key('url')
+            and self.config['ntopng']['url'] 
+            and self.config['ntopng']['user'] 
+            and self.config['ntopng']['password']):
+          hostsstatus = pfsense_utils.get_ntopng_stats(self.config['ntopng']['user'],self.config['ntopng']['password'],self.config['ntopng']['url'])
           try:
             hostsstatus = json.loads(hostsstatus,object_hook= utils._byteify) if hostsstatus is not None else {}
           except Exception as ex:
             logging.warn(ex)
             hostsstatus = {}
-
-
-        #print(hostsstatus)
 
         self.appendVPN(data,if_stats,io_counters,if_addrs)
         self.appendWAN(data,if_stats,io_counters,if_addrs)
@@ -1247,6 +1238,17 @@ class UnifiUSGPro(BaseDevice):
                     for vkey in current['vif']:
                         self.process_or_create_if("{}.{}".format(key,vkey),current['vif'][vkey])
         self.save_map()        
+    
+    def process_command(self,data):
+      if(data['cmd']=='speed-test'):
+          self.config['speed-test']=data
+          self.save_config()
+          self.reload_config()
+          cmd = self.createNotify('speed-test','')
+          cmd['state'] =2
+          self.nextCommand = basecommand.BaseCommand(basecommand.CMD_NOTIFY,cmd)
+          self.delayStart-=self.interval
+
     def parseResponse(self,data):
         if(data is None):
             return
@@ -1266,6 +1268,8 @@ class UnifiUSGPro(BaseDevice):
             self.firmware = result['version']
             self.save_config()
             self.reload_config()
+        if result['_type'] == 'cmd': 
+            self.process_command(result)
         if result['_type'] == 'noop' and result['interval']: 
             self.interval = 1000*int(result['interval'])
         if result['_type'] == 'setparam':
