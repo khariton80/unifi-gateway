@@ -7,6 +7,7 @@ import psutil
 import utils
 import pfsense_utils
 import ip_calculator
+import time
 class UnifiUSGPro(BaseDevice):
     def __init__(self,configfile):
         BaseDevice.__init__(self,'UGW4','UniFi-Gateway-3',configfile)
@@ -313,16 +314,16 @@ class UnifiUSGPro(BaseDevice):
         data["fan_level"]=20
         data["speedtest-status"]= {
     "latency": 23,
-    "rundate": 1584300616,
-    "runtime": 1584300616,
-    "status_download": 100,
-    "status_ping": 100,
-    "status_summary": 100,
-    "status_upload": 100,
-    "xput_download": 80.0,
-    "xput_upload": 111.0,
-    "upload-progress":30,
-    "download-progress":20
+    "rundate": time.time(),
+    "runtime": time.time(),
+    "status_download":1,
+    "status_ping": 1,
+    "status_summary": 0,
+    "status_upload": 1,
+    "xput_download": 124.0,
+    "xput_upload": 20.0,
+    "upload-progress":150.00,
+    "download-progress":200.00
     }
         data["dpi-stats"]= [
     {
