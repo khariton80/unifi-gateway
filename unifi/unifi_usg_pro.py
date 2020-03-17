@@ -8,13 +8,16 @@ import utils
 import pfsense_utils
 import ip_calculator
 import time
+import thread
+
+
 class UnifiUSGPro(BaseDevice):
     def __init__(self,configfile):
         BaseDevice.__init__(self,'UGW4','UniFi-Gateway-3',configfile)
                 
     def cfgversion(self):
         if self.config.has_key('mgmt_cfg') and self.config['mgmt_cfg'].has_key('cfgversion'):
-             return self.config['mgmt_cfg']['cfgversion']     
+             return self.config['mgmt_cfg']['cfgversion']
         else:
             return "?"    
     def getDefaultMap(self,lan,wan):
@@ -129,10 +132,11 @@ class UnifiUSGPro(BaseDevice):
         mac = utils.get_macaddr(if_addrs,name)
         ipv4 = utils.get_ipv4addr(if_addrs,name)
         dpinger = dpingerStatuses[name] if dpingerStatuses.has_key('name') else None
-        
+        isup = stat.isup
         if interface.has_key("pfsense-ppp") and interface["pfsense-ppp"] is not None:
             ipv4 = utils.get_ipv4addr(if_addrs,interface["pfsense-ppp"])
             dpinger = dpingerStatuses[interface["pfsense-ppp"]] if dpingerStatuses.has_key(interface["pfsense-ppp"]) else dpinger
+            isup = if_stats[interface["pfsense-ppp"]].isup if if_stats.has_key(interface["pfsense-ppp"]) else False
             #stat = if_stats[interface["pfsense-ppp"]]
             #counter = io_counters[interface["pfsense-ppp"]]
         ipaddress1 = ipv4.address if ipv4 is not None else "0.0.0.0"
@@ -157,18 +161,21 @@ class UnifiUSGPro(BaseDevice):
                 "rx_multicast": 0,
                 "rx_packets": counter.packets_recv,
                 "speed": stat.speed,
-                "speedtest_lastrun": 1584300616,
-                "speedtest_ping": 18,
-                "speedtest_status": "Idle",
                 "tx_bytes": counter.bytes_sent,
                 "tx_dropped": counter.dropout,
                 "tx_errors": counter.errout,
                 "tx_packets": counter.packets_sent,
-                "up": stat.isup ,
-                "uptime": ntopstat['duration'] if ntopstat is not None and ntopstat.has_key('duration') else 0,
-                "xput_down": 123,
-                "xput_up": 321
+                "up": isup ,
+                "uptime": ntopstat['duration'] if ntopstat is not None and ntopstat.has_key('duration') else 0
+                
                 }
+        if interface["wan"]=="test":
+          #add speedtest
+          data["speedtest_lastrun"]= 1584452024
+          data["speedtest_ping"]=18
+          data["speedtest_status"]="Idle"
+          data["xput_down"]=321 
+          data["xput_up"]=123
         return data
 
     def append_if_table(self,data,if_stats,io_counters,if_addrs,dpingerStatuses,hostsstatus):
@@ -214,12 +221,12 @@ class UnifiUSGPro(BaseDevice):
         mac = utils.get_macaddr(if_addrs,name)
         ipv4 = utils.get_ipv4addr(if_addrs,name)
         dpinger = dpingerStatuses[name] if dpingerStatuses.has_key('name') else None
-        
+        isup = stat.isup
         if interface.has_key("pfsense-ppp") and interface["pfsense-ppp"] is not None:
             ipv4 = utils.get_ipv4addr(if_addrs,interface["pfsense-ppp"])
             dpinger = dpingerStatuses[interface["pfsense-ppp"]] if dpingerStatuses.has_key(interface["pfsense-ppp"]) else dpinger
             #stat = if_stats[interface["pfsense-ppp"]]
-            #counter = io_counters[interface["pfsense-ppp"]]
+            isup = if_stats[interface["pfsense-ppp"]].isup if if_stats.has_key(interface["pfsense-ppp"]) else False            #counter = io_counters[interface["pfsense-ppp"]]
                 # "address": addr,
                 # "addresses": [
                 #     addr
@@ -251,7 +258,7 @@ class UnifiUSGPro(BaseDevice):
                     "tx_errors": counter.errout,
                     "tx_packets": counter.packets_sent
                 },
-                "up": stat.isup
+                "up": isup
                 }
    
         if(interface.has_key('address') and 'dhcp' not in interface['address']):
@@ -269,7 +276,7 @@ class UnifiUSGPro(BaseDevice):
             #  for rhost in hosts:
             #    data['host_table'].append(self.create_host_table_element(rhost))
                 
-        if interface["wan"] or  ( interface.has_key('address') and 'dhcp' in interface['address']):
+        if (interface["wan"] or  ( interface.has_key('address') and 'dhcp' in interface['address'])) and ipv4 is not None:
             data["address"]= ipv4.address+"/32"
             data["addresses"]= [ipv4.address+"/32"]
             data["gateways"]=[ dpinger['gateway'] if dpinger is not None else ""  ]
@@ -312,19 +319,6 @@ class UnifiUSGPro(BaseDevice):
         data["has_fan"]=True
         data["general_temperature"]=30
         data["fan_level"]=20
-        data["speedtest-status"]= {
-    "latency": 23,
-    "rundate": time.time(),
-    "runtime": time.time(),
-    "status_download":1,
-    "status_ping": 1,
-    "status_summary": 0,
-    "status_upload": 1,
-    "xput_download": 124.0,
-    "xput_upload": 20.0,
-    "upload-progress":150.00,
-    "download-progress":200.00
-    }
         data["dpi-stats"]= [
     {
       "initialized": "1584128269122",
@@ -1245,10 +1239,92 @@ class UnifiUSGPro(BaseDevice):
           self.config['speed-test']=data
           self.save_config()
           self.reload_config()
-          cmd = self.createNotify('speed-test','')
-          cmd['state'] =2
-          self.nextCommand = basecommand.BaseCommand(basecommand.CMD_NOTIFY,cmd)
-          self.delayStart-=self.interval
+          thread.start_new_thread( self.speedtest_check, (2,)  )
+
+          
+# Define a function for the thread
+    def speedtest_check(self,delay):
+        from speedtest import Speedtest
+        self.interval = 1000*100
+      #"SPEED_TEST_STATUSES",{UNKNOWN:-1,PENDING_TEST:0,IN_PROGRESS:1,IS_COMPLETED:2}
+        cmd = self.createBaseInform()
+        cmd['sys_stats']=self.get_sys_stats()
+        cmd['system-stats']=self.get_system_stats()
+
+        cmd["speedtest-status"]= {
+    "latency": 0,
+    "rundate": time.time(),
+    "runtime": time.time(),
+    "status_download":0,
+    "status_ping": 11,
+    "status_summary": 1,
+    "status_upload": 0,
+    "xput_download": 0,
+    "xput_upload": 0,
+    "upload-progress":0,
+    "download-progress":0
+    }
+        print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
+        self._send_inform(cmd,False)
+        speedtest = Speedtest()
+        speedtest.get_best_server()
+        results = speedtest.results
+
+        print('Hosted by %(sponsor)s (%(name)s) [%(d)0.2f km]: '
+            '%(latency)s ms' % results.server)
+
+        cmd["speedtest-status"]= {
+    "latency": results.server["latency"],
+    "rundate": time.time(),
+    "runtime": time.time(),
+    "status_download":1,
+    "status_ping": 2,
+    "status_summary": 1,
+    "status_upload": 0,
+    "xput_download": 0,
+    "xput_upload": 0,
+    "upload-progress":[100,150,200],
+    "download-progress":[100,150,200]
+    }
+        print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
+        self._send_inform(cmd,False)
+        speedtest.download()
+        print('Download: %0.2f M/s' %
+                ((results.download / 1000.0 / 1000.0)))
+        cmd["speedtest-status"]= {
+    "latency": results.ping,
+    "rundate": time.time(),
+    "runtime": time.time(),
+    "status_download":2,
+    "status_ping": 2,
+    "status_summary": 1,
+    "status_upload": 2,
+    "xput_download": (results.download / 1000.0 / 1000.0),
+    "xput_upload": (results.upload / 1000.0 / 1000.0)
+    }
+        print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
+        self._send_inform(cmd,False)        
+        speedtest.upload()
+        print('Upload: %0.2f M/s' %
+                ((results.upload / 1000.0 / 1000.0)))
+
+        cmd["speedtest-status"]= {
+    "latency": results.ping,
+    "rundate": time.time(),
+    "runtime": time.time(),
+    "status_download":2,
+    "status_ping": 2,
+    "status_summary": 2,
+    "status_upload": 2,
+    "xput_download": (results.download / 1000.0 / 1000.0),
+    "xput_upload": (results.upload / 1000.0 / 1000.0),
+    "upload-progress":[100,150,200],
+    "download-progress":[100,150,200]
+    }
+        print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
+        self._send_inform(cmd,False)
+        #time.sleep(delay)
+        self.delayStart-=self.interval
 
     def parseResponse(self,data):
         if(data is None):
