@@ -27,6 +27,14 @@
             "args" : ["--mode","usgp","start"]
         },
         {
+            "name": "Python: speedtest.py [start]",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args" : ["--server","29865","--debug","--source","192.168.1.156","192.168.1.156"]
+        },
+        {
             "name": "Python: unifi_console.py [startw]",
             "type": "python",
             "request": "launch",

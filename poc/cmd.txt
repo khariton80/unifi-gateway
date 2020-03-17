@@ -22,3 +22,5 @@ commands
 "adopt", "adv-adopt", "replace", "restart", "upgrade", "upgrade-external", "upgrade-all", "set-rollupgrade", "unset-rollupgrade", "locate", 
             "set-locate", "unset-locate", "show-lcm-tracker", "hide-lcm-tracker", "build-ssh-session", "get-sdp-offer", "ssh-sdp-answer", "close-ssh-session", "clone-config", "migrate", 
             "cancel-migrate", "force-provision"
+
+{"_type":"cmd","cmd":"speed-test","use_alert":true,"device_id":"5e6e33bff1030700f3487ce9","time":1584280907546,"datetime":"2020-03-15T14:01:47Z","_id":"5e6e354bf1030700f3487d27","server_time_in_utc":"1584280917281"}

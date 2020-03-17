@@ -1266,7 +1266,7 @@ class UnifiUSGPro(BaseDevice):
     }
         print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
         self._send_inform(cmd,False)
-        speedtest = Speedtest()
+        speedtest = Speedtest(source_address=['86.57.243.70','178.172.133.188'])
         speedtest.get_best_server()
         results = speedtest.results
 

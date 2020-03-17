@@ -28,6 +28,7 @@ import datetime
 import platform
 import threading
 import xml.parsers.expat
+import random
 
 try:
     import gzip
@@ -537,7 +538,7 @@ class SpeedtestHTTPHandler(AbstractHTTPHandler):
         return self.do_open(
             _build_connection(
                 SpeedtestHTTPConnection,
-                self.source_address,
+                (random.choice(self.source_address),0) if self.source_address else None,
                 self.timeout
             ),
             req
@@ -561,7 +562,7 @@ class SpeedtestHTTPSHandler(AbstractHTTPHandler):
         return self.do_open(
             _build_connection(
                 SpeedtestHTTPSConnection,
-                self.source_address,
+                (random.choice(self.source_address),0) if self.source_address else None,
                 self.timeout,
                 context=self._context,
             ),
@@ -581,17 +582,17 @@ def build_opener(source_address=None, timeout=10):
     printer('Timeout set to %d' % timeout, debug=True)
 
     if source_address:
-        source_address_tuple = (source_address, 0)
-        printer('Binding to source address: %r' % (source_address_tuple,),
+        source_address_tuple = (random.choice(source_address), 0)
+        printer('Binding to source address: %r' % (source_address,),
                 debug=True)
     else:
         source_address_tuple = None
 
     handlers = [
         ProxyHandler(),
-        SpeedtestHTTPHandler(source_address=source_address_tuple,
+        SpeedtestHTTPHandler(source_address=source_address,
                              timeout=timeout),
-        SpeedtestHTTPSHandler(source_address=source_address_tuple,
+        SpeedtestHTTPSHandler(source_address=source_address,
                               timeout=timeout),
         HTTPDefaultErrorHandler(),
         HTTPRedirectHandler(),
@@ -787,13 +788,14 @@ class HTTPDownloader(threading.Thread):
     """Thread class for retrieving a URL"""
 
     def __init__(self, i, request, start, timeout, opener=None,
-                 shutdown_event=None):
+                 shutdown_event=None, source_index=0):
         threading.Thread.__init__(self)
         self.request = request
         self.result = [0]
         self.starttime = start
         self.timeout = timeout
         self.i = i
+        self.source_index=source_index
         if opener:
             self._opener = opener.open
         else:
@@ -824,10 +826,11 @@ class HTTPUploaderData(object):
     has been reached
     """
 
-    def __init__(self, length, start, timeout, shutdown_event=None):
+    def __init__(self, length, start, timeout, shutdown_event=None,source_index=0):
         self.length = length
         self.start = start
         self.timeout = timeout
+        self.source_index=source_index
 
         if shutdown_event:
             self._shutdown_event = shutdown_event
@@ -1434,25 +1437,26 @@ class Speedtest(object):
                 servers = self.get_closest_servers()
             servers = self.closest
 
-        if self._source_address:
-            source_address_tuple = (self._source_address, 0)
-        else:
-            source_address_tuple = None
-
         user_agent = build_user_agent()
 
         results = {}
+        max_iteration = len(self._source_address)*4 if self._source_address else 4
         for server in servers:
             cum = []
             url = os.path.dirname(server['url'])
             stamp = int(timeit.time.time() * 1000)
             latency_url = '%s/latency.txt?x=%s' % (url, stamp)
-            for i in range(0, 3):
+            for i in range(0, max_iteration):
                 this_latency_url = '%s.%s' % (latency_url, i)
                 printer('%s %s' % ('GET', this_latency_url),
                         debug=True)
                 urlparts = urlparse(latency_url)
                 try:
+                    if self._source_address:
+                        source_address_tuple = (self._source_address[i % len(self._source_address)], 0)
+                    else:
+                        source_address_tuple = None
+
                     if urlparts[0] == 'https':
                         h = SpeedtestHTTPSConnection(
                             urlparts[1],
@@ -1482,7 +1486,7 @@ class Speedtest(object):
                     cum.append(3600)
                 h.close()
 
-            avg = round((sum(cum) / 6) * 1000.0, 3)
+            avg = round((sum(cum) / (2* len(cum))) * 1000.0, 3)
             results[avg] = server
 
         try:
@@ -1754,7 +1758,7 @@ def parse_args():
                         help='Exclude a server from selection. Can be '
                              'supplied multiple times')
     parser.add_argument('--mini', help='URL of the Speedtest Mini server')
-    parser.add_argument('--source', help='Source IP address to bind to')
+    parser.add_argument('--source', help='Source IP address to bind to' ,default=[], type=str, nargs='+')
     parser.add_argument('--timeout', default=10, type=PARSER_TYPE_FLOAT,
                         help='HTTP timeout in seconds. Default 10')
     parser.add_argument('--secure', action='store_true',
