@@ -122,7 +122,6 @@ class BaseDevice:
             request = urllib2.Request(url, cryptoutils.encode_inform(self.getKey(),data,usecbc,self.mac), headers)
             response = urllib2.urlopen(request)
             result = cryptoutils.decode_inform(self.getKey(), response.read())
-            #logging.debug(result)
             return result
         except Exception as ex:
             logging.warn(ex)
@@ -141,7 +140,6 @@ class BaseDevice:
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, True)
         sock.bind((self.ip, 0))
         message = self.create_broadcast_message(self.broadcast_index)
-        #logging.debug('Message "{}"'.format(binascii.hexlify(message)))
         sock.sendto(message, (addrinfo[4][0], 10001))
         logging.debug('Send broadcast message #{} from gateway {}'.format(self.broadcast_index, self.ip))
     

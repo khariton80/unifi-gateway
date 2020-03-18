@@ -1261,8 +1261,8 @@ class UnifiUSGPro(BaseDevice):
     "status_upload": 0,
     "xput_download": 0,
     "xput_upload": 0,
-    "upload-progress":0,
-    "download-progress":0
+    "upload-progress":[],
+    "download-progress":[]
     }
         print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
         self._send_inform(cmd,False)
@@ -1283,44 +1283,44 @@ class UnifiUSGPro(BaseDevice):
     "status_upload": 0,
     "xput_download": 0,
     "xput_upload": 0,
-    "upload-progress":[100,150,200],
-    "download-progress":[100,150,200]
+    "upload-progress":[],
+    "download-progress":[]
     }
         print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
         self._send_inform(cmd,False)
-        speedtest.download()
+        def download_callback(thread, count, end=False,start=False):
+          if(end):
+              cmd["speedtest-status"]["xput_download"]=(results.download / 1000.0 / 1000.0)
+              cmd["speedtest-status"]["download-progress"] =[
+                {"records":[ [time.time(),(results.download / 1000.0 / 10.0)] ]}
+              ]
+              self._send_inform(cmd,False)
+
+        def upload_callback(thread, count, end=False,start=False):
+          if(end):
+              cmd["speedtest-status"]["xput_upload"]=(results.upload / 1000.0 / 1000.0)
+              cmd["speedtest-status"]["upload-progress"] =[
+                {"records":[ [time.time(),(results.upload / 1000.0 / 10.0)] ]}
+              ]
+              self._send_inform(cmd,False)
+
+        speedtest.download( callback=download_callback)
         print('Download: %0.2f M/s' %
                 ((results.download / 1000.0 / 1000.0)))
-        cmd["speedtest-status"]= {
-    "latency": results.ping,
-    "rundate": time.time(),
-    "runtime": time.time(),
-    "status_download":2,
-    "status_ping": 2,
-    "status_summary": 1,
-    "status_upload": 2,
-    "xput_download": (results.download / 1000.0 / 1000.0),
-    "xput_upload": (results.upload / 1000.0 / 1000.0)
-    }
-        print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
+        cmd["speedtest-status"]["xput_download"]=(results.download / 1000.0 / 1000.0)
+        cmd["speedtest-status"]["status_download"]=2
+        cmd["speedtest-status"]["download-progress"]=[]
+
         self._send_inform(cmd,False)        
-        speedtest.upload()
+        speedtest.upload(callback=upload_callback)
         print('Upload: %0.2f M/s' %
                 ((results.upload / 1000.0 / 1000.0)))
 
-        cmd["speedtest-status"]= {
-    "latency": results.ping,
-    "rundate": time.time(),
-    "runtime": time.time(),
-    "status_download":2,
-    "status_ping": 2,
-    "status_summary": 2,
-    "status_upload": 2,
-    "xput_download": (results.download / 1000.0 / 1000.0),
-    "xput_upload": (results.upload / 1000.0 / 1000.0),
-    "upload-progress":[100,150,200],
-    "download-progress":[100,150,200]
-    }
+        cmd["speedtest-status"]["status_summary"]=2
+        cmd["speedtest-status"]["status_upload"]=2
+        cmd["speedtest-status"]["upload-progress"]=[]
+        cmd["speedtest-status"]["xput_upload"]=(results.upload / 1000.0 / 1000.0)
+
         print "%s: %s" % ( "speedtest", time.ctime(time.time()) )
         self._send_inform(cmd,False)
         #time.sleep(delay)

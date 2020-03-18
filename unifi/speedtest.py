@@ -1554,6 +1554,11 @@ class Speedtest(object):
                     thread.join(timeout=0.001)
                 in_flight['threads'] -= 1
                 finished.append(sum(thread.result))
+                stop = timeit.default_timer()
+                self.results.bytes_received = sum(finished)
+                self.results.download = (
+                    (self.results.bytes_received / (stop - start)) * 8.0
+                )
                 callback(thread.i, request_count, end=True)
 
         q = Queue(max_threads)
@@ -1648,6 +1653,11 @@ class Speedtest(object):
                     thread.join(timeout=0.001)
                 in_flight['threads'] -= 1
                 finished.append(thread.result)
+                stop = timeit.default_timer()
+                self.results.bytes_sent = sum(finished)
+                self.results.upload = (
+                    (self.results.bytes_sent / (stop - start)) * 8.0
+                )
                 callback(thread.i, request_count, end=True)
 
         q = Queue(threads or self.config['threads']['upload'])
