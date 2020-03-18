@@ -2,5 +2,9 @@
     "python.linting.pylintEnabled": false,
     "python.linting.banditEnabled": true,
     "python.linting.enabled": true,
-    "python.pythonPath": "E:\\Tools\\Python27\\python.exe"
+    "python.pythonPath": "E:\\Tools\\Python27\\python.exe",
+    "[python]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4  
+      }
 }
